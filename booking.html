@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .Ticket {
+            /* font-size: 70px; */
+            display: flex;
+            margin: auto;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            /* font-display: unset; */
+            /* background: linear-gradient(135deg,rgba(214, 16, 16, 0.893),rgba(255,255,255,0.1)); */
+        }
+        .ticket {
+            background: linear-gradient(279deg, #b527cf, #3bd9d9);
+            font-size: 80px;
+        
+            -webkit-background-clip: text;
+           -webkit-text-fill-color: transparent;
+        }
+        .ticket :hover {
+            background: linear-gradient(279deg, #71d70b, tomato);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .container1 {
+            align-items: center;
+            margin-left: 130px;
+            margin-top: 170px;
+            background-color: transparent;
+            width: 500px;
+            height: 550px;
+            border: 4px solid rgb(238, 138, 138);
+            border-radius: 5px;
+            box-shadow: #1b2735;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
+            backdrop-filter: blur(220px);
+            -webkit-backdrop-filter: blur(22px);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.46);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+        }
+        .oye .inside a {
+            margin: auto;
+            margin-top: 200px;
+            background-color: transparent;
+            width: 100px;
+            height: 120px;
+            border-radius: 4px;
+            background: linear-gradient(135deg, rgba(255, 6, 6, 0.1), rgba(255, 255, 255, 0.1));
+            /* backdrop-filter: blur(200px); */
+            -webkit-backdrop-filter: blur(20px);
+            /* box-shadow: 1px 10px 32px 0 rgb(3, 177, 240); */
+            border: 1px solid rgba(208, 197, 197, 0.827);
+        }
+        .inside {
+            margin-top: 40%;
+        }
+        .container1 {
+            border-radius: 2%;
+            text-align: center;
+            font-size: 26px;
+            font-weight: 500;
+            font-family: 'Courier New', Courier, monospace;
+            font-stretch: expanded;
+            width: 200px;
+            height: 150px;
+            animation: float 2s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% {
+                box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+                transform: translatey(0px);
+            }
+            50% {
+                box-shadow: 0 25px 15px 0px rgba(0, 0, 0, 0.2);
+                transform: translatey(-20px);
+            }
+            100% {
+                box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+                transform: translatey(0px);
+            }
+        }
+        .container1 :hover {
+            border-radius: 3%;
+            text-align: center;
+            font-size: 28px;
+            font-weight: 500;
+            font-family: 'Courier New', Courier, monospace;
+            font-stretch: wider;
+        }
+        .inner .image img {
+            border-radius: 50%;
+            box-shadow: 4px 1px 32px 6px rgba(10, 10, 10, 0.56);
+            border: 2px rgb(12, 12, 12);
+        }
+        .container1 .inside a {
+            font-size: 15px;
+            font-weight: 700;
+            font-style: normal;
+            box-sizing: content-box;
+            width: 300px;
+            height: 200px;
+
+        }
+        .container1 .oye .inside :hover {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            background-color: transparent;
+            width: 300px;
+            height: 200px;
+            font-size: 30px;
+            width: max-content;
+            height: max-content;
+        }
+        .container2 {
+            align-items: center;
+            margin-left: 1000px;
+            margin-top: 200px;
+            background-color: transparent;
+            width: 500px;
+            height: 550px;
+            border: 4px solid rgb(238, 138, 138);
+            border-radius: 5px;
+            box-shadow: #1b2735;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
+            backdrop-filter: blur(220px);
+            -webkit-backdrop-filter: blur(22px);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.46);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            animation: float 2s ease-in-out infinite;
+        }
+        .oye .inside a {
+            margin: auto;
+            margin-top: 200px;
+            background-color: transparent;
+            width: 100px;
+            height: 120px;
+            border-radius: 4px;
+            background: linear-gradient(135deg, rgba(255, 6, 6, 0.1), rgba(255, 255, 255, 0.1));
+            /* backdrop-filter: blur(200px); */
+            -webkit-backdrop-filter: blur(20px);
+            /* box-shadow: 1px 10px 32px 0 rgb(3, 177, 240); */
+            border: 1px solid rgba(208, 197, 197, 0.827);
+        }
+        .inside {
+            margin-top: 40%;
+        }
+        .container2 {
+            border-radius: 2%;
+            text-align: center;
+            font-size: 26px;
+            font-weight: 500;
+            font-family: 'Courier New', Courier, monospace;
+            font-stretch: expanded;
+            width: 200px;
+            height: 150px;
+        }
+        .container2 :hover {
+            border-radius: 3%;
+            text-align: center;
+            font-size: 28px;
+            font-weight: 500;
+            font-family: 'Courier New', Courier, monospace;
+            font-stretch: wider;
+        }
+        .inner .image img {
+            border-radius: 50%;
+    box-shadow: 12px 6px rgb(10 10 10 / 56%);
+    border: 2px rgb(0, 0, 0);
+        }
+        .container2 .inside a {
+            font-size: 15px;
+            font-weight: 700;
+            font-style: normal;
+            box-sizing: content-box;
+            width: 300px;
+            height: 200px;
+        }
+        .container2 .oye .inside :hover {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            background-color: transparent;
+            width: 300px;
+            height: 200px;
+            font-size: 30px;
+            width: max-content;
+            height: max-content;
+
+        }
+        .infinite {
+            position: relative;
+            width: 700px;
+            height: 200px;
+            /* background-color: black; */
+            transform-origin: bottom;
+            transform-style: preserve-3d;
+            transform: perspective(400px) rotateY(180deg);
+            margin-left: 330px;
+            margin-top: 10px;
+            offset-distance: 80%;
+        }
+
+        @media(max-width:600px){
+            .container2{
+                margin-left: 500px;
+                margin-right: auto;
+                align-items: center;
+            }
+            .container1{
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .Ticket{
+                align-items: center;
+            }
+        }
+        @media(max-width:480px){
+            .container2{
+                margin-left: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="Ticket">
+        <div class="ticket">
+            <p>TICKET</p>
+        </div>
+    </div>
+    <div class="container1" style="background-color: rebeccapurple;">
+        <div class="inner">
+            <p>KBC Club</p>
+            <div class="image">
+                <a href="form-data-to-qr-code-main/ticket.html">
+                    <img src="images/kbc.jpg" style="width: 260px;height: 200px; object-fit:auto;"> </a>
+            </div>
+        </div>
+    </div>
+    <div class="container2" style="background-color: rebeccapurple;">
+        <div class="inner">
+            <p>GREEN GOLD Club</p>
+            <div class="image">
+                <a href="ticket/Cert-Generator-master/index.html">
+                    <img src="images/ggc.jpg" style="width: 250px;height: 200px;"> </a>
+            </div>
+        </div>
+    </div>
+    <div class="container1" style="background-color: rebeccapurple;">
+
+        <div class="inner">
+            <p> KALAKRITI Club</p>
+            <div class="image">
+                <a href="ticket/Cert-Generator-master/index.html">
+                    <img src="images/Kalakriti Official  20221011_125148.jpg" style="width: 250px;height: 200px;"> </a>
+            </div>
+        </div> 
+    </div>
+    <div class="container2" style="background-color: rebeccapurple;">
+
+        <div class="inner">
+            <p>SEQUE Club</p>
+            <div class="image">
+                <a href="ticket/Cert-Generator-master/index.html">
+                    <img src="images/Booking-Air-Travel.jpg" style="width: 250px;height: 200px;"> </a>
+            </div>
+        </div>
+    </div>
+    <div class="container1" style="background-color: rebeccapurple;">
+        <div class="inner">
+            <p>MEGAPIXELS Club</p>
+            <div class="image">
+                <a href="ticket/Cert-Generator-master/index.html">
+                    <img src="images/Booking-Air-Travel.jpg" style="width: 250px;height: 200px;"> </a>
+            </div>
+        </div>
+    </div>
+    <div class="container2" style="background-color: rebeccapurple;">
+        <div class="inner">
+            <p>SANGRACHNA Club</p>
+            <div class="image">
+                <a href="ticket/Cert-Generator-master/index.html">
+                    <img src="images/Booking-Air-Travel.jpg" style="width: 250px;height: 200px;"> </a>
+            </div>
+        </div>
+    </div>
+
+   
+    <div class="container1" style="background-color: rebeccapurple;">
+        <div class="inner">
+            <p>KATHPAULIYAN Club</p>
+            <div class="image">
+                <a href="ticket/Cert-Generator-master/index.html">
+                    <img src="images/Booking-Air-Travel.jpg" style="width: 250px;height: 200px;"> </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
