@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Student Talent Club Registration Form</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: Arial, sans-serif;
+			background-color: #f2f2f2;
+		}
+
+		h1 {
+			margin: 50px 0 30px;
+			text-align: center;
+			font-size: 36px;
+			color: #007bff;
+		}
+
+		form {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			background-color: #ffffff;
+			box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+			padding: 30px;
+			margin: 50px auto;
+			max-width: 600px;
+			border-radius: 5px;
+			box-sizing: border-box;
+		}
+
+		input[type="text"], select, textarea {
+			margin: 10px 0;
+			padding: 10px;
+			border-radius: 5px;
+			border: none;
+			width: 100%;
+			max-width: 400px;
+			box-sizing: border-box;
+			font-size: 16px;
+			background-color: #f2f2f2;
+		}
+
+		input[type="text"]:focus, select:focus, textarea:focus {
+			outline: none;
+			box-shadow: 0px 0px 5px rgba(0,0,0,0.3);
+		}
+
+		label {
+			font-size: 18px;
+			font-weight: bold;
+			margin-bottom: 5px;
+			display: block;
+			color: #333333;
+		}
+
+		button[type="submit"] {
+			margin: 20px 0;
+			padding: 10px;
+			border-radius: 5px;
+			background-color: #007bff;
+			color: white;
+			font-size: 18px;
+			border: none;
+			cursor: pointer;
+			width: 100%;
+			max-width: 200px;
+			box-sizing: border-box;
+			transition: all 0.3s ease;
+		}
+
+		button[type="submit"]:hover {
+			background-color: #0066cc;
+		}
+
+		input[type="file"] {
+			display: none;
+		}
+
+		.custom-file-upload {
+			margin: 10px 0;
+			padding: 10px;
+			border-radius: 5px;
+			border: none;
+			background-color: #007bff;
+			color: white;
+			font-size: 16px;
+			cursor: pointer;
+			width: 100%;
+			max-width: 200px;
+			box-sizing: border-box;
+			text-align: center;
+			display: inline-block;
+			transition: all 0.3s ease;
+		}
+
+		.custom-file-upload:hover {
+			background-color: #0066cc;
+		}
+
+
+        
+	</style>
+</head>
+<body>
+	<h1>Student Talent Club Registration Form</h1>
+	<form>
+		<label for="name">Name:</label>
+		<input type="text" id="name" name="name" placeholder="Enter your full name" required>
+
+		<label for="branch">Branch:</label>
+		<select id="branch" name="branch" required>
+			<option value="" disabled selected
+            --Select your branch--</option>
+            <option value="Computer Science">Computer Science</option>
+            <option value="Electronics and Communication">Electronics and Communication</option>
+            <option value="Mechanical Engineering">Mechanical Engineering</option>
+            <option value="Civil Engineering">Civil Engineering</option>
+            </select>
+            <label for="year">Year:</label>
+            <select id="year" name="year" required>
+                <option value="" disabled selected>--Select your year--</option>
+                <option value="1st Year">1st Year</option>
+                <option value="2nd Year">2nd Year</option>
+                <option value="3rd Year">3rd Year</option>
+                <option value="4th Year">4th Year</option>
+            </select>
+        
+            <label for="talent">Type of Talent:</label>
+            <select id="talent" name="talent" required>
+                <option value="" disabled selected>--Select your talent--</option>
+                <option value="Music">Music</option>
+                <option value="Dance">Dance</option>
+                <option value="Drama">Drama</option>
+                <option value="Comedy">Comedy</option>
+                <option value="Art">Art</option>
+                <option value="Literature">Literature</option>
+                <option value="Sports">Sports</option>
+                <option value="Other">Other</option>
+            </select>
+        
+            <label for="reason">Why do you want to join this club?</label>
+            <textarea id="reason" name="reason" placeholder="Enter your reason here" required></textarea>
+        
+            <label for="media">Upload photos and videos:</label>
+            <div>
+                <label for="file-upload" class="custom-file-upload">
+                    Select File
+                </label>
+                <input id="file-upload" type="file"/>
+            </div>
+        
+            <button type="submit">Submit</button>
+        </form>
+    </body>
+    <script>
+        const fileUpload = document.getElementById("file-upload");
+const customUploadButton = document.querySelector(".custom-file-upload");
+
+customUploadButton.addEventListener("click", function () {
+  fileUpload.click();
+});
+
+fileUpload.addEventListener("change", function () {
+  const file = fileUpload.files[0];
+  const fileName = file.name;
+  const fileType = file.type.split("/")[0];
+
+  if (fileType === "image" || fileType === "video") {
+    customUploadButton.textContent = fileName;
+  } else {
+    customUploadButton.textContent = "Invalid file type";
+  }
+});
+const express = require("express");
+const multer = require("multer");
+const path = require("path");
+
+const app = express();
+
+// Set up multer storage engine and file filter
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "uploads/");
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + path.extname(file.originalname));
+  },
+});
+const fileFilter = function (req, file, cb) {
+  if (file.mimetype.startsWith("image/") || file.mimetype.startsWith("video/")) {
+    cb(null, true);
+  } else {
+    cb(new Error("Invalid file type"));
+  }
+};
+const upload = multer({ storage: storage, fileFilter: fileFilter });
+
+// Serve static files from the uploads directory
+app.use("/uploads", express.static("uploads"));
+
+// Handle form submission
+app.post("/submit-form", upload.single("file-upload"), (req, res) => {
+  const name = req.body.name;
+  const branch = req.body.branch;
+  const year = req.body.year;
+  const talent = req.body.talent;
+  const whyJoin = req.body.whyJoin;
+  const filePath = req.file ? req.file.path : null;
+
+  // Handle form data and file upload
+  // ...
+
+  // Send response to client
+  res.send("Form submitted successfully!");
+});
+
+// Start server
+app.listen(3000, () => {
+  console.log("Server started on port 3000");
+});
+
+
+    </script>
+    </html>        

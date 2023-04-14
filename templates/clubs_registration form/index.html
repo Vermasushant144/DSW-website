@@ -1,0 +1,115 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+    crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700;900&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css">
+  <title>Register</title>
+
+</head>
+
+<body>
+
+  <div class="background">
+
+
+
+  </div>
+
+  <section class="container">
+    <header>Registration Form</header>
+    <form action="#" class="form">
+      <div class="row">
+        <div class="column">
+          <div class="input-box">
+
+            <label>Full Name</label>
+            <input type="text" placeholder="Enter full name" required />
+          </div>
+          <div class="nopro-col">
+            <img src="noprofil.jpg" width=100 height=100 alt="">
+            <div class="round">
+              <input type="file">
+              <i class="fa fa-camera" style="color: #fff;"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="input-box address">
+          <label>Academics Details</label>
+          <!-- <input type="text" placeholder="Enter street address" required />
+              <input type="text" placeholder="Enter street address line 2" required /> -->
+          <div class="column">
+            <div class="select-box">
+              <select>
+                <option hidden>Year</option>
+                <option>1st</option>
+                <option>2nd</option>
+                <option>3rd</option>
+                <option>4th</option>
+                <option>5th</option>
+              </select>
+            </div>
+            <input type="text" placeholder="Enter your branch" required />
+          </div>
+          <!-- <div class="column">
+                <input type="text" placeholder="Enter your region" required />
+    
+                <input type="number" placeholder="Enter postal code" required />
+              </div> -->
+        </div>
+        <div class="input-box">
+          <label>Email Address</label>
+          <input type="text" placeholder="Enter email address" required />
+        </div>
+
+        <div class="column_x">
+          
+          <div class="input-box">
+            <label>Phone Number</label>
+            <input type="number" placeholder="Enter phone number" required />
+
+          </div>
+          <div class="col1">
+            <label for="" class="label">ruie</label>
+            <button class="button" class = "btn-warning">
+              <i class="fa fa-upload"></i> Upload File 
+              <input type="file">
+              </button>
+          </div>
+
+        </div>
+        <div class="gender-box">
+          <h3>Gender</h3>
+          <div class="gender-option">
+            <div class="gender">
+              <input type="radio" id="check-male" name="gender" checked />
+              <label for="check-male">male</label>
+            </div>
+            <div class="gender">
+              <input type="radio" id="check-female" name="gender" />
+              <label for="check-female">Female</label>
+            </div>
+            <div class="gender">
+              <input type="radio" id="check-other" name="gender" />
+              <label for="check-other">prefer not to say</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <button>Submit</button>
+      </div>
+
+    </form>
+  </section>
+  </div>
+
+</body>
+
+</html>
