@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clubAdmin</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+</head>
+<script>
+    let onLoad = async()=>{
+        if('<%-status%>'=="ok"){
+            let user = await JSON.parse(localStorage.getItem("user"));
+            let res = await fetch("/clubAdmin/clubDetail",{
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json"
+                },
+                mode:"cors",
+                body:JSON.stringify({
+                    id:user.id
+                })
+            });
+            res = await JSON.parse(await res.text());
+            let club;
+            if(res.status=="ok"){
+                club = res.club;
+                clubMember = res.club.members;
+                for(let i=0;i<clubMember.length;i++){
+                    let res = await fetch("/clubAdmin/getMemberDetail",{
+                        method:"POST",
+                        headers:{
+                            "Content-Type":"application/json"
+                        },
+                        body:JSON.stringify({
+                            adminID:user.id,
+                            memberID:clubMember[i].userId
+                        })
+                    })
+                    res = await JSON.parse(await res.text());
+                    if(res.status=="ok"){
+                        member = res.member;
+                        
+                        document.getElementById("clubMembers").innerHTML+=
+                        `
+                        <div id='clubMemberDiv' style='display:flex;flex-direction:column;border:1px solid black;margin:5px;'>
+                            <img src='${member.avatar}' alt='${member.name}' style='height:100px;width:100px;'>
+                            <a href='${"http://localhost:3000/profile/"+member.ERP_ID}'>${member.name}</a>
+                            <button onclick='deleteMember("${member.ERP_ID}")'>Delete Member</button>
+                            
+                        </div>
+                        `
+                    }
+                    
+                }
+                let adminInput = document.querySelectorAll(".adminID");
+                await adminInput.forEach(Inputs=>{
+                    Inputs.value = user.id;
+                });
+                document.getElementById("clubName").value = club.name;
+                document.getElementById("clubDesc").value = club.description;
+                document.getElementById("clubHelpLineEmail1").value = club.Email[0];
+                if(club.Email.length>1){
+                    document.getElementById("clubHelpLineEmail2").value = club.Email[1];
+                }
+                document.getElementById("clubHelpLineNumber1").value = club.number[0];
+                if(club.number.length>1){
+                    document.getElementById("clubHelpLineNumber2").value = club.number[1];
+                }
+                document.getElementById("clubWhatsapp").value = club.whatsapp;
+            }
+            
+            
+            // clubName,clubDesc,clubHelpLineEmail1,clubHelpLineEmail2,clubHelpLineNumber1,clubWhatsapp
+            
+        }
+    }
+    let deleteMember = async(ERP_ID)=>{
+        let user = await JSON.parse(localStorage.getItem("user"));
+        let res = await fetch("/clubAdmin/deleteMember",{
+            method:"PUT",
+            body:JSON.stringify({
+                adminID:user.id,
+                ERP_ID:ERP_ID
+            }),
+            headers:{
+                "Content-Type":"application/json"
+            },
+            mode:"cors"
+        });
+        res = await JSON.parse(await res.text());
+        console.log(res);
+        if(res.status=="ok"){
+            window.location.reload();
+        }
+    }
+    const addClubMemberToggle = async()=>{
+        if($("#addMemberForm").css("display")=="none"){
+            $("#addMemberForm").css("display","block");
+        }else{
+            $("#addMemberForm").css("display","none");
+        }
+    }
+    const editClubToggle = async()=>{
+        if($("#editClubForm").css("display")=="none"){
+            $("#editClubForm").css("display","block");
+        }else{
+            $("#editClubForm").css("display","none");
+        }
+    }
+    const validateClubMember = async(value)=>{
+        document.getElementById("validateMemberID").innerText = "Verifiying...";
+        $("#addMemberBtn").prop("disabled",true);
+        $("#validateMemberID").css("display","block");
+        let admin = await JSON.parse(localStorage.getItem("user"));
+        let res = await fetch("/clubAdmin/isMember",{
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify({
+                ERP_ID:value,
+                adminID:admin.id,
+            }),
+            mode:"cors"
+        });
+        
+        res = await JSON.parse(await res.text());
+        if(res.status=="yes"){
+            $("#validateMemberID").css("color","red");
+            document.getElementById("validateMemberID").innerText = "Already Member";
+            $("#addMemberBtn").prop("disabled",true);
+        }else if(res.status=="not exist"){
+            $("#validateMemberID").css("color","red");
+            document.getElementById("validateMemberID").innerText = "User Not exist";
+            $("#addMemberBtn").prop("disabled",true);
+        }else if(res.status=="no"){
+            $("#validateMemberID").css("color","green");
+            document.getElementById("validateMemberID").innerText = "Verified:)";
+            $("#addMemberBtn").prop("disabled",false);
+        }else{
+            $("#validateMemberID").css("color","red");
+            document.getElementById("validateMemberID").innerText = "Invalid Input:/";
+            $("#addMemberBtn").prop("disabled",true);
+        }
+    }
+</script>
+<style>
+</style>
+<%if(club){%>
+    <body onload="onLoad()">
+        <div id="editButton" style="display: flex;">
+            <button onclick="addClubMemberToggle()">+Add Member</button>
+            <button onclick="editClubToggle()">Edit Club</button>
+        </div>
+        <div id="Forms" style="display: flex;">
+            <form method="POST" action="/clubAdmin/addMember" id="addMemberForm" style="display: none;">
+                <input type="text" name="ERP_ID" placeholder="user ERP_ID" onchange="validateClubMember(this.value)"><br>
+                <label for="ERP_ID" id="validateMemberID" style="display: none;"></label>
+                <input type="text" class="adminID" name="adminID" style="display:none;">
+                <button type="submit" id="addMemberBtn">+Add Member</button>
+            </form>
+            <form method="POST" action="/clubAdmin/editClub" id="editClubForm" enctype="multipart/form-data" style="display: none;">
+                <input type="text"  name="name" placeholder="name" id="clubName" required><br>
+                <input type="text" name="desc" placeholder="description" id="clubDesc"><br>
+                <input type="file" name="icon"><br>
+                <input type="email" name="Email" placeholder="HelpLine Email" id="clubHelpLineEmail1" required><br>
+                <input type="email" name="Email" placeholder="HelpLine Email" id="clubHelpLineEmail2"><br>
+                <input type="text" name="number" placeholder="HelpLine No" id="clubHelpLineNumber1" required><br>
+                <input type="text" name="number" placeholder="Another HelpLine No" id="clubHelpLineNumber2"><br>
+                <input type="text" name="whatsapp" placeholder="Whatsapp Group Link" id="clubWhatsapp" required><br>
+                <input type="text" style="display: none;" class="adminID" name="adminID">
+                <button id="editClubBtn">Submit</button>
+                
+            </form>
+        </div>
+        <div id="aboutClub">
+            <div style="display:flex;">
+                <div>
+                    <img src="<%=club.icon%>" alt="<%=club.name%>">
+                </div>
+                <div>
+                    <div><%=club.name%></div>
+                    <div><%=club.description%></div>
+                </div>
+            </div>
+            <%for(let i=0;i<club.Email.length;i++){%>
+                <div><%=club.Email[i]%></div>
+            <%}%>
+            <%for(let i=0;i<club.number.length;i++){%>
+                <div><%=club.number[i]%></div>
+            <%}%>
+            <div>Contact us on:<%=club.whatsapp%></div>
+            <div id="clubMembers" style="display:flex;text-align: center;"></div>
+        </div>
+    </body>
+<%}else{%>
+    <h1 style="color:red">Not a Valid admin</h1>
+<%}%>
+</html>

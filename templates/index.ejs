@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style/index.css">
+    <title>DSW-Universe</title>
+</head>
+<script>
+  var sleeping = async()=>{
+    await sleep(100);
+  }
+  var onLoad = async()=>{
+    let localUser = await JSON.parse(localStorage.getItem("user"));
+    
+    if(localUser){
+      if(localUser.access=='admin'){
+        document.getElementById('admin').style.display = "block";
+      }else if(localUser.access=='clubAdmin'){
+        document.getElementById('clubAdmin').style.display = "block";
+      }
+      document.getElementById("profile").style.visibility = "visible";
+      document.getElementById("auth").style.visibility = "hidden";
+      document.getElementById("profile").innerHTML = localUser.name;
+    }else{
+      document.getElementById("profile").style.visibility = "hidden";
+      document.getElementById("auth").style.visibility = "visible";
+    }
+    document.getElementById("clubAdmin").href = "http://localhost:3000/clubAdmin/"+localUser.id; 
+  }
+  var visitProfile = async()=>{
+    let localUser = await JSON.parse(localStorage.getItem("user"));
+    window.location.href = "http://localhost:3000/profile/"+localUser.ERP_ID;
+  }
+  
+</script>
+<style>
+  #profile{
+    padding: 7px;
+    font-size: 20px;
+    background-color: transparent;
+    color: rgba(255, 255, 255, 0.435);
+    border: 0px;
+    border-left: 1px solid white;
+    margin: auto;
+    white-space: nowrap;
+  }
+  #profile:hover{
+    color:white;
+  }
+  #auth{
+    display: flex;
+  }
+  #auth a{
+    padding:20px;
+  }
+  #admin{
+    padding: 6px;
+    background-color: transparent;
+    color: rgba(255, 255, 255, 0.435);
+    border: 0px;
+    margin: auto;
+    margin-right:10px;
+  }
+  #admin:hover{
+    color:white;
+  }
+  #clubAdmin{
+    padding: 7px;
+    font-size: 20px;
+    background-color: transparent;
+    color: rgba(255, 255, 255, 0.435);
+    border: 0px;
+    margin: auto;
+    margin-right:10px;
+  }
+  #clubAdmin:hover{
+    color:white;
+  }
+</style>
+<body onload="onLoad()">
+    <body class="opening hide-UI view-2D zoom-large data-close controls-close">
+        <div id="navbar">
+          <a id="toggle-data" class="mobile-responsive" href="#data"><i class="icon-data"></i>Data</a>
+          <h1>3D DSW </h1>
+          <a id="toggle-controls" class="mobile-responsive" href="#controls"><i class="icon-controls"></i>Controls</a>
+          <div id="auth">
+            <a id="login-link" href="http://localhost:3000/auth/login">Login</a>
+            <a id="signUp-link" href="http://localhost:3000/auth/register">SignUp</a>
+          </div>
+          <a href="http://localhost:3000/admin/" id="admin" style="display:none;">Admin</a>
+          <a id="clubAdmin" style="display:none;" href=''>clubAdmin</a>
+          <button id="profile" onclick="visitProfile()"></button>
+
+        </div>
+        <div id="data">
+          <a class="sun"  href="#DWS">DSW</a>
+          <a class="mercury"  href="#KBC">KBC</a>
+          <a class="venus" href="#GGSC">GGSC</a>
+          <a class="earth active"  href="#KALAKRITI">kALAKRITI</a>
+          <a class="mars"  href="#MAGEPIXELS">MEGAPIXELS</a>
+          <a class="jupiter"  href="#KATHPULIYAN">KATHPUTLIYAN</a>
+          <a class="saturn"  href="#JETSETTERS">JETSETTERS</a>
+          <a class="uranus" href="#JUVENTAS">JUVENTAS</a>
+          <a class="neptune"  href="#SANGRACHNA">SANGRACHNA
+          </a>
+        </div>
+        <div id="controls">
+          <label class="set-view">
+            <input type="checkbox">
+          </label>
+          <label class="set-zoom">
+            <input type="checkbox">
+          </label>
+          <label>
+            <input type="radio" class="set-speed" name="scale" checked>
+            <span>Speed</span>
+          </label>
+          <label>
+            <input type="radio" class="set-size" name="scale">
+            <span>Size</span>
+          </label>
+          <label>
+            <input type="radio" class="set-distance" name="scale">
+            <span>Distance</span>
+          </label>
+        </div>
+        <div id="universe" class="scale-stretched">
+          <div id="galaxy">
+            <div id="solar-system" class="earth">
+              <div id="mercury" class="orbit">
+                <div class="pos">
+                  <div class="planet">
+                    <dl class="infos">
+                     <dt > <a href="/kbc" style=" text-decoration: none; font-size: 30px;"><pre style="color: rgb(10, 59, 255);">Khushiyan Baaton club</pre></a></dt>
+                      <dd><span></span></dd>
+                    </dl>
+                  </div>
+                </div>
+              </div>
+              <div id="venus" class="orbit">
+                <div class="pos">
+                  <div class="planet">
+                    <dl class="infos">
+                      <dt > <a href="/ggc" style=" text-decoration: none; font-size: 30px;"><pre style="color: rgb(10, 59, 255);">Green Gold Club </pre></a></dt>
+                      <dd><span></span></dd>
+                    </dl>
+                  </div>
+                </div>
+              </div>
+              <div id="earth" class="orbit">
+                <div class="pos">
+                  <div class="orbit">
+                    <div class="pos">
+                      <div class="moon"></div>
+                    </div>
+                  </div>
+                  <div class="planet">
+                    <dl class="infos">
+                      <dt > <a href="/kalakriti" style=" text-decoration: none; font-size: 30px;"><pre style="color: rgb(10, 59, 255);">Kalakriti Club</pre></a></dt>
+                      <dd><span></span></dd>
+                    </dl>
+                  </div>
+                </div>
+              </div>
+              <div id="mars" class="orbit">
+                <div class="pos">
+                  <div class="planet">
+                    <dl class="infos">
+                      <dt > <a href="/megapixels" style=" text-decoration: none; font-size: 30px;"><pre style="color: rgb(10, 59, 255);">Megapixels Club</pre></a></dt>
+                      <dd><span></span></dd>
+                    </dl>
+                  </div>
+                </div>
+              </div>
+              <div id="jupiter" class="orbit">
+                <div class="pos">
+                  <div class="planet">
+                    <dl class="infos">
+                      <dt > <a href="/kathputiyan" style=" text-decoration: none; font-size: 30px;"><pre style="color: rgb(10, 59, 255);">Kathputiyan Club</pre></a></dt>
+                      <dd><span></span></dd>
+                    </dl>
+                  </div>
+                </div>
+              </div>
+              <div id="saturn" class="orbit">
+                <div class="pos">
+                  <div class="planet">
+                    <div class="ring"></div>
+                    <dl class="infos">
+                      <dt > <a href="/jetsetters" style=" text-decoration: none; font-size: 30px;"><pre style="color: rgb(10, 59, 255);">Jetsetters Club</pre></a></dt>
+                      <dd><span></span></dd>
+                    </dl>
+                  </div>
+                </div>
+              </div>
+              <div id="uranus" class="orbit">
+                <div class="pos">
+                  <div class="planet">
+                    <dl class="infos">
+                      <dt > <a href="/juventas" style=" text-decoration: none; font-size: 30px;"><pre style="color: rgb(10, 59, 255);">Juventas Club</pre></a></dt>
+                      <dd><span></span></dd>
+                    </dl>
+                  </div>
+                </div>
+              </div>
+              <div id="neptune" class="orbit">
+                <div class="pos">
+                  <div class="planet">
+                    <dl class="infos">
+                      <dt > <a href="/sangrachna" style=" text-decoration: none; font-size: 30px;"><pre style="color: rgb(10, 59, 255);">Sangrachna Club</pre></a></dt>
+                      <dd><span></span></dd>
+                    </dl>
+                  </div>
+
+                               </div>
+              </div>
+              <div id="sun">
+                <dl class="infos">
+                  <dt > <a href="/dsw" style=" text-decoration: none; font-size: 30px;"><pre style="color: rgb(10, 59, 255);">Dean Student Welfare</pre></a></dt>
+                  <dd><span></span></dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+        <script type="text/javascript">
+        if (typeof jQuery == 'undefined') { 
+          document.write(unescape("%3Cscript src='js/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
+        }
+        </script>
+        <script src="js/prefixfree.min.js"></script>
+        <script src="js/scripts.min.js"></script>
+        <script>
+            $(window).load(function(){
+
+var body = $("body"),
+    universe = $("#universe"),
+    solarsys = $("#solar-system");
+
+var init = function() {
+  body.removeClass('view-2D opening').addClass("view-3D").delay(2000).queue(function() {
+    $(this).removeClass('hide-UI').addClass("set-speed");
+    $(this).dequeue();
+  });
+};
+
+var setView = function(view) { universe.removeClass().addClass(view); };
+
+$("#toggle-data").click(function(e) {
+  body.toggleClass("data-open data-close");
+  e.preventDefault();
+});
+
+$("#toggle-controls").click(function(e) {
+  body.toggleClass("controls-open controls-close");
+  e.preventDefault();
+});
+
+$("#data a").click(function(e) {
+  var ref = $(this).attr("class");
+  solarsys.removeClass().addClass(ref);
+  $(this).parent().find('a').removeClass('active');
+  $(this).addClass('active');
+  e.preventDefault();
+});
+
+$(".set-view").click(function() { body.toggleClass("view-3D view-2D"); });
+$(".set-zoom").click(function() { body.toggleClass("zoom-large zoom-close"); });
+$(".set-speed").click(function() { setView("scale-stretched set-speed"); });
+$(".set-size").click(function() { setView("scale-s set-size"); });
+$(".set-distance").click(function() { setView("scale-d set-distance"); });
+
+init();
+
+});
+        </script>
+      </body>
+</body>
+</html>

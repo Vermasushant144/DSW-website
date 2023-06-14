@@ -1,0 +1,48 @@
+<Script>
+    var onLoad = async()=>{
+        let status = <%-JSON.stringify(status)%>;
+        if(status=="interface"){
+            let data =await JSON.parse(localStorage.getItem("user"));
+            if(data && data.ERP_ID!=null){
+                document.getElementById("login").style.display="none";
+                window.location.href = "http://localhost:3000/profile/"+data.ERP_ID;
+            }else{
+                document.getElementById("login").style.display="block";
+            }
+        }else if(status=="AddLocalUser"){
+            let user = <%-JSON.stringify(user)%>;
+            localStorage.setItem("user",await JSON.stringify(user));
+            window.location.href = "http://localhost:3000/profile/"+user.ERP_ID;
+        }
+    }
+    var switchForm = ()=>{
+        if(document.getElementById("switchBtn").innerHTML=="Forget password"){
+            document.getElementById("loginform").style.display = "none";
+            document.getElementById("forgetform").style.display = "block";
+            document.getElementById("switchBtn").innerHTML="Back to Login"
+        }else{
+            document.getElementById("loginform").style.display = "block";
+            document.getElementById("forgetform").style.display = "none";
+            document.getElementById("switchBtn").innerHTML="Forget password"
+        }
+    }
+</Script>
+<body onload="onLoad()">
+    <section id="login">
+        Login Component
+        <!-- Login Form -->
+        <form action="/auth/login" method="POST" id="loginform">
+            <input type="text" name="ERP_ID" placeholder="ERP_ID"><br>
+            <input type="password" name="password" placeholder="password"><br>
+            <button type="submit">Login</button>
+        </form>
+        
+        <!-- Forget Password Form -->
+        <form action="/auth/forgetpassword" method="POST" id="forgetform" style="display:none;">
+            <input type="text" name="name" placeholder="Name"><br>
+            <input type="text" name="ERP_ID" placeholder="ERP_ID"><br>
+            <button>Send Email</button>            
+        </form>
+        <button style="border:none;background-color: white;text-decoration: underline;" onclick="switchForm()" id="switchBtn">Forget password</button>
+    </section>
+</section>
