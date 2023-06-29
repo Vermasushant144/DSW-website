@@ -12,13 +12,12 @@
         let user = <%-JSON.stringify(user)%>;
         if(user){
             if(localUser.ERP_ID==user.ERP_ID){
-                document.getElementById("editProfile").style.display = "block";
-                document.getElementById("logout").style.display = "block";
+                document.getElementById("editable").innerHTML = `<%-include('./edit_profile.ejs')%>`
             }else{
                 document.getElementById("editProfile").style.visibility = "hidden";
             }
         }else{
-            window.location.href = "http://localhost:3000/";
+            window.location.href = "/";
         }
         let adminID = document.getElementsByClassName("adminID");
         for(let i=0;i<adminID.length;i++){
@@ -34,7 +33,7 @@
     }
     var logout = async()=>{
         localStorage.clear();
-        window.location.href = "http://localhost:3000/auth/login"
+        window.location.href = "/auth/login"
     }
     var editProfile = async()=>{
 
@@ -49,6 +48,7 @@
     }
 </script>
 <body onload="onLoad()">
+    
     <div style="display: flex;">
         <div>
             <img src=<%=user.avatar%> alt="Avatar" style="width: 200px;">
@@ -59,21 +59,8 @@
         <%=user.branch%><br>
         <%=user.year%><br>
         <!--  On click edit profile open form to edit profile-->
-        <button id="editProfile" onclick="editProfileToggle()" style="display: none;">Edit Profile</button><br>
-        <button id="logout" onclick="logout()" style="display: none;">Logout</button>
-        <form method="POST" action="/profile/edit_profile" id="editProfileForm" style="display: none;" enctype="multipart/form-data">
-            <input type="text" name="name" id="name"><br>
-            <input type="text" name="adminID" class="adminID" style="display: none;">
-            <input type="text" name="branch" id="branch"><br>
-            <input type="number" name="year" id="year"><br>
-            <input type="file" name="avatar" id="avatar"><br>
-            <input type="text" name="gender" id="gender" ><br>
-            <input type="number" name="whatsapp" id="whatsapp" placeholder="whatsapp Number"><br>
-            <input type="number" name="contactNo" id="contactNo" placeholder="contactNo"><br>
-            <input type="text" name="linkedin" id="linkedIn"><br>
-            <input type="password" name="password" placeholder="Enter your password">
-            <button type="submit">Update</button>
-        </form>
+        <div id="editable"></div>
+        
         </div>
     </div>
     <div>

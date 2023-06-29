@@ -5,14 +5,14 @@
             let data =await JSON.parse(localStorage.getItem("user"));
             if(data && data.ERP_ID!=null){
                 document.getElementById("login").style.display="none";
-                window.location.href = "http://localhost:3000/profile/"+data.ERP_ID;
+                window.location.href = "../profile/"+data.ERP_ID;
             }else{
                 document.getElementById("login").style.display="block";
             }
         }else if(status=="AddLocalUser"){
             let user = <%-JSON.stringify(user)%>;
             localStorage.setItem("user",await JSON.stringify(user));
-            window.location.href = "http://localhost:3000/profile/"+user.ERP_ID;
+            window.location.href = "../profile/"+user.ERP_ID;
         }
     }
     var switchForm = ()=>{

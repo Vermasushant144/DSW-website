@@ -24,6 +24,8 @@ router.post('/login',async(req,res)=>{
         }else{
             res.send("<h1 style='color:red'>Invalid User:(<br>Try Again</h1>")
         }
+    }else{
+        res.send({status:"Insufficient Data"});
     }
 })
 
@@ -72,7 +74,7 @@ var upload = multer({
     storage:multer.diskStorage({
         destination:(req,file,cb)=>{
             
-            cb(null,'public/images')
+            cb(null,'public/dynamic/images')
         },
         filename:(req,file,cb)=>{
             console.log(req.body);
@@ -94,7 +96,7 @@ router.post("/register",upload.single("avatar"),async(req,res)=>{
                     year:req.body.year,
                     branch:req.body.branch,
                     ERP_ID:req.body.ERP_ID,
-                    avatar:"data:image/png;base64,"+fs.readFileSync("public/images/"+req.body.ERP_ID+"-avatar.png").toString('base64'),
+                    avatar:"/dynamic/images/"+req.body.ERP_ID+"-avatar.png",
                     contactNo:req.body.contactNo,
                     medialink:{
                         whatsapp:"https://wa.me/"+req.body.whatsapp,
@@ -102,11 +104,7 @@ router.post("/register",upload.single("avatar"),async(req,res)=>{
                     },
                     password:req.body.password,
                     gender:req.body.gender,
-                }).save()
-                
-                if(req.body.avatar){
-                    fs.unlinkSync("public/images/"+req.body.ERP_ID+"-avatar.png")
-                }
+                }).save();
                 let newUser=await userModel.findOne({ERP_ID:req.body.ERP_ID})
                 require('./sendEmail')(
                     req.body.ERP_ID+"@niet.co.in","Verify your Email address",

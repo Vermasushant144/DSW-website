@@ -19,7 +19,7 @@ var upload = multer({
     storage:multer.diskStorage({
         destination:(req,file,cb)=>{
             
-            cb(null,'public/images')
+            cb(null,'public/dynamic/images')
         },
         filename:(req,file,cb)=>{
             
@@ -38,8 +38,8 @@ route.post("/edit_profile",upload.single("avatar"),async(req,res)=>{
         user.medialink.linkedin = req.body.linkedin;
         user.gender = req.body.gender;
         if(req.file){
-            user.avatar = "data:image/png;base64,"+fs.readFileSync("public/images/"+req.body.adminID+"-avatar.png").toString('base64');
-            fs.unlinkSync("public/images/"+req.body.adminID+"-avatar.png");
+            fs.unlinkSync("public"+user.avatar);
+            user.avatar = "/dynamic/images/"+req.body.adminID+"-avatar.png";
         }
         await user.save();
         res.redirect(`/profile/${user.ERP_ID}`)

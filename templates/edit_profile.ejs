@@ -1,0 +1,18 @@
+<!-- part of profile section use for editing profile -->
+<div>
+    <button id="editProfile" onclick="editProfileToggle()" >Edit Profile</button><br>
+    <button id="logout" onclick="logout()">Logout</button>
+    <form method="POST" action="/profile/edit_profile" id="editProfileForm" style="display: none;" enctype="multipart/form-data">
+        <input type="text" name="name" id="name"><br>
+        <input type="text" name="adminID" class="adminID" style="display: none;">
+        <input type="text" name="branch" id="branch"><br>
+        <input type="number" name="year" id="year"><br>
+        <input type="file" name="avatar" id="avatar"><br>
+        <input type="text" name="gender" id="gender" ><br>
+        <input type="number" name="whatsapp" id="whatsapp" placeholder="whatsapp Number"><br>
+        <input type="number" name="contactNo" id="contactNo" placeholder="contactNo"><br>
+        <input type="text" name="linkedin" id="linkedIn"><br>
+        <input type="password" name="password" placeholder="Enter your password">
+        <button type="submit">Update</button>
+    </form>
+<div>

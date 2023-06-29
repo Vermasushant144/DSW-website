@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/style/index.css">
+    <link rel="stylesheet" href="/static/style/index.css">
     <title>DSW-Universe</title>
 </head>
 <script>
@@ -15,11 +15,6 @@
     let localUser = await JSON.parse(localStorage.getItem("user"));
     
     if(localUser){
-      if(localUser.access=='admin'){
-        document.getElementById('admin').style.display = "block";
-      }else if(localUser.access=='clubAdmin'){
-        document.getElementById('clubAdmin').style.display = "block";
-      }
       document.getElementById("profile").style.visibility = "visible";
       document.getElementById("auth").style.visibility = "hidden";
       document.getElementById("profile").innerHTML = localUser.name;
@@ -27,13 +22,12 @@
       document.getElementById("profile").style.visibility = "hidden";
       document.getElementById("auth").style.visibility = "visible";
     }
-    document.getElementById("clubAdmin").href = "http://localhost:3000/clubAdmin/"+localUser.id; 
+    // document.getElementById("clubAdmin").href = "../clubAdmin/"+localUser.id; 
   }
   var visitProfile = async()=>{
     let localUser = await JSON.parse(localStorage.getItem("user"));
-    window.location.href = "http://localhost:3000/profile/"+localUser.ERP_ID;
+    window.location.href = "../profile/"+localUser.ERP_ID;
   }
-  
 </script>
 <style>
   #profile{
@@ -55,29 +49,6 @@
   #auth a{
     padding:20px;
   }
-  #admin{
-    padding: 6px;
-    background-color: transparent;
-    color: rgba(255, 255, 255, 0.435);
-    border: 0px;
-    margin: auto;
-    margin-right:10px;
-  }
-  #admin:hover{
-    color:white;
-  }
-  #clubAdmin{
-    padding: 7px;
-    font-size: 20px;
-    background-color: transparent;
-    color: rgba(255, 255, 255, 0.435);
-    border: 0px;
-    margin: auto;
-    margin-right:10px;
-  }
-  #clubAdmin:hover{
-    color:white;
-  }
 </style>
 <body onload="onLoad()">
     <body class="opening hide-UI view-2D zoom-large data-close controls-close">
@@ -86,24 +57,21 @@
           <h1>3D DSW </h1>
           <a id="toggle-controls" class="mobile-responsive" href="#controls"><i class="icon-controls"></i>Controls</a>
           <div id="auth">
-            <a id="login-link" href="http://localhost:3000/auth/login">Login</a>
-            <a id="signUp-link" href="http://localhost:3000/auth/register">SignUp</a>
+            <a id="login-link" href="../auth/login">Login</a>
+            <a id="signUp-link" href="../auth/register">SignUp</a>
           </div>
-          <a href="http://localhost:3000/admin/" id="admin" style="display:none;">Admin</a>
-          <a id="clubAdmin" style="display:none;" href=''>clubAdmin</a>
-          <button id="profile" onclick="visitProfile()"></button>
-
+            <button id="profile" onclick="visitProfile()"></button>
         </div>
         <div id="data">
-          <a class="sun"  href="#DWS">DSW</a>
-          <a class="mercury"  href="#KBC">KBC</a>
-          <a class="venus" href="#GGSC">GGSC</a>
-          <a class="earth active"  href="#KALAKRITI">kALAKRITI</a>
-          <a class="mars"  href="#MAGEPIXELS">MEGAPIXELS</a>
-          <a class="jupiter"  href="#KATHPULIYAN">KATHPUTLIYAN</a>
-          <a class="saturn"  href="#JETSETTERS">JETSETTERS</a>
-          <a class="uranus" href="#JUVENTAS">JUVENTAS</a>
-          <a class="neptune"  href="#SANGRACHNA">SANGRACHNA
+          <a class="sun"  href="../club/dsw">DSW</a>
+          <a class="mercury"  href="../club/kbc">KBC</a>
+          <a class="venus" href="../club/ggsc">GGSC</a>
+          <a class="earth active"  href="../club/kalakriti">kALAKRITI</a>
+          <a class="mars"  href="../club/megapixels">MEGAPIXELS</a>
+          <a class="jupiter"  href="../club/kathputliyan">KATHPUTLIYAN</a>
+          <a class="saturn"  href="../club/jetsetters">JETSETTERS</a>
+          <a class="uranus" href="../club/juventas">JUVENTAS</a>
+          <a class="neptune"  href="../club/sangrachna">SANGRACHNA
           </a>
         </div>
         <div id="controls">
@@ -133,7 +101,7 @@
                 <div class="pos">
                   <div class="planet">
                     <dl class="infos">
-                     <dt > <a href="/kbc" style=" text-decoration: none; font-size: 30px;"><pre style="color: rgb(10, 59, 255);">Khushiyan Baaton club</pre></a></dt>
+                     <dt > <a href="../club/kbc" style=" text-decoration: none; font-size: 30px;"><pre style="color: rgb(10, 59, 255);">Khushiyan Baaton club</pre></a></dt>
                       <dd><span></span></dd>
                     </dl>
                   </div>
@@ -143,7 +111,7 @@
                 <div class="pos">
                   <div class="planet">
                     <dl class="infos">
-                      <dt > <a href="/ggc" style=" text-decoration: none; font-size: 30px;"><pre style="color: rgb(10, 59, 255);">Green Gold Club </pre></a></dt>
+                      <dt > <a href="../club/ggc" style=" text-decoration: none; font-size: 30px;"><pre style="color: rgb(10, 59, 255);">Green Gold Club </pre></a></dt>
                       <dd><span></span></dd>
                     </dl>
                   </div>
@@ -158,7 +126,7 @@
                   </div>
                   <div class="planet">
                     <dl class="infos">
-                      <dt > <a href="/kalakriti" style=" text-decoration: none; font-size: 30px;"><pre style="color: rgb(10, 59, 255);">Kalakriti Club</pre></a></dt>
+                      <dt > <a href="../club/kalakriti" style=" text-decoration: none; font-size: 30px;"><pre style="color: rgb(10, 59, 255);">Kalakriti Club</pre></a></dt>
                       <dd><span></span></dd>
                     </dl>
                   </div>
@@ -168,7 +136,7 @@
                 <div class="pos">
                   <div class="planet">
                     <dl class="infos">
-                      <dt > <a href="/megapixels" style=" text-decoration: none; font-size: 30px;"><pre style="color: rgb(10, 59, 255);">Megapixels Club</pre></a></dt>
+                      <dt > <a href="../club/megapixels" style=" text-decoration: none; font-size: 30px;"><pre style="color: rgb(10, 59, 255);">Megapixels Club</pre></a></dt>
                       <dd><span></span></dd>
                     </dl>
                   </div>
@@ -178,7 +146,7 @@
                 <div class="pos">
                   <div class="planet">
                     <dl class="infos">
-                      <dt > <a href="/kathputiyan" style=" text-decoration: none; font-size: 30px;"><pre style="color: rgb(10, 59, 255);">Kathputiyan Club</pre></a></dt>
+                      <dt > <a href="../club/kathputiyan" style=" text-decoration: none; font-size: 30px;"><pre style="color: rgb(10, 59, 255);">Kathputiyan Club</pre></a></dt>
                       <dd><span></span></dd>
                     </dl>
                   </div>
@@ -189,7 +157,7 @@
                   <div class="planet">
                     <div class="ring"></div>
                     <dl class="infos">
-                      <dt > <a href="/jetsetters" style=" text-decoration: none; font-size: 30px;"><pre style="color: rgb(10, 59, 255);">Jetsetters Club</pre></a></dt>
+                      <dt > <a href="../club/jetsetters" style=" text-decoration: none; font-size: 30px;"><pre style="color: rgb(10, 59, 255);">Jetsetters Club</pre></a></dt>
                       <dd><span></span></dd>
                     </dl>
                   </div>
@@ -199,7 +167,7 @@
                 <div class="pos">
                   <div class="planet">
                     <dl class="infos">
-                      <dt > <a href="/juventas" style=" text-decoration: none; font-size: 30px;"><pre style="color: rgb(10, 59, 255);">Juventas Club</pre></a></dt>
+                      <dt > <a href="../club/juventas" style=" text-decoration: none; font-size: 30px;"><pre style="color: rgb(10, 59, 255);">Juventas Club</pre></a></dt>
                       <dd><span></span></dd>
                     </dl>
                   </div>
@@ -209,7 +177,7 @@
                 <div class="pos">
                   <div class="planet">
                     <dl class="infos">
-                      <dt > <a href="/sangrachna" style=" text-decoration: none; font-size: 30px;"><pre style="color: rgb(10, 59, 255);">Sangrachna Club</pre></a></dt>
+                      <dt > <a href="../club/sangrachna" style=" text-decoration: none; font-size: 30px;"><pre style="color: rgb(10, 59, 255);">Sangrachna Club</pre></a></dt>
                       <dd><span></span></dd>
                     </dl>
                   </div>
@@ -218,7 +186,7 @@
               </div>
               <div id="sun">
                 <dl class="infos">
-                  <dt > <a href="/dsw" style=" text-decoration: none; font-size: 30px;"><pre style="color: rgb(10, 59, 255);">Dean Student Welfare</pre></a></dt>
+                  <dt > <a href="../club/dsw" style=" text-decoration: none; font-size: 30px;"><pre style="color: rgb(10, 59, 255);">Dean Student Welfare</pre></a></dt>
                   <dd><span></span></dd>
                 </dl>
               </div>
@@ -231,7 +199,7 @@
           document.write(unescape("%3Cscript src='js/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
         }
         </script>
-        <script src="js/prefixfree.min.js"></script>
+        <script src="static/js/prefixfree.min.js"></script>
         <script src="js/scripts.min.js"></script>
         <script>
             $(window).load(function(){
