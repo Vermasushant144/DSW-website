@@ -10,9 +10,9 @@ var {templates} = require("../server");
 route.get("/:ERP_ID",async(req,res)=>{
     var user=await userModel.findOne({ERP_ID:req.params.ERP_ID});
     if(user && user.isverified){
-        res.render(templates+"/profile",{user:user,store:null})
+        res.render(templates+"/profile.ejs",{user:user,store:null})
     }else{
-        res.send("<h1 style='color:yellow'>No user Exists!!<h2>")
+        res.render(templates+"/error.ejs")
     }
 });
 var upload = multer({
@@ -46,5 +46,8 @@ route.post("/edit_profile",upload.single("avatar"),async(req,res)=>{
     }else{
         res.send({status:"Insufficient Data"})
     }
+});
+route.post("/isOwner",async(req,res)=>{
+    
 });
 module.exports = route;

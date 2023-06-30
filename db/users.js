@@ -13,9 +13,9 @@ const userSchema = mongoose.Schema({
     branch:String,
     contactNo:Number,
     gender:String,
-    access:{type:String,default:"user"},//user,admin,clubAdmin
-    accessKey:{type:String,default:""},
-    accessID:{type:String,default:""},
-    isverified:{type:Boolean,default:false}
+    access:{type:String},//user,admin,clubAdmin
+    accessKey:{type:String},
+    accessID:{type:String},
+    isverified:{type:Boolean}
 })
 module.exports = mongoose.model('users',userSchema);

@@ -1,250 +1,406 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/style/index.css">
-    <title>DSW-Universe</title>
-</head>
-<script>
-  var sleeping = async()=>{
-    await sleep(100);
-  }
-  var onLoad = async()=>{
-    let localUser = await JSON.parse(localStorage.getItem("user"));
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/style/style.css" />
+    <link rel="stylesheet" href="/static/style/nav-bar.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
-    if(localUser){
-      document.getElementById("profile").style.visibility = "visible";
-      document.getElementById("auth").style.visibility = "hidden";
-      document.getElementById("profile").innerHTML = localUser.name;
-    }else{
-      document.getElementById("profile").style.visibility = "hidden";
-      document.getElementById("auth").style.visibility = "visible";
-    }
-    // document.getElementById("clubAdmin").href = "../clubAdmin/"+localUser.id; 
-  }
-  var visitProfile = async()=>{
-    let localUser = await JSON.parse(localStorage.getItem("user"));
-    window.location.href = "../profile/"+localUser.ERP_ID;
-  }
-</script>
-<style>
-  #profile{
-    padding: 7px;
-    font-size: 20px;
-    background-color: transparent;
-    color: rgba(255, 255, 255, 0.435);
-    border: 0px;
-    border-left: 1px solid white;
-    margin: auto;
-    white-space: nowrap;
-  }
-  #profile:hover{
-    color:white;
-  }
-  #auth{
-    display: flex;
-  }
-  #auth a{
-    padding:20px;
-  }
-</style>
-<body onload="onLoad()">
-    <body class="opening hide-UI view-2D zoom-large data-close controls-close">
-        <div id="navbar">
-          <a id="toggle-data" class="mobile-responsive" href="#data"><i class="icon-data"></i>Data</a>
-          <h1>3D DSW </h1>
-          <a id="toggle-controls" class="mobile-responsive" href="#controls"><i class="icon-controls"></i>Controls</a>
-          <div id="auth">
-            <a id="login-link" href="../auth/login">Login</a>
-            <a id="signUp-link" href="../auth/register">SignUp</a>
-          </div>
-            <button id="profile" onclick="visitProfile()"></button>
-        </div>
-        <div id="data">
-          <a class="sun"  href="../club/dsw">DSW</a>
-          <a class="mercury"  href="../club/kbc">KBC</a>
-          <a class="venus" href="../club/ggsc">GGSC</a>
-          <a class="earth active"  href="../club/kalakriti">kALAKRITI</a>
-          <a class="mars"  href="../club/megapixels">MEGAPIXELS</a>
-          <a class="jupiter"  href="../club/kathputliyan">KATHPUTLIYAN</a>
-          <a class="saturn"  href="../club/jetsetters">JETSETTERS</a>
-          <a class="uranus" href="../club/juventas">JUVENTAS</a>
-          <a class="neptune"  href="../club/sangrachna">SANGRACHNA
-          </a>
-        </div>
-        <div id="controls">
-          <label class="set-view">
-            <input type="checkbox">
-          </label>
-          <label class="set-zoom">
-            <input type="checkbox">
-          </label>
-          <label>
-            <input type="radio" class="set-speed" name="scale" checked>
-            <span>Speed</span>
-          </label>
-          <label>
-            <input type="radio" class="set-size" name="scale">
-            <span>Size</span>
-          </label>
-          <label>
-            <input type="radio" class="set-distance" name="scale">
-            <span>Distance</span>
-          </label>
-        </div>
-        <div id="universe" class="scale-stretched">
-          <div id="galaxy">
-            <div id="solar-system" class="earth">
-              <div id="mercury" class="orbit">
-                <div class="pos">
-                  <div class="planet">
-                    <dl class="infos">
-                     <dt > <a href="../club/kbc" style=" text-decoration: none; font-size: 30px;"><pre style="color: rgb(10, 59, 255);">Khushiyan Baaton club</pre></a></dt>
-                      <dd><span></span></dd>
-                    </dl>
-                  </div>
-                </div>
-              </div>
-              <div id="venus" class="orbit">
-                <div class="pos">
-                  <div class="planet">
-                    <dl class="infos">
-                      <dt > <a href="../club/ggc" style=" text-decoration: none; font-size: 30px;"><pre style="color: rgb(10, 59, 255);">Green Gold Club </pre></a></dt>
-                      <dd><span></span></dd>
-                    </dl>
-                  </div>
-                </div>
-              </div>
-              <div id="earth" class="orbit">
-                <div class="pos">
-                  <div class="orbit">
-                    <div class="pos">
-                      <div class="moon"></div>
-                    </div>
-                  </div>
-                  <div class="planet">
-                    <dl class="infos">
-                      <dt > <a href="../club/kalakriti" style=" text-decoration: none; font-size: 30px;"><pre style="color: rgb(10, 59, 255);">Kalakriti Club</pre></a></dt>
-                      <dd><span></span></dd>
-                    </dl>
-                  </div>
-                </div>
-              </div>
-              <div id="mars" class="orbit">
-                <div class="pos">
-                  <div class="planet">
-                    <dl class="infos">
-                      <dt > <a href="../club/megapixels" style=" text-decoration: none; font-size: 30px;"><pre style="color: rgb(10, 59, 255);">Megapixels Club</pre></a></dt>
-                      <dd><span></span></dd>
-                    </dl>
-                  </div>
-                </div>
-              </div>
-              <div id="jupiter" class="orbit">
-                <div class="pos">
-                  <div class="planet">
-                    <dl class="infos">
-                      <dt > <a href="../club/kathputiyan" style=" text-decoration: none; font-size: 30px;"><pre style="color: rgb(10, 59, 255);">Kathputiyan Club</pre></a></dt>
-                      <dd><span></span></dd>
-                    </dl>
-                  </div>
-                </div>
-              </div>
-              <div id="saturn" class="orbit">
-                <div class="pos">
-                  <div class="planet">
-                    <div class="ring"></div>
-                    <dl class="infos">
-                      <dt > <a href="../club/jetsetters" style=" text-decoration: none; font-size: 30px;"><pre style="color: rgb(10, 59, 255);">Jetsetters Club</pre></a></dt>
-                      <dd><span></span></dd>
-                    </dl>
-                  </div>
-                </div>
-              </div>
-              <div id="uranus" class="orbit">
-                <div class="pos">
-                  <div class="planet">
-                    <dl class="infos">
-                      <dt > <a href="../club/juventas" style=" text-decoration: none; font-size: 30px;"><pre style="color: rgb(10, 59, 255);">Juventas Club</pre></a></dt>
-                      <dd><span></span></dd>
-                    </dl>
-                  </div>
-                </div>
-              </div>
-              <div id="neptune" class="orbit">
-                <div class="pos">
-                  <div class="planet">
-                    <dl class="infos">
-                      <dt > <a href="../club/sangrachna" style=" text-decoration: none; font-size: 30px;"><pre style="color: rgb(10, 59, 255);">Sangrachna Club</pre></a></dt>
-                      <dd><span></span></dd>
-                    </dl>
-                  </div>
+    <title>Responsive Navbar | 9/100 Project By CodeBustler</title>
+    <script src="/static/js/jquery-3.6.4.min.js"></script>
+</head>
 
-                               </div>
-              </div>
-              <div id="sun">
-                <dl class="infos">
-                  <dt > <a href="../club/dsw" style=" text-decoration: none; font-size: 30px;"><pre style="color: rgb(10, 59, 255);">Dean Student Welfare</pre></a></dt>
-                  <dd><span></span></dd>
-                </dl>
-              </div>
+<body onload="onLoad('dsw')">
+    <nav id="">
+        <h1 id="logo">LOGO</h1>
+
+        <!-- LINKS -->
+        <ul id="nav-links">
+            <li><select name="" id="">
+                <option value="Technical">Technical</option>
+                <option value="Technical">Sustainable</option>
+                <option value="Technical">Dance</option>
+                <option value="Technical">Singing</option>
+                <option value="Technical">Drama</option>
+            </select></li>
+            <li><input type="search"></li>
+            
+        </ul>
+    </nav>
+
+    <div class="dsw-photo" id="dsw-photo">
+        <div class="photo">
+            <video style="width: 60%; " loop muted autoplay="autoplay">
+                <source src="<%=SERVER_DIR%><%=club.video%>" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+    <!-- what is dsw edit  ----->
+    
+    <div class="ball">
+        <div class="pointer"></div>
+        <div id="container">
+            <div class="product-details">
+                <h1>What is Dsw</h1>
+                <p class="information">
+                    <%=club.description%>
+                </p>
             </div>
-          </div>
+
+            <div class="product-image">
+
+                <img src="/static/video/gif dsw.gif" alt="NIET club gif">
+
+
+                <div class="info">
+                    <h2> Description</h2>
+
+                </div>
+            </div>
         </div>
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
-        <script type="text/javascript">
-        if (typeof jQuery == 'undefined') { 
-          document.write(unescape("%3Cscript src='js/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
-        }
-        </script>
-        <script src="static/js/prefixfree.min.js"></script>
-        <script src="js/scripts.min.js"></script>
-        <script>
-            $(window).load(function(){
+    </div>
 
-var body = $("body"),
-    universe = $("#universe"),
-    solarsys = $("#solar-system");
 
-var init = function() {
-  body.removeClass('view-2D opening').addClass("view-3D").delay(2000).queue(function() {
-    $(this).removeClass('hide-UI').addClass("set-speed");
-    $(this).dequeue();
-  });
-};
+    <!----- Get to Know our Team   -->
 
-var setView = function(view) { universe.removeClass().addClass(view); };
 
-$("#toggle-data").click(function(e) {
-  body.toggleClass("data-open data-close");
-  e.preventDefault();
-});
 
-$("#toggle-controls").click(function(e) {
-  body.toggleClass("controls-open controls-close");
-  e.preventDefault();
-});
+    <div class="team">
+        <div class="member">
+            <div class="five">
+                &ldquo; Get to Know Our Team &rdquo;
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
 
-$("#data a").click(function(e) {
-  var ref = $(this).attr("class");
-  solarsys.removeClass().addClass(ref);
-  $(this).parent().find('a').removeClass('active');
-  $(this).addClass('active');
-  e.preventDefault();
-});
 
-$(".set-view").click(function() { body.toggleClass("view-3D view-2D"); });
-$(".set-zoom").click(function() { body.toggleClass("zoom-large zoom-close"); });
-$(".set-speed").click(function() { setView("scale-stretched set-speed"); });
-$(".set-size").click(function() { setView("scale-s set-size"); });
-$(".set-distance").click(function() { setView("scale-d set-distance"); });
+        <hr>
+        <div class="parent" id="clubMemberList"></div>
 
-init();
+    </div>
+    </div>
 
-});
-        </script>
-      </body>
+
+    <!---------  Clubs Under DSW   ----------------->
+
+
+    <div class="under">
+        <div class="club">
+            <p>
+                &ldquo; Clubs Under DSW &rdquo;
+            </p>
+        </div>
+        <div class="container">
+            <div class="card">
+                <a href="kbc.html"> <img src="images/kbc.jpg"></a>
+
+                <div class="bo">
+                    <p9>
+                        Total No of members ?
+                    </p9>
+                    <h2>
+                        Khushiyan Baaton Club
+                    </h2>
+
+                    <br>
+
+                    <p9>
+                        <a href="./booking"> Get Ticket --></a>
+                    </p9>
+                </div>
+            </div>
+            <div class="card">
+                <a href="ggc.html"> <img src="images/ggc.jpg"></a>
+                <div class="bo">
+                    <p9>
+                        Total No of members ?
+                    </p9>
+                    <h2>
+                        Khushiyan Baaton Club
+                    </h2>
+
+                    <br>
+
+                    <p9>
+                        <a href="./booking"> Get Ticket --></a>
+                    </p9>
+                </div>
+            </div>
+            <div class="card">
+                <a href="kalakriti.html"> <img src="images/kALAKRITI.png"></a>
+                <div class="bo">
+                    <p9>
+                        Total No of members ?
+                    </p9>
+                    <h2>
+                        Khushiyan Baaton Club
+                    </h2>
+
+                    <br>
+
+                    <p9>
+                        <a href="./booking"> Get Ticket --></a>
+                    </p9>
+                </div>
+            </div>
+            <div class="card">
+                <a href="megapixels.html"> <img src="images/megapixels.png"></a>
+                <div class="bo">
+                    <p9>
+                        Total No of members ?
+                    </p9>
+                    <h2>
+                        Khushiyan Baaton Club
+                    </h2>
+
+                    <br>
+
+                    <p9>
+                        <a href="./booking"> Get Ticket --></a>
+                    </p9>
+                </div>
+            </div>
+            <div class="card">
+                <a href="kathputiyan.html"> <img src="images/KATHPUTLIYAN.png"></a>
+                <div class="bo">
+                    <p9>
+                        Total No of members ?
+                    </p9>
+                    <h2>
+                        Khushiyan Baaton Club
+                    </h2>
+
+                    <br>
+
+                    <p9>
+                        <a href="./booking"> Get Ticket --></a>
+                    </p9>
+                </div>
+            </div>
+            <div class="card">
+                <a href="jetsetters.html"> <img src="images/Jetsetters.jpg"></a>
+                <div class="bo">
+                    <p9>
+                        Total No of members ?
+                    </p9>
+                    <h2>
+                        Khushiyan Baaton Club
+                    </h2>
+
+                    <br>
+
+                    <p9>
+                        <a href="./booking"> Get Ticket --></a>
+                    </p9>
+                </div>
+            </div>
+            <div class="card">
+                <a href="juventas.html"> <img src="images/jUVENTAS.jpg"></a>
+                <div class="bo">
+                    <p9>
+                        Total No of members ?
+                    </p9>
+                    <h2>
+                        Khushiyan Baaton Club
+                    </h2>
+
+                    <br>
+
+                    <p9>
+                        <a href="./booking"> Get Ticket --></a>
+                    </p9>
+                </div>
+            </div> 
+            <div class="card">
+                <a href="sangrachna.html"> <img src="images/sangrachna.jpeg"></a>
+                <div class="bo">
+                    <p9>
+                        Total No of members ?
+                    </p9>
+                    <h2>
+                        Khushiyan Baaton Club
+                    </h2>
+
+                    <br>
+
+                    <p9>
+                        <a href="./booking"> Get Ticket --></a>
+                    </p9>
+                </div>
+            </div>
+            <div class="card">
+                <a href="png.html"> <img src="images/PNG image.png"></a>
+                <div class="bo">
+                    <p9>
+                        Total No of members ?
+                    </p9>
+                    <h2>
+                        Khushiyan Baaton Club
+                    </h2>
+
+                    <br>
+
+                    <p9>
+                        <a href="./booking"> Get Ticket --></a>
+                    </p9>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!--------------------  Best club of the Year   ------------->
+
+
+
+    
+    <div id="container">
+        <div class="ball">
+
+            <div class="club-details">
+
+                <h1>Best Club of the Year</h1>
+
+                <p class="information"><%=club.desc2%></p>
+
+                <div class="control">
+
+                </div>
+
+            </div>
+
+            <div class="club-image">
+
+                <img src="\static\images\untitled.png" alt="NIET DSW club illustrator">
+
+
+                <div class="info">
+                    <h2> Description</h2>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!----------------   Footer    ---------------------------->
+
+    <footer class="new_footer_area bg_color" id="contact">
+        <div class="new_footer_top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="f_widget company_widget wow fadeInLeft" data-wow-delay="0.2s"
+                            style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
+                            <h3 class="f-title f_600 t_color f_size_18">Get in Touch</h3>
+                            <p>Don’t miss any updates of our new templates and extensions.!</p>
+                            <form action="#" class="f_subscribe_two mailchimp" method="post" novalidate="true"
+                                _lpchecked="1">
+                                <input type="text" name="EMAIL" class="form-control memail" placeholder="Email">
+                                <button class="btn btn_get btn_get_two" type="submit">Subscribe</button>
+                                <p class="mchimp-errmessage" style="display: none;"></p>
+                                <p class="mchimp-sucmessage" style="display: none;"></p>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.4s"
+                            style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInLeft;">
+                            <h3 class="f-title f_600 t_color f_size_18">Download</h3>
+                            <ul class="list-unstyled f_list">
+                                <li><a href="#">Company</a></li>
+                                <li><a href="#">Android App</a></li>
+                                <li><a href="#">ios App</a></li>
+                                <li><a href="#">Desktop</a></li>
+                                <li><a href="#">Projects</a></li>
+                                <li><a href="#">My tasks</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.6s"
+                            style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInLeft;">
+                            <h3 class="f-title f_600 t_color f_size_18">Help</h3>
+                            <ul class="list-unstyled f_list">
+                                <li><a href="#">FAQ</a></li>
+                                <li><a href="#">Term &amp; conditions</a></li>
+                                <li><a href="#">Reporting</a></li>
+                                <li><a href="#">Documentation</a></li>
+                                <li><a href="#">Support Policy</a></li>
+                                <li><a href="#">Privacy</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="f_widget social-widget pl_70 wow fadeInLeft" data-wow-delay="0.8s"
+                            style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInLeft;">
+                            <h3 class="f-title f_600 t_color f_size_18">Team Solutions</h3>
+                            <div class="f_social_icon">
+                                <a href="#" class="fa fa-facebook"></a>
+                                <a href="#" class="fa fa-twitter"></a>
+                                <a href="#" class="fa fa-linkedin"></a>
+                                <a href="#" class="fa fa-pinterest"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer_bg">
+                <div class="footer_bg_one"></div>
+                <div class="footer_bg_two"></div>
+            </div>
+        </div>
+        <div class="footer_bottom">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-sm-7">
+                        <p class="mb-0 f_400">© cakecounter Inc.. 2019 All rights reserved.</p>
+                    </div>
+                    <div class="col-lg-6 col-sm-5 text-right">
+                        <p>Made with <i class="icon_heart"></i> in <a href="http://cakecounter.com"
+                                target="_blank">CakeCounter</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        'use strict'
+
+        const menuToggle = document.querySelector('.menu-toggle');
+        const bxMenu = document.querySelector('.bx-menu');
+        const bxX = document.querySelector('.bx-x');
+
+        const navBar = document.querySelector('.navbar');
+
+        // --- open menu ---
+
+        bxMenu.addEventListener('click', (e) => {
+            if (e.target.classList.contains('bx-menu')) {
+                navBar.classList.add('show-navbar');
+                bxMenu.classList.add('hide-bx');
+                bxX.classList.add('show-bx');
+            }
+        })
+
+        // --- close menu ---
+
+        bxX.addEventListener('click', (e) => {
+            if (e.target.classList.contains('bx-x')) {
+                navBar.classList.remove('show-navbar');
+                bxMenu.classList.remove('hide-bx');
+                bxX.classList.remove('show-bx');
+            }
+        })
+
+    </script>
 </body>
+
 </html>

@@ -6,24 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
 </head>
+<style>
+    #response{
+        display:none;
+        padding:10px;
+        margin:20px;
+        border-radius: 15px;
+    }
+</style>
 <body>
-    
-    <form action="/auth/register"  method="POST" enctype="multipart/form-data">
-        <!-- Warning: Don't modify name of below variable name -->
+    <div id="response"></div>
+    <form action="/auth/register"  method="POST" enctype="multipart/form-data" id="registerform">
         <input name="name" placeholder="Name"><br>
         <input name="ERP_ID" placeholder="ERP_ID"><br>
         <input type="password" name="password"  placeholder="password"><br>
         <input type="password" name="conformpassword" placeholder="conformpassword" ><br>
         <input name="gender" placeholder="Enter Gender"><br>
         <input name="contactNo" placeholder="contactNo" ><br>
-        <input type="file" name="avatar"><br>
+        <input type="file" name="avatar" accept="image/*" multiple="false"><br>
         <input name="branch"  placeholder="branch"><br>
         <input name="year" placeholder="Year"><br>
         <input name="whatsapp" placeholder="whatsapp no." ><br>
         <input name="linkedin" placeholder="linkedin profile" ><br>
         <button type="submit">Register</button>
-        
     </form>
     
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="/static/js/api/register.js"></script>
 </html>

@@ -1,5 +1,6 @@
 const express=require("express");
 const fs = require('fs')
+const jwt = require("jsonwebtoken");
 const multer = require('multer')
 require("dotenv").config();
 
@@ -9,28 +10,51 @@ const router = express();
 
 require("../db/config");
 const userModel = require("../db/users")
-let {templates}= require("../server.js");
+let {templates, verifyToken}= require("../server.js");
 
 
-router.get('/login',(req,res)=>{
-    res.render(templates+"/auth/login.ejs",{status:"interface",user:"none"});
+router.get('/login',verifyToken,(req,res)=>{
+    if(!req.body.validation.verify){
+        res.render(templates+"/auth/login.ejs");
+    }else{
+        res.redirect("/profile/"+user.ERP_ID)
+    }
+})
+//for login validation whether user login or not
+router.get("/validate",verifyToken,async(req,res)=>{
+    console.log("got called validation")
+    console.log(req.body);
+    res.send(req.body.validation);
 })
 
 router.post('/login',async(req,res)=>{
     if(req.body.ERP_ID!=null && req.body.password!=null){
+        
         let user = await userModel.findOne({ERP_ID:req.body.ERP_ID,password:req.body.password});
-        if(user && user.isverified){
-            res.render(templates+"/auth/login.ejs",{status:"AddLocalUser",user:{id:user._id,ERP_ID:user.ERP_ID,name:user.name,access:user.access}});
+        console.log(user);
+        if(user){
+            if(user.isverified){
+                let data = {
+                    ERP_ID:user.ERP_ID,
+                    Password:user.password,
+                    Name:user.name,
+                }
+                let token = jwt.sign(data,process.env.JWT_KEY)
+                res.send({status:200,token:token});
+            }else{
+                res.send({status:403});
+            }
         }else{
-            res.send("<h1 style='color:red'>Invalid User:(<br>Try Again</h1>")
+            res.send({status:400})
         }
     }else{
-        res.send({status:"Insufficient Data"});
+        res.send({status:400});
     }
 })
 
 router.post("/forgetPassword",async(req,res)=>{
-    let user = await userModel.findOne(req.body);
+    console.log(req.body);
+    let user = await userModel.findOne({name:req.body.name,ERP_ID:req.body.ERP_ID});
     if(user){
         require("./sendEmail")(user.ERP_ID+"@niet.co.in","Recover your password",
         `
@@ -38,36 +62,41 @@ router.post("/forgetPassword",async(req,res)=>{
         <a href='${process.env.MAIN_DIR+'auth/resetpassword/'+user._id}' style="color:white;background-color:#19a100;padding:7px;font-size:20px;text-decoration:none">Reset Password</a>
         `
         )
-        res.redirect('/auth/login')
+        res.send({status:200});
     }else{
-        res.send("<h1 style='color:red'>No such user Exist</h1>")
+        res.send({status:400});
     }
 })
 
 router.get("/resetpassword/:id",async(req,res)=>{
-    let user = await userModel({_id:req.params.id});
+    let user = await userModel.findOne({_id:req.params.id});
     if(user){
         res.render(templates+"/auth/resetpassword.ejs",{userID:user._id})
     }else{
-        res.send("<h1 style='color:red;'>Illegal KEY:/</h1>")
+        res.render(templates+"/error.ejs",{code:404});
     }
 })
 
 router.post("/resetpassword/:id",async(req,res)=>{
-    
+    console.log(req.body);
     let user = await userModel.findOne({_id:req.params.id,ERP_ID:req.body.ERP_ID,name:req.body.name});
+    console.log(user);
     if(user){
         user.password = req.body.password;
         user.save()
-        res.redirect("/auth/login");
+        res.send({status:200});
     }else{
-        res.send("<h2 style='color:red'>!!Illegal Access Denied</h2><h1>:/</h1>")
+        res.send({status:404});
     }
-})
+});
 
 
-router.get("/register",(req,res)=>{
-    res.render(templates+"/auth/register.ejs")
+router.get("/register",verifyToken,(req,res)=>{
+    if(!req.body.validation.verify){
+        res.render(templates+"/auth/register.ejs");
+    }else{
+        res.redirect("/profile/"+req.body.validation.ERP_ID);
+    }
 })
 
 var upload = multer({
@@ -86,7 +115,7 @@ var upload = multer({
 router.post("/register",upload.single("avatar"),async(req,res)=>{
         let user = await userModel.findOne({ERP_ID:req.body.ERP_ID})
         if(user && user.isverified){
-            res.send("<h1 style='color:red'>User Already registered with this ERP_ID<h1>")
+            res.render(templates+"/error.ejs",{code:404});
         }else{
             let validateERP_ID = await userModel.findOne({ERP_ID:req.body.ERP_ID})
             if(req.body.password==req.body.conformpassword && (validateERP_ID==null || validateERP_ID.ERP_ID!=req.body.ERP_ID)){
@@ -110,10 +139,10 @@ router.post("/register",upload.single("avatar"),async(req,res)=>{
                     req.body.ERP_ID+"@niet.co.in","Verify your Email address",
                     `Thanks for registering in our website.<br><a href='${process.env.MAIN_DIR+"auth/verify/"+newUser._id}'>Click Here</a>to verify Email`
                 )
-                res.redirect('/auth/login')
+                res.send({status:200});
                 
             }else{
-                res.redirect('/auth/register')
+                res.send({status:422});
             }
         }
     // }
@@ -126,13 +155,11 @@ router.get('/verify/:id',async(req,res)=>{
     if(user){
         user.isverified=true;
         await user.save();
-        res.send("<h1 style='color:green'>Succesfully account verified:)<h1>")
+        res.render(templates+"/auth/verification.ejs");
     }else{
-        res.send("<h1 style='color:red'>No such user exist!!<h1>")
+        res.render(templates+"/error.ejs",{code:404});
     }
 })
-
-
 
 
 module.exports = router;

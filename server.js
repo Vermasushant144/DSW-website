@@ -19,29 +19,32 @@ app.use(bodyParser.urlencoded({extended:false}));
 var templates = __dirname+"/templates";
 var public  =  __dirname+"/public";
 
+
 const verifyToken = async(req,res,next)=>{
-    let token = req.header.authorization;
+    let token = req.headers.authorization;
     if(!token){
-        res.body.validation = {verify:false};
+        // console.log("got called token")
+        req.body.validation = {verify:false};
     }else{
         jwt.verify(token,process.env.JWT_KEY,(err,decode)=>{
             if(err){
                 console.log("Token Verification failed:",err.message);
-                res.body.validation = {verify:false};
+                req.body.validation = {verify:false};
             }else{
                 let user = jwt.decode(token,process.env.JWT_KEY);
-                res.body.validation = user;
+                req.body.validation = user;
                 req.body.validation.verify = true;
             }
         });
     }
     next();
+    
 }
 
 module.exports = {templates,public,verifyToken};
 app.get("/",async(req,res)=>{
-    let clubs = await clubModel.find().select(["-_id"]);
-    res.render(templates+"/index.ejs",{clubs:clubs});
+    let clubs = await clubModel.findOne({name:"dsw"}).select(["-_id"]);
+    res.render(templates+"/index.ejs",{club:clubs,SERVER_DIR:process.env.SERVER_DIR});
 });
 
 app.use('/auth',require("./routes/auth.js"))
