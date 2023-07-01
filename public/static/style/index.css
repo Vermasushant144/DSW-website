@@ -6,6 +6,7 @@ body{
   display:flex;
   background-color: #202020;
   margin:0px;
+  width: 100%;
 }
 #navbar1 img{
   margin-left:10px;
