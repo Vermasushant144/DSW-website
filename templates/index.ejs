@@ -1,412 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/static/style/style.css" />
-    <link rel="stylesheet" href="/static/style/nav-bar.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
-    <title>Responsive Navbar | 9/100 Project By CodeBustler</title>
-    
-    <script src="/static/js/jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" href="/static/style/index.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <title>DSW</title>
 </head>
-
-
-<body onload="onLoad('dsw')">
-    <nav id="">
-       
-        <img src="images/ggc.jpg">
-
-        <!-- LINKS -->
-        <ul id="nav-links">
-            <li>
-                <button><a href="templates/ticket.ejs">TICKET</a></button>
-            </li>
-            <li><select name="" id="">
-                <option value="Technical">Technical</option>
-                <option value="Technical">Sustainable</option>
-                <option value="Technical">Dance</option>
-                <option value="Technical">Singing</option>
-                <option value="Technical">Drama</option>
-            </select></li>
-            <li><input type="search" placeholder = "Seach"></li>
-            
-        </ul>
-    </nav>
-
-    <div class="dsw-photo" id="dsw-photo">
-        <div class="photo">
-            <video style="width: 60%; " loop muted autoplay="autoplay">
-                <source src="<%=SERVER_DIR%><%=club.video%>" type="video/mp4">
-            </video>
-        </div>
+<body onload="onLoad()">
+    <header>
+        <nav id="navbar1">
+            <div>
+                <img src="static/images/DSW white.png" alt="logo">
+            </div>
+            <div id="nav1-links">
+                <div id="search">
+                    <input id="search-input" type="search" name="clubName" onkeyup="searchClubs(this.value)" autocomplete="off">
+                </div>
+                <div id="pvtComponent1"></div>
+            </div>
+        </nav>
+    </header>
+    <div id="suggestionClubs"></div>
+    <div id="main-video">   
+        <video style="width: 60%; " loop muted autoplay="autoplay">
+            <source src="<%=SERVER_DIR%><%=club.video%>" type="video/mp4">
+        </video>
     </div>
-
-    <!-- what is dsw edit  ----->
+    <div id="live-events-container">
     
-    <div class="ball">
-        <div class="pointer"></div>
-        <div id="container">
-            <div class="product-details">
-                <h1>What is Dsw</h1>
-                <p class="information">
-                    <%=club.description%>
+        <h1 id="head-live-events-container"><i class="fa fa-calendar"></i>Latest Events:</h1>
+        <div id="events-list">
+            <div class="live-event">
+                <img src="<%=SERVER_DIR%>/dynamic/images/Reboot-clubIcon.png" alt="clubIcon">
+                <p class="event-description">
+                    Lorem ipsum dIn suscipit dolorum quibusdam eveniet officia dignissimos nemo sint similique, itaque odio.
                 </p>
+                <a href="/club/ticket">Get Ticket</a>
             </div>
-
-            <div class="product-image">
-
-                <img src="/static/video/gif dsw.gif" alt="NIET club gif">
-
-
-                <div class="info">
-                    <h2> Description</h2>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!----- Get to Know our Team   -->
-
-
-
-    <div class="team">
-        <div class="member">
-            <div class="five">
-                &ldquo; Get to Know Our Team &rdquo;
-            </div>
-        </div>
-        <br>
-        <br>
-        <br>
-
-
-        <hr>
-        <div class="parent" id="clubMemberList"></div>
-
-    </div>
-    </div>
-
-
-    <!---------  Clubs Under DSW   ----------------->
-
-
-    <div class="under">
-        <div class="club">
-            <p>
-                &ldquo; Clubs Under DSW &rdquo;
-            </p>
-        </div>
-        <div class="container">
-            <div class="card">
-                <a href="kbc.html"> <img src="images/kbc.jpg"></a>
-
-                <div class="bo">
-                    <p9>
-                        Total No of members ?
-                    </p9>
-                    <h2>
-                        Khushiyan Baaton Club
-                    </h2>
-
-                    <br>
-
-                    <p9>
-                        <a href="./booking"> Get Ticket --></a>
-                    </p9>
-                </div>
-            </div>
-            <div class="card">
-                <a href="ggc.html"> <img src="images/ggc.jpg"></a>
-                <div class="bo">
-                    <p9>
-                        Total No of members ?
-                    </p9>
-                    <h2>
-                        Khushiyan Baaton Club
-                    </h2>
-
-                    <br>
-
-                    <p9>
-                        <a href="./booking"> Get Ticket --></a>
-                    </p9>
-                </div>
-            </div>
-            <div class="card">
-                <a href="kalakriti.html"> <img src="images/kALAKRITI.png"></a>
-                <div class="bo">
-                    <p9>
-                        Total No of members ?
-                    </p9>
-                    <h2>
-                        Khushiyan Baaton Club
-                    </h2>
-
-                    <br>
-
-                    <p9>
-                        <a href="./booking"> Get Ticket --></a>
-                    </p9>
-                </div>
-            </div>
-            <div class="card">
-                <a href="megapixels.html"> <img src="images/megapixels.png"></a>
-                <div class="bo">
-                    <p9>
-                        Total No of members ?
-                    </p9>
-                    <h2>
-                        Khushiyan Baaton Club
-                    </h2>
-
-                    <br>
-
-                    <p9>
-                        <a href="./booking"> Get Ticket --></a>
-                    </p9>
-                </div>
-            </div>
-            <div class="card">
-                <a href="kathputiyan.html"> <img src="images/KATHPUTLIYAN.png"></a>
-                <div class="bo">
-                    <p9>
-                        Total No of members ?
-                    </p9>
-                    <h2>
-                        Khushiyan Baaton Club
-                    </h2>
-
-                    <br>
-
-                    <p9>
-                        <a href="./booking"> Get Ticket --></a>
-                    </p9>
-                </div>
-            </div>
-            <div class="card">
-                <a href="jetsetters.html"> <img src="images/Jetsetters.jpg"></a>
-                <div class="bo">
-                    <p9>
-                        Total No of members ?
-                    </p9>
-                    <h2>
-                        Khushiyan Baaton Club
-                    </h2>
-
-                    <br>
-
-                    <p9>
-                        <a href="./booking"> Get Ticket --></a>
-                    </p9>
-                </div>
-            </div>
-            <div class="card">
-                <a href="juventas.html"> <img src="images/jUVENTAS.jpg"></a>
-                <div class="bo">
-                    <p9>
-                        Total No of members ?
-                    </p9>
-                    <h2>
-                        Khushiyan Baaton Club
-                    </h2>
-
-                    <br>
-
-                    <p9>
-                        <a href="./booking"> Get Ticket --></a>
-                    </p9>
-                </div>
-            </div> 
-            <div class="card">
-                <a href="sangrachna.html"> <img src="images/sangrachna.jpeg"></a>
-                <div class="bo">
-                    <p9>
-                        Total No of members ?
-                    </p9>
-                    <h2>
-                        Khushiyan Baaton Club
-                    </h2>
-
-                    <br>
-
-                    <p9>
-                        <a href="./booking"> Get Ticket --></a>
-                    </p9>
-                </div>
-            </div>
-            <div class="card">
-                <a href="png.html"> <img src="images/PNG image.png"></a>
-                <div class="bo">
-                    <p9>
-                        Total No of members ?
-                    </p9>
-                    <h2>
-                        Khushiyan Baaton Club
-                    </h2>
-
-                    <br>
-
-                    <p9>
-                        <a href="./booking"> Get Ticket --></a>
-                    </p9>
-                </div>
+            <div class="live-event">
+                <img src="<%=SERVER_DIR%>/dynamic/images/Reboot-clubIcon.png" alt="clubIcon">
+                <p class="event-description">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. At assumenda adipisci repellat dignissimos. In suscipit dolorum quibusdam eveniet officia dignissimos nemo sint similique, itaque odio.
+                </p>
+                <a href="/club/ticket">Get Ticket</a>
             </div>
         </div>
 
     </div>
-
-    <!--------------------  Best club of the Year   ------------->
-
-
-
-    
-    <div id="container">
-        <div class="ball">
-
-            <div class="club-details">
-
-                <h1>Best Club of the Year</h1>
-
-                <p class="information"><%=club.desc2%></p>
-
-                <div class="control">
-
-                </div>
-
-            </div>
-
-            <div class="club-image">
-
-                <img src="\static\images\untitled.png" alt="NIET DSW club illustrator">
-
-
-                <div class="info">
-                    <h2> Description</h2>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!----------------   Footer    ---------------------------->
-
-    <footer class="new_footer_area bg_color" id="contact">
-        <div class="new_footer_top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 col-md-6">
-                        <div class="f_widget company_widget wow fadeInLeft" data-wow-delay="0.2s"
-                            style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
-                            <h3 class="f-title f_600 t_color f_size_18">Get in Touch</h3>
-                            <p>Don’t miss any updates of our new templates and extensions.!</p>
-                            <form action="#" class="f_subscribe_two mailchimp" method="post" novalidate="true"
-                                _lpchecked="1">
-                                <input type="text" name="EMAIL" class="form-control memail" placeholder="Email">
-                                <button class="btn btn_get btn_get_two" type="submit">Subscribe</button>
-                                <p class="mchimp-errmessage" style="display: none;"></p>
-                                <p class="mchimp-sucmessage" style="display: none;"></p>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.4s"
-                            style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInLeft;">
-                            <h3 class="f-title f_600 t_color f_size_18">Download</h3>
-                            <ul class="list-unstyled f_list">
-                                <li><a href="#">Company</a></li>
-                                <li><a href="#">Android App</a></li>
-                                <li><a href="#">ios App</a></li>
-                                <li><a href="#">Desktop</a></li>
-                                <li><a href="#">Projects</a></li>
-                                <li><a href="#">My tasks</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.6s"
-                            style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInLeft;">
-                            <h3 class="f-title f_600 t_color f_size_18">Help</h3>
-                            <ul class="list-unstyled f_list">
-                                <li><a href="#">FAQ</a></li>
-                                <li><a href="#">Term &amp; conditions</a></li>
-                                <li><a href="#">Reporting</a></li>
-                                <li><a href="#">Documentation</a></li>
-                                <li><a href="#">Support Policy</a></li>
-                                <li><a href="#">Privacy</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="f_widget social-widget pl_70 wow fadeInLeft" data-wow-delay="0.8s"
-                            style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInLeft;">
-                            <h3 class="f-title f_600 t_color f_size_18">Team Solutions</h3>
-                            <div class="f_social_icon">
-                                <a href="#" class="fa fa-facebook"></a>
-                                <a href="#" class="fa fa-twitter"></a>
-                                <a href="#" class="fa fa-linkedin"></a>
-                                <a href="#" class="fa fa-pinterest"></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="footer_bg">
-                <div class="footer_bg_one"></div>
-                <div class="footer_bg_two"></div>
-            </div>
-        </div>
-        <div class="footer_bottom">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-6 col-sm-7">
-                        <p class="mb-0 f_400">© cakecounter Inc.. 2019 All rights reserved.</p>
-                    </div>
-                    <div class="col-lg-6 col-sm-5 text-right">
-                        <p>Made with <i class="icon_heart"></i> in <a href="http://cakecounter.com"
-                                target="_blank">CakeCounter</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        'use strict'
-
-        const menuToggle = document.querySelector('.menu-toggle');
-        const bxMenu = document.querySelector('.bx-menu');
-        const bxX = document.querySelector('.bx-x');
-
-        const navBar = document.querySelector('.navbar');
-
-        // --- open menu ---
-
-        bxMenu.addEventListener('click', (e) => {
-            if (e.target.classList.contains('bx-menu')) {
-                navBar.classList.add('show-navbar');
-                bxMenu.classList.add('hide-bx');
-                bxX.classList.add('show-bx');
-            }
-        })
-
-        // --- close menu ---
-
-        bxX.addEventListener('click', (e) => {
-            if (e.target.classList.contains('bx-x')) {
-                navBar.classList.remove('show-navbar');
-                bxMenu.classList.remove('hide-bx');
-                bxX.classList.remove('show-bx');
-            }
-        })
-
-    </script>
 </body>
-
+<script>
+    window.SERVER_DIR = '<%=SERVER_DIR%>'
+</script>
+<script src="/static/js/api/index.js"></script>
 </html>

@@ -22,8 +22,6 @@ router.get('/login',verifyToken,(req,res)=>{
 })
 //for login validation whether user login or not
 router.get("/validate",verifyToken,async(req,res)=>{
-    console.log("got called validation")
-    console.log(req.body);
     res.send(req.body.validation);
 })
 

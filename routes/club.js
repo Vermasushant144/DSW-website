@@ -18,6 +18,12 @@ route.get("/dsw",async(req,res)=>{
     }
 });
 
+route.get("/searchClubs",async(req,res)=>{
+    console.log(req.query.clubName);
+    let clubs = await clubModel.find({name:{'$regex':new RegExp(req.query.clubName,'i')}});
+    res.send({clubs:clubs})
+});
+
 route.get("/booking",async(req,res)=>{
     res.render(templates+"/booking.ejs");
 });
