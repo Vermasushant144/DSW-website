@@ -122,3 +122,15 @@ body{
   transition-duration: 0.3s;
   color:#3083ff;
 }
+.five {
+  text-align: center;
+  font-size: 24px;
+  margin: 20px 0;
+}
+
+@media (max-width: 368px) {
+  .five {
+      font-size: 18px;
+  }
+}
+
