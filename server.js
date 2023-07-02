@@ -6,6 +6,8 @@ const path = require("path")
 require("dotenv").config();
 require("./db/config.js");
 const clubModel = require("./db/clubs.js");
+const mainModel = require("./db/main.js");
+const eventModel = require("./db/events.js");
 
 
 const app = express();
@@ -42,10 +44,24 @@ const verifyToken = async(req,res,next)=>{
 }
 
 module.exports = {templates,public,verifyToken};
-app.get("/",async(req,res)=>{
-    let clubs = await clubModel.findOne({name:"dsw"}).select(["-_id"]);
-    res.render(templates+"/index.ejs",{club:clubs,SERVER_DIR:process.env.SERVER_DIR});
-});
+app.get("/", async (req, res) => {
+    let main = await mainModel.findOne({});
+    let events = await eventModel.find({},{_id:0});
+    let currentDate = new Date();
+    let liveEvents = [];
+    for (let i = 0; i < events.length; i++) {
+      let eventDate = new Date(events[i].Date);
+      if (currentDate <= eventDate) {
+        liveEvents.push(events[i]);
+      }
+    }
+    res.render(templates + "/index.ejs", {
+      main: main,
+      SERVER_DIR: process.env.SERVER_DIR,
+      events: liveEvents,
+    });
+  });
+  
 
 app.use('/auth',require("./routes/auth.js"))
 app.use('/club',require("./routes/club.js"))

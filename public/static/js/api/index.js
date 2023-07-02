@@ -49,40 +49,17 @@ $("#search-input").on("blur",()=>{
         $("#suggestionClubs").html("");
     }
 });
-/* <div id="auth">
-            <a id="login-link" href="../auth/login">Login</a>
-            <a id="signUp-link" href="../auth/register">SignUp</a>
-          </div>
-            <a id="profile"></a> */
 
-// var onLoad = async (name) => {
-//     let res = await fetch("/club/getMembers", {
-//         method: "POST",
-//         headers: {
-//             "Content-Type": "application/json"
-//         },
-//         mode: "cors",
-//         body: JSON.stringify({
-//             name: name
-//         })
-//     })
-//     res = await JSON.parse(await res.text());
-//     console.log(res);
-//     if (res.status == "ok") {
-//         document.getElementById("clubMemberList").innerHTML = '';
-//         let members = res.members;
-//         $("#totalMembers").text(members.length);
-//         for (let i = 0; i < members.length; i++) {
-//             document.getElementById("clubMemberList").innerHTML +=
-//                 `
-//                     <div class="child">
-//                         <img src="${members[i].avatar}">
-//                         <div class="inner">
-//                             <a href='../profile/${members[i].ERP_ID}'><h1>${members[i].name}</h1></a>
-//                         </div>
-//                         <div class="inn">${members[i].position}</div>
-//                     </div>
-//                     `
-//         }
-//     }
-// }
+const eventpop = (event)=>{
+    console.log("got called");
+    $("#event-popup-img").attr("src",window.SERVER_DIR+event.icon);
+    $("#event-popup-name").text(event.Name);
+    $("#event-popup-clubName").text(event.clubName);
+    let dateString = event.Date.split("-");
+    $("#event-popup-date").text(dateString[2]+"-"+dateString[1]+"-"+dateString[0]);
+    $("#event-popup-detail").text(event.Desc)
+    $("#event-popup").css("display","flex");
+}
+const removeEventPopup = ()=>{
+    $("#event-popup").css("display","none");
+}

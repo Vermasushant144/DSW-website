@@ -1,21 +1,12 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
 
 const mainSchema = mongoose.Schema({
+    icon:String,
+    video:String,
     desc1:String,
     desc2:String,
-    number:[{type:String}],
-    Email:[{type:String}],
-    video:String,
-    events:[
-        {
-            eventClub:String,
-            eventName:String,
-            eventDesc:String,
-            eventIcon:String,
-            eventDate:String,
-        }
-    ],
-    admin:{type:Schema.Types.ObjectId,ref:'user'},
+    helplineNo:[{type:String}],
+    email:[{type:String}],
+    clubOftheYear:{type:mongoose.Schema.Types.ObjectId,res:'clubs'}
 })
-module.exports = mongoose.model('clubs',mainSchema);
+module.exports = mongoose.model('main',mainSchema);

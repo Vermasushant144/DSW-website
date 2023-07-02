@@ -20,6 +20,7 @@ body{
 }
 #search{
   width:400px;
+  margin-right:0px;
 }
 #search-input{
   margin-top:20px;
@@ -59,10 +60,15 @@ body{
 #suggestionClubs {
   background-color: rgb(254, 253, 228);
   width: 400px;
-  position:fixed;
-  left:54.2%;
-  top:56px;
+  position:absolute;
   z-index: 1;
+  overflow: visible;
+  z-index: 1;
+}
+#suggestionClubs h3{
+  margin:auto;
+  margin-left:0px;
+  padding:15px;
 }
 #main-video{
   display:flex;
@@ -75,8 +81,8 @@ body{
   /* background-color: rgb(254, 255, 227); */
   width: 80%;
   margin: auto;
-  border:2px solid #fbfbaf;;
-  border-bottom:0px;
+  border:2px solid #fbfbaf;
+  border-bottom-width:5px;
 }
 
 #head-live-events-container{
@@ -94,9 +100,14 @@ body{
   background-color: #efefef;
 }
 .live-event{
-  display:flex;
+  display: flex;
   background-color: white;
-  margin-bottom:2px;
+  margin-bottom: 2px;
+  width: 100%;
+  border: 0px;
+}
+.live-event:hover{
+  box-shadow: 0px 1px 20px #857676;
 }
 .live-event img{
   width:70px;
@@ -121,4 +132,71 @@ body{
   border-color: #3083ff;
   transition-duration: 0.3s;
   color:#3083ff;
+}
+.event-description{
+  margin:auto 10px;
+}
+.detail-conatiner{
+  box-shadow: 0 15px 30px 1px grey;
+  background: rgba(255, 255, 255);
+  text-align: center;
+  border-radius: 5px;
+  overflow: visible;
+  height: 500px;
+  width: 1000px;
+  border-radius: 5%; 
+}
+#event-popup{
+  position: fixed;
+  display:none;
+  left:15%;
+  top:15%;
+  z-index: 2;
+}
+#event-popup-container1{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  width:50%;
+}
+#event-popup-container1 img{
+  margin:auto;
+  width:100%;
+  height:auto;
+  border-radius: 30px;
+}
+
+/* #event-popup-conatiner2 *{
+  margin:30px 0px;
+  text-align: left;
+} */
+
+#event-popup-container2{
+  width:50%;
+}
+
+#event-popup-container2 * {
+  text-align: left;
+  margin:30px 0px;
+}
+#event-popup-name{
+  text-align:center;
+} 
+.remove-icon {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  border: 0px;
+  border-radius: 100%;
+  color: white;
+  padding: 5px;
+  padding-inline: 8px;
+  font-size: 30px;
+  overflow: hidden;
+  background-color: rgb(177 177 177);
+}
+.remove-icon:hover{
+  transition-duration: 0.3s;
+  color:white;
+  background-color:#000;
 }
