@@ -4,5 +4,6 @@ const messageSchema = mongoose.Schema({
     date:String,
     title:String,
     detail:String,
+    readed:[{type:String}]//conatin address of readed message user
 })
-module.exports = mongoose.model('users',messageSchema);
+module.exports = mongoose.model('messages',messageSchema);

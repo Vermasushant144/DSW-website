@@ -29,7 +29,6 @@ router.post('/login',async(req,res)=>{
     if(req.body.ERP_ID!=null && req.body.password!=null){
         
         let user = await userModel.findOne({ERP_ID:req.body.ERP_ID,password:req.body.password});
-        console.log(user);
         if(user){
             if(user.isverified){
                 let data = {
@@ -51,7 +50,6 @@ router.post('/login',async(req,res)=>{
 })
 
 router.post("/forgetPassword",async(req,res)=>{
-    console.log(req.body);
     let user = await userModel.findOne({name:req.body.name,ERP_ID:req.body.ERP_ID});
     if(user){
         require("./sendEmail")(user.ERP_ID+"@niet.co.in","Recover your password",
@@ -76,9 +74,7 @@ router.get("/resetpassword/:id",async(req,res)=>{
 })
 
 router.post("/resetpassword/:id",async(req,res)=>{
-    console.log(req.body);
     let user = await userModel.findOne({_id:req.params.id,ERP_ID:req.body.ERP_ID,name:req.body.name});
-    console.log(user);
     if(user){
         user.password = req.body.password;
         user.save()
@@ -104,7 +100,6 @@ var upload = multer({
             cb(null,'public/dynamic/images')
         },
         filename:(req,file,cb)=>{
-            console.log(req.body);
             cb(null,req.body.ERP_ID+"-avatar.png")
         }
     })

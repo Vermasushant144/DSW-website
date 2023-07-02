@@ -20,7 +20,7 @@ route.get("/dsw",async(req,res)=>{
 
 route.get("/searchClubs",async(req,res)=>{
     console.log(req.query.clubName);
-    let clubs = await clubModel.find({name:{'$regex':new RegExp(req.query.clubName,'i')}});
+    let clubs = await clubModel.find({name:{'$regex':new RegExp(req.query.clubName,'i')}}).limit(3);
     res.send({clubs:clubs})
 });
 

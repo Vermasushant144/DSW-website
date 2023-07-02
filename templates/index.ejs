@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,65 +10,89 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <title>DSW</title>
 </head>
+<script>
+    window.SERVER_DIR = '<%=SERVER_DIR%>';
+</script>
+<!-- Popup Screen -->
+<div id="popup-screen">
+</div>
 <body onload="onLoad()">
-        <nav id="navbar1">
-            <div class="hamburger">
-                <span class="lines"></span>
-                <span class="lines"></span>
-                <span class="lines"></span>
-              </div>
-              
-            <div>
-                <img src="static/images/DSW white.png" alt="logo">
+    <nav id="navbar1">
+        <div>
+            <img src="<%=SERVER_DIR%><%=main.icon%>" alt="logo">
+        </div>
+        <div id="nav1-links">
+            <div id="search">
+                <input id="search-input" type="search" name="clubName" onkeyup="searchClubs(this.value)"
+                    autocomplete="off">
+                <div id="suggestionClubs"></div>
             </div>
-            <div id="nav1-links">
-                <div id="search">
-                    <input id="search-input" type="search" name="clubName" onkeyup="searchClubs(this.value)" autocomplete="off">
-                    <div id="suggestionClubs"></div>
-                </div>
-                <div id="pvtComponent1"></div>
-            </div>
-        </nav>
-    <div id="main-video">   
+            <button id="search-btn-icon">
+                <i class="fa fa-search"></i>
+            </button>
+            <div id="pvtComponent1"></div>
+        </div>
+    </nav>
+    <!-- Notification conatiner -->
+    <div class="detail-container" id="messages-container">
+        <div id="message-header">
+            <button onclick="removeMessages()"><i class="fa fa-remove"></i></button>
+            <h1>Messages</h1>
+        </div>
+        <div id="messages-list">
+        </div>
+    </div>
+
+    <!--Video Conatiner  -->
+    <div id="main-video">
         <video style="width: 60%; " loop muted autoplay="autoplay">
             <source src="<%=SERVER_DIR%><%=main.video%>" type="video/mp4">
         </video>
     </div>
     <div id="live-events-container">
-        <h1 id="head-live-events-container"><i class="fa fa-calendar"></i>Latest Events:</h1>
+        <h1 id="head-live-events-container"><i class="fa fa-calendar"></i>Upcoming Events:</h1>
         <div id="events-list">
             <%for(let i=0;i<events.length;i++){%>
-                <%let dateString = events[i].Date.split("-");%>
-                <button class="live-event" onclick="eventpop(<%=JSON.stringify(events[i])%>)">
-                    <img src="<%=SERVER_DIR%><%=events[i].icon%>" alt="clubIcon">
-                    <h4 class="event-description">
-                        <%=events[i].Name%>&nbsp;Organised by&nbsp;<%=events[i].clubName%>&nbsp;on&nbsp;<%=dateString[2]%>-<%=dateString[1]%>-<%=dateString[0]%>
-                    </h4>
-                    <a href="/club/ticket">Get Ticket</a>
-                </button>
-            <%}%>
+                <%let dateString=events[i].Date.split("-");%>
+                    <button class="live-event" onclick="eventpop(<%=JSON.stringify(events[i])%>)">
+                        <img src="<%=SERVER_DIR%><%=events[i].icon%>" alt="clubIcon">
+                        <h4 class="event-description">
+                            <%=events[i].Name%>&nbsp;Organised by&nbsp;<%=events[i].clubName%>&nbsp;on&nbsp;
+                                    <%=dateString[2]%>-<%=dateString[1]%>-<%=dateString[0]%>
+                        </h4>
+                    </button>
+                    <%}%>
         </div>
     </div>
     <!-- Event Pop screen -->
-    <div class="detail-conatiner" id="event-popup">
+    <div class="detail-container" id="event-popup">
         <div id="event-popup-container1">
             <button class="remove-icon" onclick="removeEventPopup()"><i class="fa fa-remove"></i></button>
-            <img src="/static/images/cartoon.png" id="event-popup-img" alt="eventIcon">
+            <img id="event-popup-img" alt="eventIcon">
         </div>
         <div id="event-popup-container2">
             <h1 id="event-popup-name"></h1>
             <h2>Organized By: <span id="event-popup-clubName"></span></h2>
             <h2>Event Date: <span id="event-popup-date"></span></h2>
             <p id="event-popup-detail"></p>
+            <a href="/club/ticket" target="_blank" id="event-btn">Get Ticket</a>
         </div>
     </div>
 
     <!-- Club of the year detail -->
-    <div class="detail-conatiner">
-        
+
+    <!--coty(Club of the year)-->
+    <div class="detail-container" id="coty">
+        <div id="coty-container1">
+            <h1>Best Club of the Year</h1>
+            <h1 id="coty-name">
+                <%=coty.name%>
+            </h1>
+        </div>
+        <div id="coty-container2">
+            <img id="coty-img" src="<%=SERVER_DIR%><%=coty.icon%>" alt="Club-of-the-year-NIET">
+        </div>
     </div>
-
-
 
     <!----------------   Footer    ---------------------------->
 
@@ -75,7 +100,7 @@
         <div class="new_footer_top">
             <div class="container">
                 <div class="row">
-                   
+
                     <div class="col-lg-3 col-md-6">
                         <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.4s"
                             style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInLeft;">
@@ -90,7 +115,7 @@
                             </ul>
                         </div>
                     </div>
-                    
+
                     <div class="col-lg-3 col-md-6">
                         <div class="f_widget social-widget pl_70 wow fadeInLeft" data-wow-delay="0.8s"
                             style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInLeft;">
@@ -110,7 +135,7 @@
                 <div class="footer_bg_two"></div>
             </div>
         </div>
-       
+
     </footer>
 
     <script>
@@ -143,28 +168,26 @@
         })
 
     </script>
-        <script>
-            let hamburger = document.querySelector('.hamburger');
-            let navLinks = document.getElementById('nav-links');
-            let links = document.querySelectorAll('.links');
-            
-            hamburger.addEventListener('click', () => {
-              navLinks.classList.toggle('hide');
-              hamburger.classList.toggle('lines-rotate');
-            });
-            
-            for (let i = 0; i < links.length; i++) {
-              links[i].addEventListener('click', () => {
+    <script>
+        let hamburger = document.querySelector('.hamburger');
+        let navLinks = document.getElementById('nav-links');
+        let links = document.querySelectorAll('.links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('hide');
+            hamburger.classList.toggle('lines-rotate');
+        });
+
+        for (let i = 0; i < links.length; i++) {
+            links[i].addEventListener('click', () => {
                 navLinks.classList.toggle('hide');
-              });
-            }
-            
-        </script>
-    
-    
+            });
+        }
+
+    </script>
+
+
 </body>
-<script>
-    window.SERVER_DIR = '<%=SERVER_DIR%>'
-</script>
 <script src="/static/js/api/index.js"></script>
+
 </html>

@@ -5,9 +5,11 @@ const bodyParser = require("body-parser");
 const path = require("path")
 require("dotenv").config();
 require("./db/config.js");
+const userModel = require("./db/users.js");
 const clubModel = require("./db/clubs.js");
 const mainModel = require("./db/main.js");
 const eventModel = require("./db/events.js");
+const messageModel = require("./db/messages.js")
 
 
 const app = express();
@@ -47,6 +49,7 @@ module.exports = {templates,public,verifyToken};
 app.get("/", async (req, res) => {
     let main = await mainModel.findOne({});
     let events = await eventModel.find({},{_id:0});
+    let coty = await clubModel.findOne({_id:main.clubOftheYear},{name:1,icon:1,_id:0});//coty => club of the year
     let currentDate = new Date();
     let liveEvents = [];
     for (let i = 0; i < events.length; i++) {
@@ -59,13 +62,50 @@ app.get("/", async (req, res) => {
       main: main,
       SERVER_DIR: process.env.SERVER_DIR,
       events: liveEvents,
+      coty:coty,
     });
-  });
-  
+});
+
+app.get("/unread-notification",verifyToken,async(req,res)=>{
+  if(req.body.validation.verify){
+    let notifications = await messageModel.find({});
+    // user = await userModel.find({name:req.body.validation.Name});
+    for(let i=0;i<notifications.length;i++){
+      if(!notifications[i].readed.includes(`${req.body.validation.ERP_ID}`)){
+        res.send({status:true});
+        return;
+      }
+    }
+  }
+  res.send({status:false});
+});
+app.get("/notification",verifyToken,async(req,res)=>{
+  if(req.body.validation.verify){
+    let notifications = await messageModel.find({});
+    res.send({status:200,notifications:notifications,ERP_ID:req.body.validation.ERP_ID});
+  }else{
+    res.send({status:401});
+  }
+});
+app.put("/notification-readed",verifyToken,async(req,res)=>{
+  if(req.body.validation.verify){
+    let response = await messageModel.findOne({_id:req.body.notifyID});
+    if(response.readed.includes(req.body.validation.ERP_ID)){
+      res.send({status:false})
+    }else{
+      response.readed.push(req.body.validation.ERP_ID);
+      await response.save();
+      res.send({status:true});
+    }
+  }else{
+    res.send({status:false});
+  }
+});
 
 app.use('/auth',require("./routes/auth.js"))
 app.use('/club',require("./routes/club.js"))
 app.use('/profile',require("./routes/profile.js"))
+// app.use("/notification",require("./routes/notifiction.js"))
 
 app.listen(3000,()=>{
     console.log("Listening to port 3000")
