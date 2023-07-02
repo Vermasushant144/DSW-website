@@ -142,9 +142,20 @@ const expandMessage = async(index,readed,id)=>{
         }
     }
 }
-const removeMessages = ()=>{
+const removeMessages = async()=>{
     $("#messages-container").css("display","none");
     $("#popup-screen").css("display","none");
+    let isUnread = await fetch("/unread-notification",{
+        headers:{
+            "Authorization":localStorage.getItem("token")
+        }
+    });
+    isUnread = await isUnread.json();
+    if(isUnread.status){
+        $("#notification-btn div").css("display","block");
+    }else{
+        $("#notification-btn div").css("display","none");
+    }
 }
 $("#search-btn-icon").hover(
     ()=>{
