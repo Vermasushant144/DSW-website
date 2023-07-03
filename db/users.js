@@ -14,7 +14,6 @@ const userSchema = mongoose.Schema({
     contactNo:Number,
     gender:String,
     access:{type:String},//user,admin,clubAdmin
-    accessKey:{type:String},
     accessID:{type:String},
     isverified:{type:Boolean}
 })

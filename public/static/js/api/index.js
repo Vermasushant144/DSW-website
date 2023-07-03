@@ -101,7 +101,7 @@ const showMessages = async()=>{
             innerHtml+=`<button class='message ${(readed)?'readed':'unreaded'}' onclick='expandMessage(${i},${readed},${JSON.stringify(notifications[i]._id)})'>
                 <div class='message-desc'>
                     <h3>${notifications[i].title}</h3>
-                    <p class='half-text'>${notifications[i].detail}...</p>
+                    <p class='half-text'>${shortDetail}...</p>
                     <p class='full-text'>${notifications[i].detail}</p>
                 </div>
                 <div class='message-date'>

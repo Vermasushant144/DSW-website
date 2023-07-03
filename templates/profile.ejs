@@ -5,47 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile(<%=user.name%>)</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 <script>
-    var onLoad = async()=>{
-        let localUser = await JSON.parse(localStorage.getItem("user"));
-        let user = <%-JSON.stringify(user)%>;
-        if(user){
-            if(localUser.ERP_ID==user.ERP_ID){
-                document.getElementById("editable").innerHTML = `<%-include('./edit_profile.ejs')%>`
-            }else{
-                document.getElementById("editProfile").style.visibility = "hidden";
-            }
-        }else{
-            window.location.href = "/";
-        }
-        let adminID = document.getElementsByClassName("adminID");
-        for(let i=0;i<adminID.length;i++){
-            adminID[i].value = localUser.id;
-        }
-        //setUp edit form
-        document.getElementById("name").value = user.name;
-        document.getElementById("branch").value = user.branch;
-        document.getElementById("year").value = user.year;
-        document.getElementById("gender").value = user.gender;
-        document.getElementById("contactNo").value = user.contactNo;
-        document.getElementById("linkedIn").value = user.medialink.linkedin;
-    }
-    var logout = async()=>{
-        localStorage.clear();
-        window.location.href = "/auth/login"
-    }
-    var editProfile = async()=>{
-
-    }
-    var editProfileToggle = async()=>{
-        let editForm = document.getElementById("editProfileForm");
-        if(editForm.style.display=="none"){
-            editForm.style.display = "block";
-        }else{
-            editForm.style.display = "none";
-        }
-    }
+    window.user = <%-JSON.stringify(user)%>
 </script>
 <body onload="onLoad()">
     
@@ -58,8 +21,10 @@
         <%=user.ERP_ID%><br>
         <%=user.branch%><br>
         <%=user.year%><br>
-        <!--  On click edit profile open form to edit profile-->
-        <div id="editable"></div>
+            <!--  On click edit profile open form to edit profile-->
+            <div id="editable">
+                <!-- Data came from Edit_profile templates -->
+            </div>
         
         </div>
     </div>
@@ -74,4 +39,5 @@
 
     
 </body>
+<script src="/static/js/api/profile.js"></script>
 </html>

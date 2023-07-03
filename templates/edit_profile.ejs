@@ -4,15 +4,14 @@
     <button id="logout" onclick="logout()">Logout</button>
     <form method="POST" action="/profile/edit_profile" id="editProfileForm" style="display: none;" enctype="multipart/form-data">
         <input type="text" name="name" id="name"><br>
-        <input type="text" name="adminID" class="adminID" style="display: none;">
         <input type="text" name="branch" id="branch"><br>
         <input type="number" name="year" id="year"><br>
-        <input type="file" name="avatar" id="avatar"><br>
         <input type="text" name="gender" id="gender" ><br>
         <input type="number" name="whatsapp" id="whatsapp" placeholder="whatsapp Number"><br>
         <input type="number" name="contactNo" id="contactNo" placeholder="contactNo"><br>
         <input type="text" name="linkedin" id="linkedIn"><br>
-        <input type="password" name="password" placeholder="Enter your password">
+        <input type="file" name="avatar" id="avatar" accept="image/*" multiple="false"><br>
         <button type="submit">Update</button>
     </form>
 <div>
+<script src="/static/js/api/edit_profile.js"></script>

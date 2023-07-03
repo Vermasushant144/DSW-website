@@ -79,14 +79,22 @@ app.get("/unread-notification",verifyToken,async(req,res)=>{
   }
   res.send({status:false});
 });
-app.get("/notification",verifyToken,async(req,res)=>{
-  if(req.body.validation.verify){
+app.get("/notification", verifyToken, async (req, res) => {
+  if (req.body.validation.verify) {
     let notifications = await messageModel.find({});
-    res.send({status:200,notifications:notifications,ERP_ID:req.body.validation.ERP_ID});
-  }else{
-    res.send({status:401});
+    notifications.sort((a, b) => {
+      // Assuming 'date' is the field containing the date in each notification object
+      const dateA = new Date(a.date);
+      const dateB = new Date(b.date);
+      return dateB - dateA; // Compare dateB with dateA for descending order
+    });
+    res.send({ status: 200, notifications: notifications, ERP_ID: req.body.validation.ERP_ID });
+  } else {
+    res.send({ status: 401 });
   }
 });
+
+// for updating readed notification
 app.put("/notification-readed",verifyToken,async(req,res)=>{
   if(req.body.validation.verify){
     let response = await messageModel.findOne({_id:req.body.notifyID});

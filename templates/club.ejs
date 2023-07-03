@@ -8,41 +8,12 @@
     <title>
         <%=club.name%>
     </title>
-    <script src="/ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script>
-        var onLoad = async (name) => {
-            let res = await fetch("/club/getMembers", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                mode: "cors",
-                body: JSON.stringify({
-                    name: name
-                })
-            })
-            res = await JSON.parse(await res.text());
-            console.log(res);
-            if (res.status == "ok") {
-                document.getElementById("clubMemberList").innerHTML = '';
-                let members = res.members;
-                $("#totalMembers").text(members.length);
-                for (let i = 0; i < members.length; i++) {
-                    document.getElementById("clubMemberList").innerHTML +=
-                        `
-                    <div class="child">
-                        <img src="${members[i].avatar}">
-                        <div class="inner">
-                            <a href='../profile/${members[i].ERP_ID}'><h1>${members[i].name}</h1></a>
-                        </div>
-                        <div class="inn">${members[i].position}</div>
-                    </div>
-                    `
-                }
-            }
-        }
-
+        window.SERVER_DIR = "<%=SERVER_DIR%>";
     </script>
+    <script src="/static/js/api/club.js"></script>
+
     <style>
         body {
             margin: 0;
@@ -873,7 +844,8 @@
             <div class="box">
                 <p3> <a href="<%=club.whatsapp%>">Join Whatapp</a></p3>
             </div>
-            <div class="pho"> <img src=<%=club.icon%>></div>
+            <div class="pho"> <img src="<%=SERVER_DIR%><%=club.icon%>">
+            </div>
         </div>
     </div>
     <div class="team">
@@ -882,7 +854,8 @@
                 Get to Know Our Team
             </div>
         </div>
-        <br><br><br><hr>
+        <br><br><br>
+        <hr>
         <div class="parent" id="clubMemberList"></div>
     </div>
     </div>
@@ -890,24 +863,26 @@
         <div class="five">
             Event's Our club Did!
         </div>
-        <br><br><br><hr>
+        <br><br><br>
+        <hr>
         <div class="container">
-            <%if(club.events.length>0){for(let i=0;i<club.events.length;i++){%>
-                <div class="card">
-                    <img src="<%=club.events[i].icon%>">
-                    <div class="bo">
-                        <p9>
-                            Total No of members <%=club.events[i].participants%>
-                        </p9>
-                        <p>
-                            Event Date:<%=club.events[i].date%>
-                        </p>
-                        <h2>
-                            <%=club.name%>
-                        </h2>
+
+            <%if(events.length>0){for(let i=0;i<events.length;i++){%>
+                    <div class="card">
+                        <img src='<%=SERVER_DIR%><%=events[i].icon%>'>
+                        <div class="bo">
+                            <h3>
+                                <%=events[i].Name%>
+                            </h3>
+                            <p7>
+                                Event Date:<%=events[i].Date%>
+                            </p7>
+                            <h2>
+                                <%=club.name%>
+                            </h2>
+                        </div>
                     </div>
-                </div>
-            <%}}%>
+                    <%}}%>
         </div>
 
 
