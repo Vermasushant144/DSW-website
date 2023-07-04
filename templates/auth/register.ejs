@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,31 +8,158 @@
     <title>Register</title>
 </head>
 <style>
+    body {
+        margin: 0 auto;
+        margin-top: 10px;
+        padding: 0;
+        text-align: center;
+        background-repeat: no-repeat;
+        background-size: auto;
+        object-fit: contain;
+        background-image: url(wallpaper.jpg)
+    }
+
     #response{
         display:none;
         padding:10px;
         margin:20px;
         border-radius: 15px;
     }
+
+    .outer {
+        width: 12cm;
+        background-color: #CC99FF;
+        display: block;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        padding: 40px;
+        height: auto;
+        /* height: 60vh; */
+
+        border-radius: 15px;
+    }
+
+
+    .inner {
+        background-color: rgb(33, 62, 64);
+        max-height: fit-content;
+        height: 70vh;
+        width: auto;
+        padding: 80px;
+        border-radius: 15px;
+    }
+
+    h1 {
+        color: white;
+        text-decoration: underline;
+        margin-top: 2px;
+    }
+
+    button:hover {
+        color: goldenrod;
+        background-color: rgb(9, 9, 9);
+        cursor: pointer;
+        box-shadow: 2px 2px rgb(207, 194, 194);
+    }
+
+    .form_signup {
+
+        display: block;
+        margin: 15px;
+        text-align: justify;
+        padding: 5px;
+    }
+
+    .button {
+        width: 150px;
+        margin: 20px;
+        text-align: center;
+    }
+
+    button:hover {
+        color: goldenrod;
+        background-color: rgb(9, 9, 9);
+        cursor: pointer;
+        box-shadow: 2px 2px rgb(207, 194, 194);
+    }
+
+    .label {
+        color: aliceblue;
+        text-align: center;
+
+    }
+
+    input {
+        display: flex;
+        align-items: center;
+        border: 2px solid black;
+        border-radius: 3px;
+    }
 </style>
+
 <body>
-    <div id="response"></div>
-    <form action="/auth/register"  method="POST" enctype="multipart/form-data" id="registerform">
-        <input name="name" placeholder="Name"><br>
-        <input name="ERP_ID" placeholder="ERP_ID"><br>
-        <input type="password" name="password"  placeholder="password"><br>
-        <input type="password" name="conformpassword" placeholder="conformpassword" ><br>
-        <input name="gender" placeholder="Enter Gender"><br>
-        <input name="contactNo" placeholder="contactNo" ><br>
-        <input type="file" name="avatar" accept="image/*" multiple="false"><br>
-        <input name="branch"  placeholder="branch"><br>
-        <input name="year" placeholder="Year"><br>
-        <input name="whatsapp" placeholder="whatsapp no." ><br>
-        <input name="linkedin" placeholder="linkedin profile" ><br>
-        <button type="submit">Register</button>
-    </form>
-    
+    <div class="outer" id="response">
+        <div class="inner">
+            <h1>SIGN UP</h1>
+            <div class="form_signup">
+                <form action="/auth/register" method="POST" enctype="multipart/form-data" id="registerform">
+                    <!-- <input name="name" placeholder="Name"><br> -->
+                    <!-- <input name="ERP_ID" placeholder="ERP_ID"><br> -->
+                    <!-- <input type="password" name="password"  placeholder="password"><br>
+        <input type="password" name="conformpassword" placeholder="conformpassword" ><br> -->
+                    <!-- <input name="gender" placeholder="Enter Gender"><br> -->
+                    <!-- <input name="contactNo" placeholder="contactNo" ><br> -->
+                    <!-- <input name="branch"  placeholder="branch"><br> -->
+                    <!-- <input name="year" placeholder="Year"><br> -->
+                    <!-- <label class="label"> Whatsapp Number: </label>         
+<input type="text" name="name" size="15"/> <br> <br> -->
+                    <!-- <input name="whatsapp" placeholder="whatsapp no." ><br>
+        <input name="linkedin" placeholder="linkedin profile" ><br> -->
+                    <label class="label"> Name: </label>
+                    <input type="text" name="name" size="30" /> <br>
+                    <label class="label"> ERPID: </label>
+                    <input type="text" name="ERP_ID" size="30" /> <br>
+                    <label class="label"> Password: </label>
+                    <input type="password" name="password" size="30" /> <br>
+                    <label class="label"> Confirm Password: </label>
+                    <input type="password" name="conformpassword" size="30" /> <br>
+                    <label class="label"> Number: </label>
+                    <input type="text" name="contactNo" size="30" /> <br>
+                    <label class="label"> Gender : </label>
+                    <select>
+                        <option value="gender">Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <br> <br>
+                    <input type="file" name="avatar" accept="image/*" multiple="false">
+                    <br>
+                    <label class="label"> Branch: </label>
+                    <input type="text" name="name" size="30" /> <br>
+                    <label class="label"> Year : </label>
+                    <select>
+                        <option value="number">Year</option>
+                        <option value="number">1st</option>
+                        <option value="number">2nd</option>
+                        <option value="number">3rd</option>
+                        <option value="number">4th</option>
+                        <option value="number">5th</option>
+                    </select>
+                    <br>
+                    <br>
+                    <label class="label"> LinkedIN Profile: </label>
+                    <input type="text" name="name" size="30" /> <br>
+
+                    <button class="button">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script src="/static/js/api/register.js"></script>
+
 </html>
+ 
