@@ -435,3 +435,169 @@ body{
   }
 
 }
+/*  Get to know your team css */
+    @media(max-width:375px) {
+      .pho img {
+        width: 275px;
+        margin-top: -125%;
+        float: inherit;
+        /* top: 40%; */
+        height: 249px;
+        object-fit: cover;
+      }
+
+      .main {
+        left: 16px;
+        font-size: 47px;
+        margin-left: 18px;
+        /* position: relative; */
+        display: table;
+        top: 40%;
+      }
+
+      .what .less-main {
+
+        margin-left: 40%;
+        max-width: 100%;
+        max-height: 50%;
+        top: 42%;
+      }
+
+      .five {
+        font-size: 31px;
+        margin-left: 18px;
+      }
+    }
+
+    @media(max-width:320px) {
+      .pho img {
+        width: 237px;
+        margin-top: -134%;
+        float: inherit;
+        /* top: 40%; */
+        height: 249px;
+        object-fit: cover;
+      }
+
+      .main {
+        left: 16px;
+        font-size: 37px;
+        margin-left: 18px;
+        /* position: relative; */
+        display: table;
+        top: 35%;
+      }
+
+      .what .less-main {
+
+        margin-left: 28%;
+        max-width: 100%;
+        max-height: 76%;
+        top: 37%;
+      }
+
+      .five {
+        font-size: 31px;
+        margin-left: 18px;
+      }
+    }
+    @media (max-width:480px){
+      .pho img {
+        width: 204px;
+  margin-top: -76%;
+  height: 216px;
+  /* object-fit: cover; */
+  overflow: auto;
+}
+    }
+.five {
+  font-size: 35px;
+  margin-left: 5px;
+  /* margin-top: 30px; */
+  position: absolute;
+}
+@media(max-width: 414px) {
+  .center {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+}
+
+
+
+@media (max-width:320px){
+  .child1 img {
+  width: 120%;
+  height: 145px;
+  align-items: center;
+  gap: 1px;
+  border-radius: 12px;
+}
+}
+.parent1 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0px;
+}
+.pho img {
+    
+    width: 217px;
+    margin-top: -151%;
+    float: inherit;
+    top: 40%;
+    height: 217px;
+    object-fit: cover;
+
+}
+.main {
+    left: 0px;
+    font-size: 37px;
+    margin-left: 40px;
+    position: relative;
+    display: table;
+    top: 36%;
+}
+.what .less-main {
+    max-width: 100%;
+    max-height: 84%;
+    top: 35%;
+    position: relative;
+    left: -16%;
+}
+.five {
+    font-size: 24px;
+    margin-left: 18px;
+}
+}
+@media(max-width:360px){
+  .pho img {
+      width: 206px;
+  margin-top: -145%;
+  float: inherit;
+  top: 40%;
+  height: 236px;
+  object-fit: cover;
+}
+.main {
+  left: 0px;
+  font-size: 39px;
+  /* margin-left: 40px; */
+  position: relative;
+  display: table;
+  top: 39%;
+}
+.what .less-main {
+  margin-left: 26%;
+ 
+  max-width: 100%;
+  max-height: 70%;
+  top: 39%;
+  position: relative;
+  left: -13%;
+}
+.five {
+  font-size: 24px;
+  margin-left: 18px;
+}
+}
