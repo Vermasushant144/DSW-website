@@ -5,49 +5,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>
         <%=club.name%>
     </title>
-    <script src="/ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script>
-        var onLoad = async (name) => {
-            let res = await fetch("/club/getMembers", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                mode: "cors",
-                body: JSON.stringify({
-                    name: name
-                })
-            })
-            res = await JSON.parse(await res.text());
-            console.log(res);
-            if (res.status == "ok") {
-                document.getElementById("clubMemberList").innerHTML = '';
-                let members = res.members;
-                $("#totalMembers").text(members.length);
-                for (let i = 0; i < members.length; i++) {
-                    document.getElementById("clubMemberList").innerHTML +=
-                        `
-                    <div class="child">
-                        <img src="${members[i].avatar}">
-                        <div class="inner">
-                            <a href='../profile/${members[i].ERP_ID}'><h1>${members[i].name}</h1></a>
-                        </div>
-                        <div class="inn">${members[i].position}</div>
-                    </div>
-                    `
-                }
-            }
-        }
-
+        window.SERVER_DIR = "<%=SERVER_DIR%>";
     </script>
+    <script src="/static/js/api/club.js"></script>
+
     <style>
         body {
             margin: 0;
             padding: 0;
-
+width:100%;
         }
 
 
@@ -139,27 +111,6 @@
 
         }
 
-
-
-        .main {
-
-            margin-top: 4%;
-            right: 25%;
-            font-size: 50px;
-            margin-right: 60px;
-            position: absolute;
-
-        }
-
-        .total {
-            margin-top: 11%;
-            right: 17%;
-            font-size: 17px;
-            margin-right: 40px;
-            position: absolute;
-
-        }
-
         .less-main {
             position: absolute;
             margin-top: 16%;
@@ -175,23 +126,8 @@
         .box p3 {
             right: 25%;
         }
-
-        .pho {
-            /* margin-top: 3%; */
-
-            /* bottom: -15%; */
-            left: 16px;
-            margin-left: 50px;
-
-            /* position: absolute; */
-
-        }
-
-        .pho img {
-            width: 560px;
-            height: 400px;
-            position: static;
-        }
+            
+        
 
         .five {
             font-size: 50px;
@@ -226,7 +162,7 @@
         }
 
         .child img {
-            width: 200px;
+            width: 180px;
             height: 180px;
             object-fit: fill;
         }
@@ -550,34 +486,8 @@
                 left: -16px;
             }
 
-            .pho img {
-                width: 83%;
-                height: 37%;
-                position: static;
-            }
+          
 
-            .main {
-                bottom: 44%;
-                right: 19%;
-                font-size: 44px;
-                /* margin-right: 60px; */
-                position: absolute;
-            }
-
-            .total {
-                bottom: 38%;
-                right: 4%;
-                font-size: 17px;
-                position: absolute;
-
-            }
-
-            .box p3 {
-
-                right: 16%;
-                bottom: 28%;
-
-            }
 
             .parent {
                 grid-template-columns: repeat(2, 1fr);
@@ -607,7 +517,11 @@
             }
         }
 
+@media only screen(max-width:414px){
+    
 
+    
+}
 
 
         .new_footer_area {
@@ -845,6 +759,67 @@
                 left: 100%;
             }
         }
+        .five{
+            max-width: 100%;
+            max-height: fit-content;
+           
+        }
+        .main{
+            display: flex;
+            margin: auto;
+            align-items: center;
+            justify-content: center;
+            font-size: large;
+            font-weight: bold;
+        }
+        .total{
+            display: flex;
+            margin: auto;
+            align-items: center;
+            justify-content: center;
+            padding: auto;
+            max-width: 100%;
+            max-height: fit-content;
+            font-size: 20px;
+        }
+        .total h1{
+            max-height: max-content;
+            background-position: center;
+            background-image: url('%=SERVER_DIR%');
+            -webkit-background-clip: text;
+            background-clip: text;
+        
+
+        }
+
+        .pho{
+            display: flex;
+            margin: auto;
+            align-items: center;
+            justify-content: center;
+        
+        }
+        .pho img{
+            max-width: 50%;
+            background-color: transparent;
+            mix-blend-mode:multiply;
+        }
+        .di{
+            background-color: #d6cece;
+            padding: 10px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 30px;
+            color: black;
+            
+           
+        }
+        span a{
+            text-decoration: none;
+            gap: 20px;
+        }
     </style>
 </head>
 
@@ -859,10 +834,7 @@
             <br>
             <hr>
             <div class="main">
-                <%=club.name%>
-                    <br>
-                    &nbsp;
-                    Club
+                <%=club.name%>Club
             </div>
             <br>
             <div class="total">
@@ -870,19 +842,22 @@
                     <p3 style="background-color: rgb(214, 77, 77); color: #000; padding: 6px;" id="totalMembers"> </p3>
                 </h1>
             </div>
-            <div class="box">
-                <p3> <a href="<%=club.whatsapp%>">Join Whatapp</a></p3>
+        
+            
+            <div class="pho"> <img src="<%=SERVER_DIR%><%=club.icon%>">
             </div>
-            <div class="pho"> <img src=<%=club.icon%>></div>
-        </div>
+            </div>
+    
     </div>
+    
     <div class="team">
         <div class="member">
             <div class="five">
                 Get to Know Our Team
             </div>
         </div>
-        <br><br><br><hr>
+        <br><br><br>
+        <hr>
         <div class="parent" id="clubMemberList"></div>
     </div>
     </div>
@@ -890,39 +865,36 @@
         <div class="five">
             Event's Our club Did!
         </div>
-        <br><br><br><hr>
+        <br><br><br>
+        <hr>
         <div class="container">
-            <%if(club.events.length>0){for(let i=0;i<club.events.length;i++){%>
-                <div class="card">
-                    <img src="<%=club.events[i].icon%>">
-                    <div class="bo">
-                        <p9>
-                            Total No of members <%=club.events[i].participants%>
-                        </p9>
-                        <p>
-                            Event Date:<%=club.events[i].date%>
-                        </p>
-                        <h2>
-                            <%=club.name%>
-                        </h2>
+
+            <%if(events.length>0){for(let i=0;i<events.length;i++){%>
+                    <div class="card">
+                        <img src='<%=SERVER_DIR%><%=events[i].icon%>'>
+                        <div class="bo">
+                            <h3>
+                                <%=events[i].Name%>
+                            </h3>
+                            <p7>
+                                Event Date:<%=events[i].Date%>
+                            </p7>
+                            <h2>
+                                <%=club.name%>
+                            </h2>
+                        </div>
                     </div>
-                </div>
-            <%}}%>
+                    <%}}%>
         </div>
 
 
-        <footer class="new_footer_area bg_color">
+        <!----------------   Footer    ---------------------------->
+
+        <footer class="new_footer_area bg_color" id="contact">
             <div class="new_footer_top">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-3 col-md-6">
-                            <div class="f_widget company_widget wow fadeInLeft" data-wow-delay="0.2s"
-                                style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
-                                <h3 class="f-title f_600 t_color f_size_18">Get in Touch</h3>
-                                <p>Don’t miss any updates of our new templates and extensions.!</p>
-
-                            </div>
-                        </div>
+    
                         <div class="col-lg-3 col-md-6">
                             <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.4s"
                                 style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInLeft;">
@@ -937,20 +909,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-6">
-                            <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.6s"
-                                style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInLeft;">
-                                <h3 class="f-title f_600 t_color f_size_18">Help</h3>
-                                <ul class="list-unstyled f_list">
-                                    <li><a href="#">FAQ</a></li>
-                                    <li><a href="#">Term &amp; conditions</a></li>
-                                    <li><a href="#">Reporting</a></li>
-                                    <li><a href="#">Documentation</a></li>
-                                    <li><a href="#">Support Policy</a></li>
-                                    <li><a href="#">Privacy</a></li>
-                                </ul>
-                            </div>
-                        </div>
+    
                         <div class="col-lg-3 col-md-6">
                             <div class="f_widget social-widget pl_70 wow fadeInLeft" data-wow-delay="0.8s"
                                 style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInLeft;">
@@ -970,8 +929,14 @@
                     <div class="footer_bg_two"></div>
                 </div>
             </div>
-
+    
         </footer>
+        <div class="di">
+            <span>@Design By : <a href="linkedin.com/in/sushant-verma-b53171226">Sushant Verma</a>
+                ,<a href="#">Sumit patak</a>
+                ,<a href="#">Amaan Khan</a>
+                ,<a href="#">Yashi Gupta</a></span>
+            </div>
 </body>
 
 </html>
