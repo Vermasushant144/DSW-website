@@ -543,6 +543,7 @@ body{
 
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   }
   #search-input{
@@ -595,6 +596,8 @@ body{
 >>>>>>> f88317be6ec512c44af390b50c7c1ac81be1f7e5
 >>>>>>> Stashed changes
 =======
+=======
+>>>>>>> 7a92d58765572ad7d556dbf67089d7c41d0fef85
 /*  Get to know your team css */
     @media(max-width:375px) {
       .pho img {
@@ -760,5 +763,9 @@ body{
   font-size: 24px;
   margin-left: 18px;
 }
+<<<<<<< HEAD
+}
+>>>>>>> 7a92d58765572ad7d556dbf67089d7c41d0fef85
+=======
 }
 >>>>>>> 7a92d58765572ad7d556dbf67089d7c41d0fef85
