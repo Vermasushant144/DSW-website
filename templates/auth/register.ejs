@@ -1,37 +1,406 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Register</title>
 </head>
 <style>
-    #response{
+    body {
+        margin: 0 auto;
+        margin-top: 10px;
+        padding: 0;
+        text-align: center;
+        background-repeat: no-repeat;
+        background-size: auto;
+        object-fit: contain;
+        background-image: url(wallpaper.jpg)
+    }
+
+   /* #response{
         display:none;
         padding:10px;
         margin:20px;
         border-radius: 15px;
+    }*/
+
+    .outer {
+        width: 12cm;
+        background-color: #CC99FF;
+        display: block;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        padding: 40px;
+        height: auto;
+        /* height: 60vh; */
+
+        border-radius: 15px;
     }
-</style>
-<body>
-    <div id="response"></div>
-    <form action="/auth/register"  method="POST" enctype="multipart/form-data" id="registerform">
-        <input name="name" placeholder="Name"><br>
-        <input name="ERP_ID" placeholder="ERP_ID"><br>
-        <input type="password" name="password"  placeholder="password"><br>
-        <input type="password" name="conformpassword" placeholder="conformpassword" ><br>
-        <input name="gender" placeholder="Enter Gender"><br>
-        <input name="contactNo" placeholder="contactNo" ><br>
-        <input type="file" name="avatar" accept="image/*" multiple="false"><br>
-        <input name="branch"  placeholder="branch"><br>
-        <input name="year" placeholder="Year"><br>
-        <input name="whatsapp" placeholder="whatsapp no." ><br>
-        <input name="linkedin" placeholder="linkedin profile" ><br>
-        <button type="submit">Register</button>
-    </form>
+
+
+    .inner {
+        background-color: rgb(33, 62, 64);
+        max-height: fit-content;
+        height: 70vh;
+        width: auto;
+        padding: 80px;
+        border-radius: 15px;
+    }
+
+    h1 {
+        color: white;
+        text-decoration: underline;
+        margin-top: 2px;
+    }
+
+    button:hover {
+        color: goldenrod;
+        background-color: rgb(9, 9, 9);
+        cursor: pointer;
+        box-shadow: 2px 2px rgb(207, 194, 194);
+    }
+
+    .form_signup {
+
+        display: block;
+        margin: 15px;
+        text-align: justify;
+        padding: 5px;
+    }
+
+    .button {
+        width: 150px;
+        margin: 20px;
+        text-align: center;
+    }
+
+    button:hover {
+        color: goldenrod;
+        background-color: rgb(9, 9, 9);
+        cursor: pointer;
+        box-shadow: 2px 2px rgb(207, 194, 194);
+    }
+
+    .label {
+        color: aliceblue;
+        text-align: center;
+
+    }
+
+    input {
+        display: flex;
+        align-items: center;
+        border: 2px solid black;
+        border-radius: 3px;
+    }
     
+.page-content {
+	width: 100%;
+	margin:  0 auto;
+	background-image: -moz-linear-gradient( 136deg, rgb(0,0,70) 0%, rgb(28,181,224) 100%);
+    background-image: -webkit-linear-gradient( 136deg, rgb(0,0,70) 0%, rgb(28,181,224) 100%);
+    background-image: -ms-linear-gradient( 136deg, rgb(0,0,70) 0%, rgb(28,181,224) 100%);
+	display: flex;
+	display: -webkit-flex;
+	justify-content: center;
+	-o-justify-content: center;
+	-ms-justify-content: center;
+	-moz-justify-content: center;
+	-webkit-justify-content: center;
+	align-items: center;
+	-o-align-items: center;
+	-ms-align-items: center;
+	-moz-align-items: center;
+	-webkit-align-items: center;
+}
+.form-v6-content  {
+	background: #fff;
+	width: 968px;
+	border-radius: 8px;
+	-o-border-radius: 8px;
+	-ms-border-radius: 8px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	margin: 180px 0;
+	font-family: 'Nunito', sans-serif;
+	color: #fff;
+	font-weight: 700;
+	position: relative;
+	display: flex;
+	display: -webkit-flex;
+}
+.form-v6-content .form-left {
+	margin-bottom: -6px;
+}
+.form-v6-content .form-left img {
+	border-top-left-radius: 8px;
+	border-bottom-left-radius: 8px;
+}
+.form-v6-content .form-detail {
+    padding: 30px 40px;
+	position: relative;
+	width: 100%;
+}
+.form-v6-content .form-detail h2 {
+	color: #333;
+	font-size: 35px;
+	text-align: center;
+	position: relative;
+	padding: 6px 0 0;
+	margin-bottom: 47px;
+}
+.form-v6-content .form-row {
+    width: 100%;
+}
+.form-v6-content .form-detail .form-row-last {
+	text-align: center;
+}
+.form-v6-content .form-detail .input-text {
+	margin-bottom: 35px;
+}
+.form-v6-content .form-detail input {
+	width: 92%;
+    padding: 0px 15px 10px 15px;
+    border: 2px solid transparent;
+    border-bottom: 2px solid #e5e5e5;
+    appearance: unset;
+    -moz-appearance: unset;
+    -webkit-appearance: unset;
+    -o-appearance: unset;
+    -ms-appearance: unset;
+    outline: none;
+    -moz-outline: none;
+    -webkit-outline: none;
+    -o-outline: none;
+    -ms-outline: none;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #333;
+}
+.form-v6-content .form-detail .form-row input:focus {
+	border-bottom: 2px solid #fe892a;
+}
+.form-v6-content .form-detail .register {
+	background: #fe892a;
+	border-radius: 6px;
+	-o-border-radius: 6px;
+	-ms-border-radius: 6px;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	width: 160px;
+	box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.15);
+	-o-box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.15);
+	-ms-box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.15);
+	-moz-box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.15);
+	-webkit-box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.15);
+	border: none;
+	margin: 11px 0 50px 0px;
+	cursor: pointer;
+	font-family: 'Nunito', sans-serif;
+	color: #fff;
+	font-weight: 700;
+	font-size: 18px;
+}
+.form-v6-content .form-detail .register:hover {
+	background: #e37b27;
+}
+.form-v6-content .form-detail .form-row-last input {
+	padding: 13px;
+}
+input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #666;
+  font-size: 16px;
+}
+input::-moz-placeholder { /* Firefox 19+ */
+  color: #666;
+  font-size: 16px;
+}
+input:-ms-input-placeholder { /* IE 10+ */
+  color: #666;
+  font-size: 16px;
+}
+input:-moz-placeholder { /* Firefox 18- */
+  color: #666;
+  font-size: 16px;
+}
+
+/* Responsive */
+@media screen and (max-width: 991px) {
+	.form-v6-content {
+		margin: 180px 20px;
+		flex-direction:  column;
+		-o-flex-direction:  column;
+		-ms-flex-direction:  column;
+		-moz-flex-direction:  column;
+		-webkit-flex-direction:  column;
+	}
+	.form-v6-content .form-left {
+		width: 100%;
+	}
+	.form-v6-content .form-left img {
+		width: 100%;
+		border-bottom-left-radius: 0px;
+	    border-top-right-radius: 8px;
+	}
+	.form-v6-content .form-detail {
+		padding: 30px 20px 30px 20px;
+	    width: auto;
+	}
+	.form-v6-content .form-detail .form-row input {
+		width: 96%;
+	}
+	.form-v6-content .form-detail .register {
+		margin-bottom: 80px;
+	}
+}
+@media screen and (max-width: 767px) {
+	.form-v6-content .form-detail .form-row input {
+		width: 94%;
+	}
+}
+
+@media screen and (max-width: 575px) {
+	.form-v6-content .form-detail .form-row input {
+	    width: 89%;
+	}
+}
+img{
+    max-width:100%;
+}
+
+</style>
+
+<body>
+<<<<<<< HEAD
+    <div id="response"></div>
+    <body class="form-v6">
+        <div class="page-content">
+            <div class="form-v6-content">
+                <div class="form-left">
+                    <img src="/static/images/6203326-removebg.png" alt="form">
+                </div>
+                <form class="form-detail" action="/auth/register" method="post" enctype="multipart/form-data">
+                
+    
+                    <h2>Register Form</h2>
+                    <div class="form-row">
+                        <input type="text" name="name" size="30" id="full-name" class="input-text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-row">
+                        <input type="text" name="ERP_ID" size="30" id="your-email" class="input-text" placeholder="ERP" required >
+                    </div>
+                    <div class="form-row">
+                         <input type="password" name="password" size="30" id="password" class="input-text" placeholder="Password" required>
+                    </div>
+                    <div class="form-row">
+                              <input type="password" name="conformpassword" size="30" 
+                        id="comfirm-password" class="input-text" placeholder="Comfirm Password" required>
+                    </div>
+                    <div class="form-row">
+                        <input type="text" name="contactNo" size="30"  id="full-name" class="input-text" placeholder="Number" required>
+                    </div>
+                    <div class="form-row">
+                        <select>
+                            <option value="gender">Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <input type="file" name="avatar" accept="image/*" multiple="false" >
+                    </div>
+                    <div class="form-row">
+                        <input type="text" name="brach" size="30" id="your-email" class="input-text" placeholder="Branch" required>
+                    </div>
+                    <div class="form-row">
+                        <select>
+                            <option value="number">Year</option>
+                            <option value="number">1st</option>
+                            <option value="number">2nd</option>
+                            <option value="number">3rd</option>
+                            <option value="number">4th</option>
+                            <option value="number">5th</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <input type="text" name="name" size="30" id="full-name" class="input-text" placeholder="LinkedIN Profile" required>
+                    </div>
+                    <div class="form-row-last">
+                        <button class="button">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    
+=======
+    <div class="outer" id="response">
+        <div class="inner">
+            <h1>SIGN UP</h1>
+            <div class="form_signup">
+                <form action="/auth/register" method="POST" enctype="multipart/form-data" id="registerform">
+                    <!-- <input name="name" placeholder="Name"><br> -->
+                    <!-- <input name="ERP_ID" placeholder="ERP_ID"><br> -->
+                    <!-- <input type="password" name="password"  placeholder="password"><br>
+        <input type="password" name="conformpassword" placeholder="conformpassword" ><br> -->
+                    <!-- <input name="gender" placeholder="Enter Gender"><br> -->
+                    <!-- <input name="contactNo" placeholder="contactNo" ><br> -->
+                    <!-- <input name="branch"  placeholder="branch"><br> -->
+                    <!-- <input name="year" placeholder="Year"><br> -->
+                    <!-- <label class="label"> Whatsapp Number: </label>         
+<input type="text" name="name" size="15"/> <br> <br> -->
+                    <!-- <input name="whatsapp" placeholder="whatsapp no." ><br>
+        <input name="linkedin" placeholder="linkedin profile" ><br> -->
+                    <label class="label"> Name: </label>
+                    <input type="text" name="name" size="30" /> <br>
+                    <label class="label"> ERPID: </label>
+                    <input type="text" name="ERP_ID" size="30" /> <br>
+                    <label class="label"> Password: </label>
+                    <input type="password" name="password" size="30" /> <br>
+                    <label class="label"> Confirm Password: </label>
+                    <input type="password" name="conformpassword" size="30" /> <br>
+                    <label class="label"> Number: </label>
+                    <input type="text" name="contactNo" size="30" /> <br>
+                    <label class="label"> Gender : </label>
+                    <select>
+                        <option value="gender">Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <br> <br>
+                    <input type="file" name="avatar" accept="image/*" multiple="false">
+                    <br>
+                    <label class="label"> Branch: </label>
+                    <input type="text" name="name" size="30" /> <br>
+                    <label class="label"> Year : </label>
+                    <select>
+                        <option value="number">Year</option>
+                        <option value="number">1st</option>
+                        <option value="number">2nd</option>
+                        <option value="number">3rd</option>
+                        <option value="number">4th</option>
+                        <option value="number">5th</option>
+                    </select>
+                    <br>
+                    <br>
+                    <label class="label"> LinkedIN Profile: </label>
+                    <input type="text" name="name" size="30" /> <br>
+
+                    <button class="button">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+>>>>>>> 7a92d58765572ad7d556dbf67089d7c41d0fef85
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script src="/static/js/api/register.js"></script>
+
 </html>
+ 

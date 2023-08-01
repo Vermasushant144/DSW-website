@@ -6,7 +6,12 @@ body {
     background-repeat: no-repeat;
     background-size: auto;
     object-fit: cover;
+<<<<<<< Updated upstream
+    background-image: url(/templates/auth/wallpaper.jpg);
+    background: url(/templates/auth/wallpaper.jpg);
+=======
     background-image: url(wallpaper.jpg)
+>>>>>>> Stashed changes
 }
 
 .outer {

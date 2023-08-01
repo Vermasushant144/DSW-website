@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +9,375 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <title>DSW</title>
 </head>
+<<<<<<< Updated upstream
+<script>
+    window.SERVER_DIR = '<%=SERVER_DIR%>';
+</script>
+<!-- Popup Background Screen -->
+<div id="popup-screen">
+</div>
+<!-- Main Screen -->
+<body onload="onLoad()">
+    <nav id="navbar1">
+        <div>
+            <img src="<%=SERVER_DIR%><%=main.icon%>" alt="logo">
+        </div>
+        <div id="nav1-links">
+            <div id="search">
+                <input id="search-input" type="search" name="clubName" onkeyup="searchClubs(this.value)"
+                    autocomplete="off">
+                <div id="suggestionClubs"></div>
+            </div>
+            <button id="search-btn-icon">
+                <i class="fa fa-search"></i>
+            </button>
+            <div id="pvtComponent1"></div>
+        </div>
+    </nav>
+    <!-- Notification popup Screen-->
+    <div class="detail-container" id="messages-container">
+        <div id="message-header">
+            <button onclick="removeMessages()"><i class="fa fa-remove"></i></button>
+            <h1>Messages</h1>
+        </div>
+        <div id="messages-list">
+        </div>
+    </div>
+
+    <!--Video Conatiner  -->
+    <div id="main-video">
+        <video style="width: 60%; " loop muted autoplay="autoplay">
+            <source src="<%=SERVER_DIR%><%=main.video%>" type="video/mp4">
+        </video>
+    </div>
+    <!-- Event popup Screen -->
+    <div id="live-events-container">
+        <h1 id="head-live-events-container"><i class="fa fa-calendar"></i>Upcoming Events:</h1>
+        <div id="events-list">
+            <%for(let i=0;i<events.length;i++){%>
+                <%let dateString=events[i].Date.split("-");%>
+                    <button class="live-event" onclick="eventpop(<%=JSON.stringify(events[i])%>)">
+                        <img src="<%=SERVER_DIR%><%=events[i].icon%>" alt="clubIcon">
+                        <h4 class="event-description">
+                            <%=events[i].Name%>&nbsp;Organised by&nbsp;<%=events[i].clubName%>&nbsp;on&nbsp;
+                                    <%=dateString[2]%>-<%=dateString[1]%>-<%=dateString[0]%>
+                        </h4>
+                    </button>
+                    <%}%>
+        </div>
+    </div>
+    <!-- Event Pop screen -->
+    <div class="detail-container" id="event-popup">
+        <div id="event-popup-container1">
+            <button class="remove-icon" onclick="removeEventPopup()"><i class="fa fa-remove"></i></button>
+            <img id="event-popup-img" alt="eventIcon">
+        </div>
+        <div id="event-popup-container2">
+            <h1 id="event-popup-name"></h1>
+            <h2>Organized By: <span id="event-popup-clubName"></span></h2>
+            <h2>Event Date: <span id="event-popup-date"></span></h2>
+            <p id="event-popup-detail"></p>
+            <a href="/club/ticket" target="_blank" id="event-btn">Get Ticket</a>
+        </div>
+    </div>
+    
+<!--     get to know our team         -->
+
+
+<div class="team">
+    <div class="member">
+        <div class="five">
+            &ldquo; Get to Know Our Team &rdquo;
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+
+
+    <hr>
+    <div class="parent">
+        <div class="child"><img src="images/download (1).jpg">
+            <div class="inner">
+                <h1>Liz Flaffham</h1>
+            </div>
+            <div class="inn"> CEO</div>
+        </div>
+        <div class="child"><img src="images/download (2).jpg">
+            <div class="inner">
+                <h1>Liz Flaffham</h1>
+
+            </div>
+            <div class="inn"> CEO</div>
+        </div>
+        <div class="child"><img src="images/download (3).jpg">
+            <div class="inner">
+                <h1>Liz Flaffham</h1>
+
+            </div>
+            <div class="inn"> CEO</div>
+        </div>
+        <div class="child"><img src="images/download (4).jpg">
+            <div class="inner">
+                <h1>Liz Flaffham</h1>
+
+            </div>
+            <div class="inn"> CEO</div>
+        </div>
+        <div class="child"><img src="images/download (5).jpg">
+            <div class="inner">
+                <h1>Liz Flaffham</h1>
+
+            </div>
+            <div class="inn"> CEO</div>
+        </div>
+
+    </div>
+
+</div>
+</div>
+
+
+
+
+<!--                        end                 -->
+    <!-- Club of the year detail -->
+
+    <!--coty(Club of the year)-->
+    <div class="detail-container" id="coty">
+        <div id="coty-container1">
+            <h1>Best Club of the Year</h1>
+            <h1 id="coty-name">
+                <%=coty.name%>
+            </h1>
+        </div>
+        <div id="coty-container2">
+            <img id="coty-img" src="<%=SERVER_DIR%><%=coty.icon%>" alt="Club-of-the-year-NIET">
+        </div>
+    </div>
+
+=======
+<<<<<<< HEAD
+<body onload="onLoad()">
+   
+        <nav id="navbar1">
+            <div class="hamburger">
+                <span class="lines"></span>
+                <span class="lines"></span>
+                <span class="lines"></span>
+              </div>
+              
+            <div>
+                <img src="static/images/DSW white.png" alt="logo">
+            </div>
+            <div id="nav1-links">
+                <div id="search">
+                    <input id="search-input" type="search" name="clubName" onkeyup="searchClubs(this.value)" autocomplete="off">
+                </div>
+                <div id="pvtComponent1"></div>
+            </div>
+        </nav>
+   
+    <div id="suggestionClubs"></div>
+    <div id="main-video">   
+        <video style="width: 60%; " loop muted autoplay="autoplay">
+            <source src="<%=SERVER_DIR%><%=club.video%>" type="video/mp4">
+        </video>
+    </div>
+    <div id="live-events-container">
+    
+        <h1 id="head-live-events-container"><i class="fa fa-calendar"></i>Latest Events:</h1>
+        <div id="events-list">
+            <div class="live-event">
+                <img src="<%=SERVER_DIR%>/dynamic/images/Reboot-clubIcon.png" alt="clubIcon">
+                <p class="event-description">
+                    Lorem ipsum dIn suscipit dolorum quibusdam eveniet officia dignissimos nemo sint similique, itaque odio.
+                </p>
+                <a href="/club/ticket">Get Ticket</a>
+            </div>
+            <div class="live-event">
+                <img src="<%=SERVER_DIR%>/dynamic/images/Reboot-clubIcon.png" alt="clubIcon">
+                <p class="event-description">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. At assumenda adipisci repellat dignissimos. In suscipit dolorum quibusdam eveniet officia dignissimos nemo sint similique, itaque odio.
+                </p>
+                <a href="/club/ticket">Get Ticket</a>
+            </div>
+        </div>
+    </div>
+ <div class="team">
+        <div class="member">
+            <div class="five">
+                &ldquo; Get to Know Our Team &rdquo;
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+
+
+        <hr>
+        <div class="parent" id="clubMemberList"></div>
+
+    </div>
+    </div>
+    
+    <div class="under">
+        <div class="club">
+            <p>
+                &ldquo; Clubs Under DSW &rdquo;
+            </p>
+        </div>
+        <div class="container">
+            <div class="card">
+                <a href="kbc.html"> <img src="images/kbc.jpg"></a>
+
+                <div class="bo">
+                    
+                    <h2>
+                        Khushiyan Baaton Club
+                    </h2>
+
+                    <br>
+
+                </div>
+            </div>
+            <div class="card">
+                <a href="ggc.html"> <img src="images/ggc.jpg"></a>
+                <div class="bo">
+                   
+                    <h2>
+                        Khushiyan Baaton Club
+                    </h2>
+
+                    <br>
+
+                    
+                </div>
+            </div>
+            <div class="card">
+                <a href="kalakriti.html"> <img src="images/kALAKRITI.png"></a>
+                <div class="bo">
+                   
+                    <h2>
+                        Khushiyan Baaton Club
+                    </h2>
+
+                    <br>
+
+                   
+                </div>
+            </div>
+            <div class="card">
+                <a href="megapixels.html"> <img src="images/megapixels.png"></a>
+                <div class="bo">
+                    
+                    <h2>
+                        Khushiyan Baaton Club
+                    </h2>
+
+                    <br>
+
+                    
+                </div>
+            </div>
+            <div class="card">
+                <a href="kathputiyan.html"> <img src="images/KATHPUTLIYAN.png"></a>
+                <div class="bo">
+                   
+                    <h2>
+                        Khushiyan Baaton Club
+                    </h2>
+
+                    <br>
+
+                   
+                </div>
+            </div>
+            <div class="card">
+                <a href="jetsetters.html"> <img src="images/Jetsetters.jpg"></a>
+                <div class="bo">
+                   
+                    <h2>
+                        Khushiyan Baaton Club
+                    </h2>
+
+                    <br>
+
+                   
+                </div>
+            </div>
+            <div class="card">
+                <a href="juventas.html"> <img src="images/jUVENTAS.jpg"></a>
+                <div class="bo">
+                   
+                    <h2>
+                        Khushiyan Baaton Club
+                    </h2>
+
+                    <br>
+                </div>
+            </div> 
+            <div class="card">
+                <a href="sangrachna.html"> <img src="images/sangrachna.jpeg"></a>
+                <div class="bo">
+                   
+                    <h2>
+                        Khushiyan Baaton Club
+                    </h2>
+
+                    <br>
+
+                   
+                </div>
+            </div>
+            <div class="card">
+                <a href="png.html"> <img src="images/PNG image.png"></a>
+                <div class="bo">
+                   
+                    <h2>
+                        Khushiyan Baaton Club
+                    </h2>
+
+                    <br>
+
+                   
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!--------------------  Best club of the Year   ------------->
+
+
+
+    
+    <div id="container">
+        <div class="ball">
+
+            <div class="club-details">
+
+                <h1>Best Club of the Year</h1>
+
+                <p class="information"><%=club.desc2%></p>
+
+                <div class="control">
+
+                </div>
+
+            </div>
+
+            <div class="club-image">
+
+                <img src="\static\images\untitled.png" alt="NIET DSW club illustrator">
+
+
+                <div class="info">
+                    <h2> Description</h2>
+
+                </div>
+            </div>
+=======
 <script>
     window.SERVER_DIR = '<%=SERVER_DIR%>';
 </script>
@@ -93,16 +461,26 @@
         </div>
         <div id="coty-container2">
             <img id="coty-img" src="<%=SERVER_DIR%><%=coty.icon%>" alt="Club-of-the-year-NIET">
+>>>>>>> f88317be6ec512c44af390b50c7c1ac81be1f7e5
         </div>
     </div>
 
+>>>>>>> Stashed changes
     <!----------------   Footer    ---------------------------->
 
     <footer class="new_footer_area bg_color" id="contact">
         <div class="new_footer_top">
             <div class="container">
                 <div class="row">
+<<<<<<< Updated upstream
 
+=======
+<<<<<<< HEAD
+                   
+=======
+
+>>>>>>> f88317be6ec512c44af390b50c7c1ac81be1f7e5
+>>>>>>> Stashed changes
                     <div class="col-lg-3 col-md-6">
                         <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.4s"
                             style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInLeft;">
@@ -117,7 +495,15 @@
                             </ul>
                         </div>
                     </div>
+<<<<<<< Updated upstream
 
+=======
+<<<<<<< HEAD
+                    
+=======
+
+>>>>>>> f88317be6ec512c44af390b50c7c1ac81be1f7e5
+>>>>>>> Stashed changes
                     <div class="col-lg-3 col-md-6">
                         <div class="f_widget social-widget pl_70 wow fadeInLeft" data-wow-delay="0.8s"
                             style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInLeft;">
@@ -137,9 +523,77 @@
                 <div class="footer_bg_two"></div>
             </div>
         </div>
+<<<<<<< Updated upstream
 
     </footer>
 </body>
 <script src="/static/js/api/index.js"></script>
+=======
+<<<<<<< HEAD
+       
+    </footer>
 
+    <script>
+        'use strict'
+
+        const menuToggle = document.querySelector('.menu-toggle');
+        const bxMenu = document.querySelector('.bx-menu');
+        const bxX = document.querySelector('.bx-x');
+
+        const navBar = document.querySelector('.navbar');
+
+        // --- open menu ---
+
+        bxMenu.addEventListener('click', (e) => {
+            if (e.target.classList.contains('bx-menu')) {
+                navBar.classList.add('show-navbar');
+                bxMenu.classList.add('hide-bx');
+                bxX.classList.add('show-bx');
+            }
+        })
+
+        // --- close menu ---
+
+        bxX.addEventListener('click', (e) => {
+            if (e.target.classList.contains('bx-x')) {
+                navBar.classList.remove('show-navbar');
+                bxMenu.classList.remove('hide-bx');
+                bxX.classList.remove('show-bx');
+            }
+        })
+
+    </script>
+        <script>
+            let hamburger = document.querySelector('.hamburger');
+            let navLinks = document.getElementById('nav-links');
+            let links = document.querySelectorAll('.links');
+            
+            hamburger.addEventListener('click', () => {
+              navLinks.classList.toggle('hide');
+              hamburger.classList.toggle('lines-rotate');
+            });
+            
+            for (let i = 0; i < links.length; i++) {
+              links[i].addEventListener('click', () => {
+                navLinks.classList.toggle('hide');
+              });
+            }
+            
+        </script>
+    
+    
+</body>
+<script>
+    window.SERVER_DIR = '<%=SERVER_DIR%>'
+</script>
+<script src="/static/js/api/index.js"></script>
+=======
+>>>>>>> Stashed changes
+
+    </footer>
+    <p><span>@Design By :</span> <a href="#">Sushant |Amaan |Yashi |Sumit</a></p>
+</body>
+<script src="/static/js/api/index.js"></script>
+
+>>>>>>> f88317be6ec512c44af390b50c7c1ac81be1f7e5
 </html>
