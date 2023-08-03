@@ -1,28 +1,32 @@
 body {
-    margin: 0 auto;
-    margin-top: 140px;
+    margin: 0 ;
+    margin-top: 100px;
     padding: 0;
     text-align: center;
     background-repeat: no-repeat;
     background-size: auto;
     object-fit: cover;
-<<<<<<< Updated upstream
-    background-image: url(/templates/auth/wallpaper.jpg);
-    background: url(/templates/auth/wallpaper.jpg);
-=======
-    background-image: url(wallpaper.jpg)
->>>>>>> Stashed changes
+    background-color: slateblue;
+    /* background: url('/public/static/images/gif\ dsw.gif'); */
 }
 
+
+
+
 .outer {
-    width: 6cm;
-    background-color: #cc99ff;
+    width: 30%;
+    /* background-color: #cc99ff; */
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 0 auto;
-    padding: 100px;
+    padding: 80px 1vh;
+    backdrop-filter: blur(14px);
     border-radius: 15px;
+    border-radius: 5px;
+    backdrop-filter: blur(14px);
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 15px 25px rgba(129, 124, 124, 0.2);
 }
 
 .inner {
@@ -57,7 +61,23 @@ button:hover {
 
 .response {
     padding: 10px;
+    text-align:center;
     border-radius: 20px;
-    margin: 10px 5px;
+    margin: 20px auto;
     display: none;
+}
+
+
+
+@media screen and (max-width: 375px){
+    .outer{
+        width: 90%;
+        height: auto;
+    }
+    .inner{
+        width: 57%;
+        height: auto;
+        padding: 40px;
+    }
+
 }

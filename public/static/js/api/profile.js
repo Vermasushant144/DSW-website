@@ -7,6 +7,7 @@ var onLoad = async()=>{
             }
         });
         if(response){
+            console.log(response);
             let innerHtml = await response.text();
             $("#editable").html(innerHtml);
         }

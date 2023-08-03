@@ -107,15 +107,7 @@ overflow: hidden;
 height: 100%;
 margin-top: 0%;
 margin-bottom: 10%;
-<<<<<<< Updated upstream
 /* float: right; */
-=======
-<<<<<<< HEAD
-float: right;
-=======
-/* float: right; */
->>>>>>> f88317be6ec512c44af390b50c7c1ac81be1f7e5
->>>>>>> Stashed changes
 width: 48%;
 display: inline-block;
 }
@@ -148,11 +140,6 @@ body {
   max-height: 500px;
   width: 100%;
   border-radius: 5%;
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-=======
->>>>>>> Stashed changes
 }
 
 .ball{
@@ -160,10 +147,6 @@ body {
 }
 .ball div{
   margin:auto;
-<<<<<<< Updated upstream
-=======
->>>>>>> f88317be6ec512c44af390b50c7c1ac81be1f7e5
->>>>>>> Stashed changes
 }
 
 .club-details {
@@ -208,23 +191,9 @@ body {
   display: inline-block;
   position: relative;
   overflow: hidden;
-<<<<<<< Updated upstream
   height: 100%;
   width: auto;
   padding:20px;
-=======
-<<<<<<< HEAD
-  height: 40%;
-  margin-top: 10%;
-  float: none;
-  width: 100%;
-  display: inline-block;
-=======
-  height: 100%;
-  width: auto;
-  padding:20px;
->>>>>>> f88317be6ec512c44af390b50c7c1ac81be1f7e5
->>>>>>> Stashed changes
 }
 
 #container img {
@@ -420,7 +389,7 @@ p2 {
 
 
 .team {
-  background: white;
+  /* background: white; */
   width: 100%;
 
 
@@ -453,7 +422,7 @@ p2 {
 }
 
 .child img {
-  width: 70%;
+  width: 64%;
   height: 90%;
   align-items: center;
   justify-content: center;
@@ -535,15 +504,7 @@ p2 {
 
 
 
-<<<<<<< Updated upstream
 /* h1 {
-=======
-<<<<<<< HEAD
-h1 {
-=======
-/* h1 {
->>>>>>> f88317be6ec512c44af390b50c7c1ac81be1f7e5
->>>>>>> Stashed changes
   font-size: 17px;
   align-items: center;
   justify-content: center;
@@ -1018,13 +979,6 @@ h6 {
 *::after {
 padding: 0;
 margin: 0;
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-box-sizing: border-box;
-=======
->>>>>>> f88317be6ec512c44af390b50c7c1ac81be1f7e5
->>>>>>> Stashed changes
 }
 
 /* ================= VARIABLE ================ */
@@ -1045,16 +999,6 @@ list-style: none;
 }
 a {
 text-decoration: none;
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-}
-img {
-width: 100%;
-height: auto;
-=======
->>>>>>> f88317be6ec512c44af390b50c7c1ac81be1f7e5
->>>>>>> Stashed changes
 }
 .bx {
 font-size: 2.5rem;
@@ -1528,10 +1472,10 @@ input[type="submit"] {
   color: hsla(0, 0%, 98%, 0.322);
   font-size: 0.8rem;
 }
-<<<<<<< Updated upstream
 }
-/* registation form */
+  
 
+/* registation form */
 
 .page-content {
 	width: 100%;
@@ -1703,6 +1647,4 @@ input:-moz-placeholder { /* Firefox 18- */
 	.form-v6-content .form-detail .form-row input {
 	    width: 89%;
 	}
-=======
->>>>>>> Stashed changes
 }

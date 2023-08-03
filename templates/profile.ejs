@@ -5,36 +5,48 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- jquery Link -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <title>Profile(<%=user.name%>)</title>
     <style>
         body {
-            /* background-color: black; */
-            /* background: url(avatar_bg.jpg); */
+            background-color: slateblue;
+             
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
+            display:flex;
+            margin-top: 50px;
         }
-
         .card {
-            margin: 100px 400px;
+            margin: auto;
             box-shadow: 0 4px 8px 0 rgba(244, 224, 1, 0.2);
             width: 400px;
-            height: 40%;
-            background-color: bisque;
-            border: solid black;
+            height: auto;
+           
             border-radius: 8px;
             padding: 40px;
             text-align: center;
             line-height: 2px;
 
         }
+        .card{
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            max-width: 200px;
+            margin: auto;
+            text-align: center;
+            font-family: arial;
+            height:auto;
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
 
         .title {
-            color: grey;
+            color: black;
             font-size: 18px;
         }
 
-        /* button {
+        button {
             border: none;
             outline: 0;
             display: inline-block;
@@ -45,7 +57,7 @@
             cursor: pointer;
             width: 100%;
             font-size: 18px;
-        } */
+        } 
 
         a {
             text-decoration: none;
@@ -53,12 +65,11 @@
             color: black;
         }
 
-        /* button:hover,
+        button:hover,
         a:hover {
             opacity: 0.7;
-        } */
+        } 
     </style>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     
 </head>
 <script>
@@ -71,14 +82,14 @@
 
     <div class="card" >
         <div>
-            <img src=<%=user.avatar%> alt="Avatar" style="width: 100px;">
+            <img src=<%=user.avatar%> alt="Avatar" style="width: 100px; " >
         </div>
         <div class="title">
         <h1><%=user.name%></h1><br>
         <h2><%=user.ERP_ID%></h2><br>
                <h2><%=user.branch%></h2><br>
-                <h2><%=user.year%></h2><br>
-
+                <h2><%=user.year%> year</h2><br>
+                   
                             <!--  On click edit profile open form to edit profile-->
                             <div id="editable">
 

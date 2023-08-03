@@ -45,6 +45,7 @@ loginform.addEventListener("submit", async (e) => {
         body: JSON.stringify(jsonData),
     });
     response = await response.json();
+    console.log(response.status);
     if (response.status == 200) {
         localStorage.setItem("token",response.token);
         window.location.href = "/";
