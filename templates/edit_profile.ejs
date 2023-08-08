@@ -1,6 +1,6 @@
 <!-- part of profile section use for editing profile -->
 <div>
-    <button id="editProfile" class="button" onclick="editProfileToggle()" >Edit Profile</button><br>
+    <button id="editProfile" onclick="editProfileToggle()" >Edit Profile</button><br>
     <button id="logout" onclick="logout()">Logout</button>
     <form method="POST" action="/profile/edit_profile" id="editProfileForm" style="display: none;" enctype="multipart/form-data">
         <input type="text" name="name" id="name"><br>

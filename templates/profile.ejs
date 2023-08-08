@@ -50,7 +50,20 @@
             font-size: 15px;
             
           }
-        .button {
+
+          .card input {
+            font-family: "Poppins", sans-serif;
+            outline: 0;
+            background: #f2f2f2;
+            width: 100%;
+            border: 0;
+            border-radius: 7px;
+            margin: 0 0 15px;
+            padding: 15px;
+            box-sizing: border-box;
+            font-size: 15px;
+          }
+        .btn3 {
             font-family: "Poppins", sans-serif;
             text-transform: uppercase;
             outline: 0;
@@ -91,7 +104,24 @@
         <h2><%=user.ERP_ID%></h2><br>
                <h2><%=user.branch%></h2><br>
                 <h2><%=user.year%> year</h2><br>
-                   
+                <div>
+             
+                    <button id="editProfile" class="btn3" onclick="editProfileToggle()" >Edit Profile</button><br>
+                    <button id="logout" class="btn3" onclick="logout()">Logout</button>
+
+                    <form method="POST" action="/profile/edit_profile" id="editProfileForm" style="display: none;" enctype="multipart/form-data">
+                        <input type="text" name="name" id="name"><br>
+                        <input type="text" name="branch" id="branch"><br>
+                        <input type="number" name="year" id="year"><br>
+                        <input type="text" name="gender" id="gender" ><br>
+                        <input type="number" name="whatsapp" id="whatsapp" placeholder="whatsapp Number"><br>
+                        <input type="number" name="contactNo" id="contactNo" placeholder="contactNo"><br>
+                        <input type="text" name="linkedin" id="linkedIn"><br>
+                        <input type="file" name="avatar" id="avatar" accept="image/*" multiple="false"><br>
+                        <button type="submit">Update</button>
+                    </form>
+                <div>
+                <script src="/static/js/api/edit_profile.js"></script>     
                             <!--  On click edit profile open form to edit profile-->
                             <div id="editable" class="button">
 
