@@ -17,13 +17,13 @@
           overflow: auto;
           font-family: "Poppins";
           background: lightblue;
-          background-repeat: no-repeat;
-          background-attachment: fixed;
-          background-size: cover;
-          display:flex;
-          margin-top: 50px;
-          width: 400px;
           
+          
+        }
+        .admin {
+            width: 400px;
+            padding: 0% 0 0;
+            margin: auto;
         }
         
         .card {
@@ -96,7 +96,7 @@
 <body onload="onLoad()">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-
+<div class="admin">
     <div class="card" >
         <div>
             <img src=<%=user.avatar%> alt="Avatar" style="width: 100px; " >
@@ -136,7 +136,7 @@
 </div>
 </div>
 </div>
-
+</div>
 <script src="/static/js/api/profile.js"></script>
 </body>
 
