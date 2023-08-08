@@ -57,11 +57,18 @@
 																id="email" placeholder="Enter ERP ID">
 														</div>
 													</div>
-													<div class="col-md-12">
+													<div class="col-md-6">
 														<div class="form-group">
 															<label class="label" for="branch">BRANCH</label>
 															<input type="message"  class="form-control" name="branch"
 																id="branch" placeholder="Enter Branch">
+														</div>
+													</div>
+													<div class="col-md-6">
+														<div class="form-group">
+															<label class="label" for="photo">PHOTO</label>
+															<input type="file"  class="form-control" name="photo"
+																id="photo" placeholder="Upload Photo">
 														</div>
 													</div>
 													
@@ -126,11 +133,12 @@
 			var branch = document.getElementById('branch').value;
 			var year = document.getElementById('year').value;
 			var club = document.getElementById('club').value;
+			var photo = document.getElementById('photo').value;
 
-			console.log('Name: ' + name + " " + email + " " + branch + " " + year + " " + club);
+			console.log('Name: ' + name + " " + email + " " + branch + " " + year + " " + club + " " + photo);
 
 			var url = "https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=Name: " +
-			name + "    Email: " + email + "    Branch: " + branch + "    Year: " + year + "    Club: " + club;
+			name + "    Email: " + email + "    Branch: " + branch + "    Year: " + year + "    Club: " + club  + "  Photo: " + photo;
 
 			var ifr = `<iframe src="${url}" height="200" width="200"></iframe>`;
 
