@@ -68,7 +68,7 @@ app.get("/", async (req, res) => {
 
 app.get("/unread-notification",verifyToken,async(req,res)=>{
   if(req.body.validation.verify){
-    let notifications = await messageModel.find({});
+    let notifications = await messageModel.find({access:req.body.validation.ERP_ID});
     // user = await userModel.find({name:req.body.validation.Name});
     for(let i=0;i<notifications.length;i++){
       if(!notifications[i].readed.includes(`${req.body.validation.ERP_ID}`)){
@@ -81,7 +81,7 @@ app.get("/unread-notification",verifyToken,async(req,res)=>{
 });
 app.get("/notification", verifyToken, async (req, res) => {
   if (req.body.validation.verify) {
-    let notifications = await messageModel.find({});
+    let notifications = await messageModel.find({access:req.body.validation.ERP_ID});
     notifications.sort((a, b) => {
       // Assuming 'date' is the field containing the date in each notification object
       const dateA = new Date(a.date);
