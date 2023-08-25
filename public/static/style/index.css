@@ -272,6 +272,25 @@ body{
   background-color:#000;
 }
 
+.team_heading{
+  font-size:45px;
+  margin:10px;
+}
+.parent{
+  width:fit-content;
+  margin:auto;
+}
+.child{
+  display:inline-block;
+  margin-inline: 20px;
+  text-align: center;
+}
+.child img{
+  height:300px;
+  width:auto;
+}
+
+
 #coty{
   display: flex;
   height: fit-content;
@@ -388,6 +407,47 @@ body{
     padding: 10px;
 }
 
+.ourDevs_heading hr{
+  margin:auto;
+  border:1px solid black;
+  width:10%;
+}
+.ourDevs_heading h1{
+  color:#202020;
+  text-align: center;
+  font-family: emoji;
+}
+#ourDevs_container{
+  width:fit-content;
+  margin:auto;
+  margin-top:20px;
+}
+.ourDevs_details{
+  display:inline-block;
+  text-align: center;
+  margin-inline: 20px;
+}
+.ourDevs_details img{
+  width:100px;
+  height:auto;
+  border-radius: 50px;
+}
+.ourDevs_details h1{
+  font-size:20px;
+  text-decoration: underline;
+}
+.ourDevs_details a{
+  color:black;
+}
+.ourDevs_container-2{
+  display:inline-block;
+}
+@media(max-width:745px){
+  .ourDevs_container-2{
+    display:block;
+  }
+}
+
 
 /* media query */
 @media (max-width: 422px) {
@@ -443,6 +503,14 @@ body{
   }
 
 }
+@media(max-width: 650px){
+  .child img{
+    height:35vw;
+  }
+  .child{
+    margin:auto;
+  }
+}
 /*  Get to know your team css */
     @media(max-width:375px) {
       .pho img {
@@ -470,11 +538,12 @@ body{
         max-height: 50%;
         top: 42%;
       }
-
-      .five {
-        font-size: 31px;
-        margin-left: 18px;
+      .ourDevs_container-2{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
+      
     }
 
     @media(max-width:320px) {
@@ -503,11 +572,6 @@ body{
         max-height: 76%;
         top: 37%;
       }
-
-      .five {
-        font-size: 31px;
-        margin-left: 18px;
-      }
     }
     @media (max-width:480px){
       .pho img {
@@ -518,12 +582,6 @@ body{
   overflow: auto;
 }
     }
-.five {
-  font-size: 35px;
-  margin-left: 5px;
-  /* margin-top: 30px; */
-  position: absolute;
-}
 @media(max-width: 414px) {
   .center {
     position: absolute;
@@ -531,6 +589,15 @@ body{
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 18px;
+  }
+  .parent {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .team_heading{
+    font-size:25px;
+  }
 }
 
 
@@ -573,10 +640,6 @@ body{
     position: relative;
     left: -16%;
 }
-.five {
-    font-size: 24px;
-    margin-left: 18px;
-}
 }
 @media(max-width:360px){
   .pho img {
@@ -603,9 +666,5 @@ body{
   top: 39%;
   position: relative;
   left: -13%;
-}
-.five {
-  font-size: 24px;
-  margin-left: 18px;
 }
 }

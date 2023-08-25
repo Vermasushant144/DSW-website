@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- jquery Link -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <title>Profile(<%=user.name%>)</title>
+    <link rel="stylesheet" href="/public/static/style/profile.css">
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Poppins:300);
+
+        body{
+          height: 100vh;
+          overflow: auto;
+          font-family: "Poppins";
+          background: lightblue;
+          
+          
+        }
+        .admin {
+            width: 400px;
+            padding: 0% 0 0;
+            margin: auto;
+        }
+        
+        .card {
+          position: relative;
+          z-index: 1;
+          background: #FFFFFF;
+          max-width: 400px;
+          margin: 0 auto 100px;
+          padding: 30px;
+          text-align: center;
+          border-radius: 10px;
+          box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+          
+        }
+        .title {
+            font-family: "Poppins", sans-serif;
+            outline: 0;
+            
+            width: 100%;
+            border: 0;
+            border-radius: 7px;
+            margin: 0 0 15px;
+            padding: 15px;
+            box-sizing: border-box;
+            font-size: 12px;
+            
+          }
+
+          .card input {
+            font-family: "Poppins", sans-serif;
+            outline: 0;
+            background: #f2f2f2;
+            width: 100%;
+            border: 0;
+            border-radius: 7px;
+            margin: 0 0 15px;
+            padding: 15px;
+            box-sizing: border-box;
+            font-size: 12px;
+          }
+        .btn3 {
+            font-family: "Poppins", sans-serif;
+            text-transform: uppercase;
+            outline: 0;
+            background: #234666;
+            width: 100%;
+            border: 5;
+            padding: 10px;
+            color: #FFFFFF;
+            border-radius: 7px;
+            font-size: 10px;
+            -webkit-transition: all 0.3 ease;
+            transition: all 0.3 ease;
+            cursor: pointer;
+            margin-top: 2%;
+            
+          }
+        .btn3:hover,.btn3:active,.btn3:focus {
+            background: #0e2941;
+          }
+         
+         
+    </style>
+    
+</head>
+<script>
+    window.user = <%-JSON.stringify(user)%>
+</script>
+
+<body onload="onLoad()">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="admin">
+    <div class="card" >
+        <div>
+            <img src=<%=user.avatar%> alt="Avatar" style="width: 100px; " >
+        </div>
+        <div class="title">
+        <h1><%=user.name%></h1><br>
+        <h2><%=user.ERP_ID%></h2><br>
+               <h2><%=user.branch%></h2><br>
+                <h2><%=user.year%> year</h2><br>
+                <div>
+             
+                    <button id="editProfile" class="btn3" onclick="editProfileToggle()" >Edit Profile</button><br>
+                    <button id="logout" class="btn3" onclick="logout()">Logout</button>
+
+                    <form method="POST" action="/profile/edit_profile" id="editProfileForm" style="display: none;" enctype="multipart/form-data">
+                        <input type="text" name="name" id="name"><br>
+                        <input type="text" name="branch" id="branch"><br>
+                        <input type="number" name="year" id="year"><br>
+                        <input type="text" name="gender" id="gender" ><br>
+                        <input type="number" name="whatsapp" id="whatsapp" placeholder="whatsapp Number"><br>
+                        <input type="number" name="contactNo" id="contactNo" placeholder="contactNo"><br>
+                        <input type="text" name="linkedin" id="linkedIn"><br>
+                        <input type="file" name="avatar" id="avatar" accept="image/*" multiple="false"><br>
+                        <button type="submit" class="btn3">Update</button>
+                    </form>
+                <div>
+                <script src="/static/js/api/edit_profile.js"></script>     
+                            <!--  On click edit profile open form to edit profile-->
+        </div>                   
+        </div>
+  <!-- <p><button>Contact Info : </button></p> -->
+        <h3>Contact Info : </h3>
+      <div>
+
+            <a href="<%=user.medialink.whatsapp%>"><i class="fa fa-whatsapp"></i></a>
+            <a href="<%=user.medialink.linkedin%>"><i class="fa fa-linkedin"></i></a>
+</div>
+</div>
+</div>
+</div>
+<script src="/static/js/api/profile.js"></script>
+</body>
+
+</html>

@@ -377,17 +377,6 @@ p2 {
 
 
 
-
-.five {
-  font-size: 49px;
-  margin-left: 52px;
-  /* margin-top: 30px; */
-  position: absolute;
-  /* text-shadow: 2px 2px 4px #000000; */
-}
-
-
-
 .team {
   /* background: white; */
   width: 100%;
@@ -406,55 +395,6 @@ p2 {
 
 
 
-.parent {
-  display: grid;
-  grid-template-columns: repeat(3, 0.5fr);
-  gap: 10px;
-
-
-}
-
-.child {
-  display: grid;
-  place-items: center;
-  padding: 47px;
-
-}
-
-.child img {
-  width: 64%;
-  height: 90%;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid black;
-  /* border-radius: 50%; */
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-@media(max-width:700px) {
-  .parent {
-      grid-template-columns: repeat(2, 1fr);
-  }
-
-
-}
-
-@media(max-width:480px) {
-  .parent {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 4px;
-
-  }
-
-  .child img {
-      width: 140%;
-      height: 145px;
-      align-items: center;
-      gap: 1px;
-      border-radius: 12px;
-  }
-}
-
 .parent1 {
   display: grid;
   grid-template-columns: repeat(3, 0.5fr);
@@ -467,6 +407,7 @@ p2 {
   display: grid;
   place-items: center;
   padding: 40px;
+  
 
 }
 
@@ -511,12 +452,6 @@ p2 {
 
 } */
 
-.inn {
-  font-size: 14px;
-  align-items: center;
-  justify-content: center;
-
-}
 
 .club p {
   font-size: 50px;

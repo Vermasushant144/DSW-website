@@ -5,7 +5,6 @@ const bodyParser = require("body-parser");
 const path = require("path")
 require("dotenv").config();
 require("./db/config.js");
-const userModel = require("./db/users.js");
 const clubModel = require("./db/clubs.js");
 const mainModel = require("./db/main.js");
 const eventModel = require("./db/events.js");
@@ -16,11 +15,11 @@ const app = express();
 
 //MiddleWare
 app.set("view engine","ejs");//configuring templates files to ejs extension
-app.use(express.static(path.join(__dirname,"./public")));//location of static file
+app.set("views",path.join(__dirname,"views"))//configuring templates files to ejs extension
+app.use(express.static(path.join(__dirname,"public")));//location of static file
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
 
-var templates = __dirname+"/templates";
 var public  =  __dirname+"/public";
 
 
@@ -45,7 +44,7 @@ const verifyToken = async(req,res,next)=>{
     
 }
 
-module.exports = {templates,public,verifyToken};
+module.exports = {public,verifyToken};
 app.get("/", async (req, res) => {
     let main = await mainModel.findOne({});
     let events = await eventModel.find({},{_id:0});
@@ -58,7 +57,7 @@ app.get("/", async (req, res) => {
         liveEvents.push(events[i]);
       }
     }
-    res.render(templates + "/index.ejs", {
+    res.render("index.ejs", {
       main: main,
       SERVER_DIR: process.env.SERVER_DIR,
       events: liveEvents,
@@ -115,6 +114,6 @@ app.use('/club',require("./routes/club.js"))
 app.use('/profile',require("./routes/profile.js"))
 // app.use("/notification",require("./routes/notifiction.js"))
 
-app.listen(3000,()=>{
-    console.log("Listening to port 3000")
+app.listen(process.env.PORT || 3000,()=>{
+    console.log("Listening ...");
 })

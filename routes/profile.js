@@ -5,20 +5,20 @@ require("dotenv").config();
 
 require("../db/config")
 const userModel = require("../db/users")
-var {templates, verifyToken} = require("../server");
+var {verifyToken} = require("../server");
 const path = require("path");
 
 route.get("/:ERP_ID",async(req,res)=>{
     var user=await userModel.findOne({ERP_ID:req.params.ERP_ID},"-password -_id -access -accessID");
     if(user && user.isverified){
-        res.render(templates+"/profile.ejs",{user:user,store:null})
+        res.render("profile.ejs",{user:user,store:null})
     }else{
-        res.render(templates+"/error.ejs")
+        res.render("error.ejs")
     }
 });
 route.get("/:ERP_ID/isOwner",verifyToken,async(req,res)=>{
     if(req.body.validation.verify && req.body.validation.ERP_ID==req.params.ERP_ID){
-        res.render(templates+"/edit_profile.ejs");
+        res.render("edit_profile.ejs");
     }else{
         res.send(null);
     }

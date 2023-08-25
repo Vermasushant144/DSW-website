@@ -10,12 +10,12 @@ const router = express();
 
 require("../db/config");
 const userModel = require("../db/users")
-let {templates, verifyToken}= require("../server.js");
+let {verifyToken}= require("../server.js");
 
 
 router.get('/login',verifyToken,(req,res)=>{
     if(!req.body.validation.verify){
-        res.render(templates+"/auth/login.ejs");
+        res.render("auth/login.ejs");
     }else{
         res.redirect("/profile/"+user.ERP_ID)
     }
@@ -67,9 +67,9 @@ router.post("/forgetPassword",async(req,res)=>{
 router.get("/resetpassword/:id",async(req,res)=>{
     let user = await userModel.findOne({_id:req.params.id});
     if(user){
-        res.render(templates+"/auth/resetpassword.ejs",{userID:user._id})
+        res.render("auth/resetpassword.ejs",{userID:user._id})
     }else{
-        res.render(templates+"/error.ejs",{code:404});
+        res.render("error.ejs",{code:404});
     }
 })
 
@@ -87,7 +87,7 @@ router.post("/resetpassword/:id",async(req,res)=>{
 
 router.get("/register",verifyToken,(req,res)=>{
     if(!req.body.validation.verify){
-        res.render(templates+"/auth/register.ejs");
+        res.render("register.ejs");
     }else{
         res.redirect("/profile/"+req.body.validation.ERP_ID);
     }
@@ -108,7 +108,7 @@ var upload = multer({
 router.post("/register",upload.single("avatar"),async(req,res)=>{
         let user = await userModel.findOne({ERP_ID:req.body.ERP_ID})
         if(user && user.isverified){
-            res.render(templates+"/error.ejs",{code:404});
+            res.render("error.ejs",{code:404});
         }else{
             let validateERP_ID = await userModel.findOne({ERP_ID:req.body.ERP_ID})
             if(req.body.password==req.body.conformpassword && (validateERP_ID==null || validateERP_ID.ERP_ID!=req.body.ERP_ID)){
@@ -148,9 +148,9 @@ router.get('/verify/:id',async(req,res)=>{
     if(user){
         user.isverified=true;
         await user.save();
-        res.render(templates+"/auth/verification.ejs");
+        res.render("verification.ejs");
     }else{
-        res.render(templates+"/error.ejs",{code:404});
+        res.render("error.ejs",{code:404});
     }
 })
 
