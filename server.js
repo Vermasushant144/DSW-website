@@ -47,10 +47,18 @@ const verifyToken = async(req,res,next)=>{
 module.exports = {public,verifyToken};
 app.get("/", async (req, res) => {
     let main = await mainModel.findOne({});
+    
     let events = await eventModel.find({},{_id:0});
     let coty = await clubModel.findOne({_id:main.clubOftheYear},{name:1,icon:1,_id:0});//coty => club of the year
     let currentDate = new Date();
     let liveEvents = [];
+    if(!main || !coty){
+      res.render("index.ejs",{main: {},
+        SERVER_DIR: process.env.SERVER_DIR,
+        events: [],
+        coty:{}});
+      return;
+    }
     for (let i = 0; i < events.length; i++) {
       let eventDate = new Date(events[i].Date);
       if (currentDate <= eventDate) {

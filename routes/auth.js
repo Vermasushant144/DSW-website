@@ -87,7 +87,7 @@ router.post("/resetpassword/:id",async(req,res)=>{
 
 router.get("/register",verifyToken,(req,res)=>{
     if(!req.body.validation.verify){
-        res.render("register.ejs");
+        res.render("auth/register.ejs");
     }else{
         res.redirect("/profile/"+req.body.validation.ERP_ID);
     }
@@ -106,6 +106,7 @@ var upload = multer({
 });
 
 router.post("/register",upload.single("avatar"),async(req,res)=>{
+    console.log(req.body);
         let user = await userModel.findOne({ERP_ID:req.body.ERP_ID})
         if(user && user.isverified){
             res.render("error.ejs",{code:404});
