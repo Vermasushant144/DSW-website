@@ -52,8 +52,15 @@ app.get("/", async (req, res) => {
     let coty = await clubModel.findOne({_id:main.clubOftheYear},{name:1,icon:1,_id:0});//coty => club of the year
     let currentDate = new Date();
     let liveEvents = [];
-    if(!main || !coty){
+    if(!main){
       res.render("index.ejs",{main: {},
+        SERVER_DIR: process.env.SERVER_DIR,
+        events: [],
+        coty:{}});
+      return;
+    }
+    if(!coty){
+      res.render("index.ejs",{main: main,
         SERVER_DIR: process.env.SERVER_DIR,
         events: [],
         coty:{}});
