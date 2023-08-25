@@ -149,7 +149,7 @@ router.get('/verify/:id',async(req,res)=>{
     if(user){
         user.isverified=true;
         await user.save();
-        res.render("verification.ejs");
+        res.render("auth/verification.ejs");
     }else{
         res.render("error.ejs",{code:404});
     }
