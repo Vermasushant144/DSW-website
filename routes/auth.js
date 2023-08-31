@@ -1,7 +1,9 @@
 const express=require("express");
 const fs = require('fs')
 const jwt = require("jsonwebtoken");
-const multer = require('multer')
+const multer = require('multer');
+const multerS3 = require("multer-s3");
+const AWS = require("aws-sdk");
 require("dotenv").config();
 
 
@@ -93,14 +95,19 @@ router.get("/register",verifyToken,(req,res)=>{
     }
 })
 
+AWS.config.update({
+    accessKeyId: process.env.accessKeyId,
+    secretAccessKey: process.env.secretAccessKey,
+})
+const s3 = new AWS.S3();
 var upload = multer({
-    storage:multer.diskStorage({
-        destination:(req,file,cb)=>{
-            
-            cb(null,'public/dynamic/images')
-        },
-        filename:(req,file,cb)=>{
-            cb(null,req.body.ERP_ID+"-avatar.png")
+    
+    storage: multerS3({
+        s3: s3,
+        bucket: 'niet-dsw',
+        contentType: multerS3.AUTO_CONTENT_TYPE,
+        key: (req, file, cb) => {
+            cb(null,req.body.ERP_ID+Date.now()+"-avatar")
         }
     })
 });
@@ -119,7 +126,7 @@ router.post("/register",upload.single("avatar"),async(req,res)=>{
                     year:req.body.year,
                     branch:req.body.branch,
                     ERP_ID:req.body.ERP_ID,
-                    avatar:"/dynamic/images/"+req.body.ERP_ID+"-avatar.png",
+                    avatar:"/files/"+req.body.ERP_ID+"-avatar",
                     contactNo:req.body.contactNo,
                     medialink:{
                         whatsapp:"https://wa.me/"+req.body.whatsapp,

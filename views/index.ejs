@@ -16,7 +16,7 @@
     </style>
 </head>
 <script>
-    window.SERVER_DIR = '<%=SERVER_DIR%>';
+    window.SERVER_DIR = '';
 </script>
 <!-- Popup Background Screen -->
 <div id="popup-screen">
@@ -25,7 +25,7 @@
 <body onload="onLoad()">
     <nav id="navbar1">
         <div>
-            <img src="<%=SERVER_DIR%><%=main.icon%>" alt="logo">
+            <img src="<%=main.icon%>" alt="logo">
         </div>
         <div id="nav1-links">
             <div id="search">
@@ -51,7 +51,7 @@
     <!--Video Conatiner  -->
     <div id="main-video">
         <video style="width: 60%; " loop muted autoplay="autoplay">
-            <source src="<%=SERVER_DIR%><%=main.video%>" type="video/mp4">
+            <source src="<%=main.video%>" type="video/mp4">
         </video>
     </div>
     <!-- Event popup Screen --->
@@ -61,7 +61,7 @@
             <%for(let i=0;i<events.length;i++){%>
                 <%let dateString=events[i].Date.split("-");%>
                     <button class="live-event" onclick="eventpop(<%=JSON.stringify(events[i])%>)">
-                        <img src="<%=SERVER_DIR%><%=events[i].icon%>" alt="clubIcon">
+                        <img src="<%=events[i].icon%>" alt="clubIcon">
                         <h4 class="event-description">
                             <%=events[i].Name%>&nbsp;Organised by&nbsp;<%=events[i].clubName%>&nbsp;on&nbsp;
                                     <%=dateString[2]%>-<%=dateString[1]%>-<%=dateString[0]%>
@@ -121,7 +121,7 @@
             </h1>
         </div>
         <div id="coty-container2">
-            <img id="coty-img" src="<%=SERVER_DIR%><%=coty.icon%>" alt="Club-of-the-year-NIET">
+            <img id="coty-img" src="<%=coty.icon%>" alt="Club-of-the-year-NIET">
         </div>
     </div>
 

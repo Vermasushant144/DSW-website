@@ -9,6 +9,13 @@ const clubModel = require("./db/clubs.js");
 const mainModel = require("./db/main.js");
 const eventModel = require("./db/events.js");
 const messageModel = require("./db/messages.js")
+const AWS = require('aws-sdk');
+
+AWS.config.update({
+    accessKeyId: process.env.accessKeyId,
+    secretAccessKey: process.env.secretAccessKey,
+})
+const s3 = new AWS.S3();
 
 
 const app = express();
@@ -44,7 +51,7 @@ const verifyToken = async(req,res,next)=>{
     
 }
 
-module.exports = {public,verifyToken};
+
 app.get("/", async (req, res) => {
     let main = await mainModel.findOne({});
     
@@ -124,6 +131,44 @@ app.put("/notification-readed",verifyToken,async(req,res)=>{
   }
 });
 
+
+// set file operation
+
+app.get("/files/:key", async (req, res) => {
+    
+  var getParams = {
+      Bucket: 'niet-dsw',
+      Key: req.params.key
+  }
+  try {
+      // var data = await s3.getObject(getParams).promise();
+      var object = s3.getObject(getParams).createReadStream();
+      object.pipe(res);
+      return;
+
+  } catch (e) {
+      console.log("Error fetching object:", e);
+      return res.json({ error: "error occuur while fetching object" });
+  }
+})
+
+const unlinkFileStream = async(key)=>{
+  var params = {
+      Bucket:"niet-dsw",
+      Key:key
+  }
+  s3.deleteObject(params,(err,data)=>{
+      if(err){
+          console.log("Got error on deleting:",err);
+          return {status:400};
+      }else{
+          console.log("delete sucessfully:)");
+          return {status:200};
+      }
+  });
+}
+
+module.exports = {public,verifyToken,unlinkFileStream};
 app.use('/auth',require("./routes/auth.js"))
 app.use('/club',require("./routes/club.js"))
 app.use('/profile',require("./routes/profile.js"))

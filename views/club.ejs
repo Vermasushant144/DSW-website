@@ -10,9 +10,7 @@
         <%=club.name%>
     </title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script>
-        window.SERVER_DIR = "<%=SERVER_DIR%>";
-    </script>
+
     <script src="/static/js/api/club.js"></script>
 
     <style>
@@ -517,12 +515,6 @@ width:100%;
             }
         }
 
-@media only screen(max-width:414px){
-    
-
-    
-}
-
 
         .new_footer_area {
             background: #fbfbfd;
@@ -785,7 +777,6 @@ width:100%;
         .total h1{
             max-height: max-content;
             background-position: center;
-            background-image: url('%=SERVER_DIR%');
             -webkit-background-clip: text;
             background-clip: text;
         
@@ -844,7 +835,7 @@ width:100%;
             </div>
         
             
-            <div class="pho"> <img src="<%=SERVER_DIR%><%=club.icon%>">
+            <div class="pho"> <img src="<%=club.icon%>">
             </div>
             </div>
     
@@ -871,7 +862,7 @@ width:100%;
 
             <%if(events.length>0){for(let i=0;i<events.length;i++){%>
                     <div class="card">
-                        <img src='<%=SERVER_DIR%><%=events[i].icon%>'>
+                        <img src='<%=events[i].icon%>'>
                         <div class="bo">
                             <h3>
                                 <%=events[i].Name%>
