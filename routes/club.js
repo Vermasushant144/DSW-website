@@ -1,7 +1,7 @@
 const express=require("express");
 const route = express();
 require("dotenv").config();
-let {templates}  = require("../server");
+
 require("../db/config.js");
 const userModel = require("../db/users");
 const clubModel = require("../db/clubs");
@@ -13,11 +13,11 @@ route.get("/searchClubs",async(req,res)=>{
 });
 
 route.get("/booking",async(req,res)=>{
-    res.render(templates+"/booking.ejs");
+    res.render("booking.ejs");
 });
 
 route.get("/ticket",async(req,res)=>{
-    res.render(templates+"/ticket.ejs");
+    res.render("ticket.ejs");
 });
 
 route.get("/:club",async(req,res)=>{
@@ -38,7 +38,7 @@ route.get("/:club",async(req,res)=>{
         });
     }
     if(club){
-        res.render(templates+"/club.ejs",{club:club,SERVER_DIR:process.env.SERVER_DIR,events:events})
+        res.render("club.ejs",{club:club,SERVER_DIR:process.env.SERVER_DIR,events:events})
     }else{
         res.send("Club not found!!")
     }
