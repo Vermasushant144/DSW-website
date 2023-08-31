@@ -47,7 +47,7 @@ const searchClubs = async(value)=>{
     for(let i=0;i<response.clubs.length;i++){
         container.html(
             container.html()+`<a href="/club/${response.clubs[i].name}" style="display: flex;">
-                <img src="${window.SERVER_DIR+response.clubs[i].icon}" width="50px" height="50px" alt="clubIcon">
+                <img src="${response.clubs[i].icon}" width="50px" height="50px" alt="clubIcon">
                 <h3>${response.clubs[i].name}</h3>
             </a>`
         );
@@ -60,7 +60,7 @@ $("#search-input").on("blur",()=>{
 });
 
 const eventpop = (event)=>{
-    $("#event-popup-img").attr("src",window.SERVER_DIR+event.icon);
+    $("#event-popup-img").attr("src",event.icon);
     $("#event-popup-name").text(event.Name);
     $("#event-popup-clubName").text(event.clubName);
     let dateString = event.Date.split("-");
