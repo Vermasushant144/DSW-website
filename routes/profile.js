@@ -1,38 +1,47 @@
 const route = require("express")()
-const fs = require('fs')
-const multer = require('multer')
+const fs = require('fs');
+const multer = require('multer');
+const multerS3 = require("multer-s3");
+const AWS = require('aws-sdk');
 require("dotenv").config();
 
 require("../db/config")
 const userModel = require("../db/users")
-var {templates, verifyToken} = require("../server");
+var {verifyToken,unlinkFileStream} = require("../server");
 const path = require("path");
 
 route.get("/:ERP_ID",async(req,res)=>{
     var user=await userModel.findOne({ERP_ID:req.params.ERP_ID},"-password -_id -access -accessID");
     if(user && user.isverified){
-        res.render(templates+"/profile.ejs",{user:user,store:null})
+        res.render("profile.ejs",{user:user,store:null})
     }else{
-        res.render(templates+"/error.ejs")
+        res.render("error.ejs")
     }
 });
 route.get("/:ERP_ID/isOwner",verifyToken,async(req,res)=>{
     if(req.body.validation.verify && req.body.validation.ERP_ID==req.params.ERP_ID){
-        res.render(templates+"/edit_profile.ejs");
+        res.render("edit_profile.ejs");
     }else{
         res.send(null);
     }
 });
+
+AWS.config.update({
+    accessKeyId: process.env.accessKeyId,
+    secretAccessKey: process.env.secretAccessKey,
+})
+const s3 = new AWS.S3();
 var upload = multer({
-    storage: multer.diskStorage({
-      destination: (req, file, cb) => {
-        cb(null, 'public/dynamic/images');
-      },
-      filename: (req, file, cb) => {
-          cb(null, req.body.ERP_ID+Date.now()+ "-avatar."+file.mimetype.split("/").pop());
-      }
+    
+    storage: multerS3({
+        s3: s3,
+        bucket: 'niet-dsw',
+        contentType: multerS3.AUTO_CONTENT_TYPE,
+        key: (req, file, cb) => {
+            cb(null,req.body.ERP_ID+Date.now()+ "-avatar");
+        }
     })
-  });
+});
   
 route.post("/edit_profile", upload.fields([{ name: 'avatar', maxCount: 1 }]), verifyToken, async (req, res) => {
 if (req.body.validation.verify && req.body.validation.ERP_ID) {
@@ -46,12 +55,9 @@ if (req.body.validation.verify && req.body.validation.ERP_ID) {
     user.gender = req.body.gender;
     if (req.files['avatar']) {
     const file = req.files['avatar'][0];
-    fs.unlink(path.join("public", user.avatar), (err) => {
-        if (err) {
-        console.log("file not exist error=>", err);
-        }
-    });
-    user.avatar = "/dynamic/images/" + file.filename;
+    var fileList = user.avatar.split("/");
+    await unlinkFileStream(fileList[fileList.length-1]);
+    user.avatar = "/files/" + file.key;
     }
     await user.save();
     res.send({ status: "ok" });

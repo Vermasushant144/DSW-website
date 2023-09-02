@@ -1,7 +1,9 @@
 const express=require("express");
 const fs = require('fs')
 const jwt = require("jsonwebtoken");
-const multer = require('multer')
+const multer = require('multer');
+const multerS3 = require("multer-s3");
+const AWS = require("aws-sdk");
 require("dotenv").config();
 
 
@@ -10,12 +12,12 @@ const router = express();
 
 require("../db/config");
 const userModel = require("../db/users")
-let {templates, verifyToken}= require("../server.js");
+let {verifyToken}= require("../server.js");
 
 
 router.get('/login',verifyToken,(req,res)=>{
     if(!req.body.validation.verify){
-        res.render(templates+"/auth/login.ejs");
+        res.render("auth/login.ejs");
     }else{
         res.redirect("/profile/"+user.ERP_ID)
     }
@@ -67,9 +69,9 @@ router.post("/forgetPassword",async(req,res)=>{
 router.get("/resetpassword/:id",async(req,res)=>{
     let user = await userModel.findOne({_id:req.params.id});
     if(user){
-        res.render(templates+"/auth/resetpassword.ejs",{userID:user._id})
+        res.render("auth/resetpassword.ejs",{userID:user._id})
     }else{
-        res.render(templates+"/error.ejs",{code:404});
+        res.render("error.ejs",{code:404});
     }
 })
 
@@ -87,28 +89,34 @@ router.post("/resetpassword/:id",async(req,res)=>{
 
 router.get("/register",verifyToken,(req,res)=>{
     if(!req.body.validation.verify){
-        res.render(templates+"/auth/register.ejs");
+        res.render("auth/register.ejs");
     }else{
         res.redirect("/profile/"+req.body.validation.ERP_ID);
     }
 })
 
+AWS.config.update({
+    accessKeyId: process.env.accessKeyId,
+    secretAccessKey: process.env.secretAccessKey,
+})
+const s3 = new AWS.S3();
 var upload = multer({
-    storage:multer.diskStorage({
-        destination:(req,file,cb)=>{
-            
-            cb(null,'public/dynamic/images')
-        },
-        filename:(req,file,cb)=>{
-            cb(null,req.body.ERP_ID+"-avatar.png")
+    
+    storage: multerS3({
+        s3: s3,
+        bucket: 'niet-dsw',
+        contentType: multerS3.AUTO_CONTENT_TYPE,
+        key: (req, file, cb) => {
+            cb(null,req.body.ERP_ID+Date.now()+"-avatar")
         }
     })
 });
 
 router.post("/register",upload.single("avatar"),async(req,res)=>{
+    console.log(req.body);
         let user = await userModel.findOne({ERP_ID:req.body.ERP_ID})
         if(user && user.isverified){
-            res.render(templates+"/error.ejs",{code:404});
+            res.render("error.ejs",{code:404});
         }else{
             let validateERP_ID = await userModel.findOne({ERP_ID:req.body.ERP_ID})
             if(req.body.password==req.body.conformpassword && (validateERP_ID==null || validateERP_ID.ERP_ID!=req.body.ERP_ID)){
@@ -118,7 +126,7 @@ router.post("/register",upload.single("avatar"),async(req,res)=>{
                     year:req.body.year,
                     branch:req.body.branch,
                     ERP_ID:req.body.ERP_ID,
-                    avatar:"/dynamic/images/"+req.body.ERP_ID+"-avatar.png",
+                    avatar:"/files/"+req.body.ERP_ID+"-avatar",
                     contactNo:req.body.contactNo,
                     medialink:{
                         whatsapp:"https://wa.me/"+req.body.whatsapp,
@@ -148,9 +156,9 @@ router.get('/verify/:id',async(req,res)=>{
     if(user){
         user.isverified=true;
         await user.save();
-        res.render(templates+"/auth/verification.ejs");
+        res.render("auth/verification.ejs");
     }else{
-        res.render(templates+"/error.ejs",{code:404});
+        res.render("error.ejs",{code:404});
     }
 })
 
