@@ -826,16 +826,36 @@ width:100%;
 <body onload="onLoad('<%=club.name%>')">
     <div class="what">
         <div class="both">
-            <div class="five">
-                Get to Know <%=club.name%>
+            <div class="club-description">
+                <h1>Welcome to the <%=club.name%></h1>
+                <p>Yaha add karna hai</p>
             </div>
-            <br>
-            <br>
-            <br>
-            <hr>
-            <div class="main">
-                <%=club.name%>Club
-            </div>
+            <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .club-description {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+        }
+        /* Style the heading */
+        h1 {
+            font-size: 36px;
+            color: rgb(226, 43, 43);
+            margin-bottom: 20px;
+        }
+        /* Style the paragraphs */
+        p {
+            font-size: 18px;
+            line-height: 1.5;
+            margin-bottom: 10px;
+            font-family: Trebuchet MS, sans-serif;
+        }
+    </style>
             <br>
             <div class="total">
                 <h1> Total Number of members &nbsp;
