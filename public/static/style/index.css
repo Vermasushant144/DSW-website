@@ -458,7 +458,10 @@ body{
     right: 0px;
   }
   #search-input{
-    margin: auto;
+    position: absolute;
+    height: 54px;
+    width: 100%;
+    top: -20px;
   }
   #coty{
     display: block;
@@ -640,7 +643,6 @@ body{
     top: 35%;
     position: relative;
     left: -16%;
-}
 }
 @media(max-width:360px){
   .pho img {
