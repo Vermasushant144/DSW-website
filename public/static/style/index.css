@@ -14,7 +14,7 @@ body{
 }
 #navbar1 img{
   margin-left:10px;
-  width: 80px;
+  height: 50px;
 }
 #nav1-links{
   display:flex;
@@ -24,13 +24,14 @@ body{
 }
 #search{
   margin-right:0px;
-  /* position:absolute; */
+  display: flex;
+  align-items: center;
   width:0px;
   transition: width 0.3s ease-in-out;
 }
 #search-input{
-  margin-top:25px;
   font-size: 20px;
+  width:80%;
   /* padding:5px; */
   outline: none;
   border:0px; 
@@ -46,11 +47,11 @@ body{
   border: 0px;
   color: white;
 }
-#search-btn-icon:hover{
+/* #search-btn-icon:hover{
   color:black;
   background-color:rgb(123, 123, 123);
   transition-duration: 0.3s;
-}
+} */
 #pvtComponent1{
   display: flex;
   margin:auto 10px;
@@ -97,7 +98,7 @@ body{
   position:absolute;
   z-index: 1;
   overflow: visible;
-  z-index: 1;
+  top:43px;
 }
 #suggestionClubs h3{
   margin:auto;
