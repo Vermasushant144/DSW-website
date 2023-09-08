@@ -112,21 +112,19 @@ var upload = multer({
     })
 });
 
-router.post("/register",upload.single("avatar"),async(req,res)=>{
+router.post("/register",async(req,res)=>{
     console.log(req.body);
         let user = await userModel.findOne({ERP_ID:req.body.ERP_ID})
         if(user && user.isverified){
             res.render("error.ejs",{code:404});
         }else{
-            let validateERP_ID = await userModel.findOne({ERP_ID:req.body.ERP_ID})
-            if(req.body.password==req.body.conformpassword && (validateERP_ID==null || validateERP_ID.ERP_ID!=req.body.ERP_ID)){
+            if(req.body.password==req.body.conformpassword){
                 
                 await new userModel({
                     name:req.body.name,
                     year:req.body.year,
                     branch:req.body.branch,
                     ERP_ID:req.body.ERP_ID,
-                    avatar:"/files/"+req.body.ERP_ID+"-avatar",
                     contactNo:req.body.contactNo,
                     medialink:{
                         whatsapp:"https://wa.me/"+req.body.whatsapp,

@@ -1583,3 +1583,332 @@ input:-moz-placeholder { /* Firefox 18- */
 	    width: 89%;
 	}
 }
+
+
+
+/* index.ejs css */
+
+
+section {
+  width: 100%;
+  padding: 20px;
+}
+
+h1 .typewrite {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  font-size: 34px;
+}
+
+.outer-wrapper {
+  max-width: 100vw;
+  overflow-x: scroll;
+  position: relative;
+  scrollbar-color: #d5ac68 #f1db9d;
+  scrollbar-width: thin;
+  -ms-overflow-style: none;
+}
+
+.pseduo-track {
+  background-color: #f1db9d;
+  height: 2px;
+  width: 100%;
+  position: relative;
+  top: -3px;
+  z-index: -10;
+}
+
+@media (any-hover: none) {
+  .pseduo-track {
+      display: none;
+  }
+}
+
+.outer-wrapper::-webkit-scrollbar {
+  height: 5px;
+}
+
+.outer-wrapper::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 0px rgba(0, 0, 0, 0);
+}
+
+.outer-wrapper::-webkit-scrollbar-thumb {
+  height: 5px;
+  background-color: #d5ac68;
+}
+
+.outer-wrapper::-webkit-scrollbar-thumb:hover {
+  background-color: #f1db9d;
+}
+
+.outer-wrapper::-webkit-scrollbar:vertical {
+  display: none;
+}
+
+.inner-wrapper {
+  display: flex;
+  padding-bottom: 10px;
+}
+
+.pseudo-item {
+ 
+  margin-right: 59px;
+  flex-shrink: 0;
+
+}
+
+.pseudo-item img {
+  width: 210px;
+  height: 210px;
+}
+
+
+
+/* Dropdown button */
+.dropbtn {
+  background-color: #3498DB;
+  color: white;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover,
+.dropbtn:focus {
+  background-color: #2980B9;
+}
+
+/* Dropdown container */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 4px;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  max-height: 0;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.3s;
+}
+
+/* Change link color on hover */
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+/* Show the dropdown menu when the button is clicked */
+.show {
+  display: block;
+  max-height: 200px;
+  /* Adjust this value to control the maximum height of the dropdown */
+  transition: max-height 0.3s ease-in;
+}
+
+/* Cool animation for opening the dropdown */
+.open-dropdown {
+  animation: slide-down 0.5s ease-out;
+}
+
+@keyframes slide-down {
+  0% {
+      transform: translateY(-10px);
+      opacity: 0;
+  }
+
+  100% {
+      transform: translateY(0);
+      opacity: 1;
+  }
+}
+
+/* Search bar container */
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Search input */
+.search-input {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  width: 300px;
+  font-size: 16px;
+}
+
+/* Search button */
+.search-button {
+  background-color: #3498DB;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-left: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+/* Search button on hover */
+.search-button:hover {
+  background-color: #2980B9;
+}
+
+.search_system {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: auto;
+  align-items: center;
+}
+
+
+/* Apply styles to the team section */
+.team {
+  text-align: center;
+  margin: 20px;
+  color: rebeccapurple;
+}
+
+/* Style the team heading */
+.team_heading {
+  font-size: 24px;
+  font-weight: bold;
+  color: rebeccapurple;
+}
+
+/* Style the horizontal line */
+hr {
+  border: 1px solid #000;
+  margin: 20px auto;
+  width: 50%;
+}
+
+/* Style the team members */
+.parent {
+  display: flex;
+  justify-content: center;
+}
+
+.child {
+  text-align: center;
+  color: rebeccapurple;
+  margin: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Add a hover effect for team members */
+.child:hover {
+  transform: translateY(-10px);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+.ourDevs_heading a,.team .team_heading{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  font-size: 34px;
+}
+
+#IMG{
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
+object-fit: cover;
+object-position: center;
+border: 4px solid #665e57;
+padding: 0.5rem;
+box-shadow: 0px 4px 8px #9193a4;
+}
+.gallary{
+  margin: auto;
+max-width: 1000px;
+  padding:1rem;
+}
+
+.text{
+  grid-area: 2/2/5/5;
+  align-self: center;
+  justify-self: center;
+  
+}
+h3{
+font-family: 'Cinzel', serif;
+font-size: 2.2rem;
+margin: 0.2rem 0;
+border-top: 2px solid #776b5e;
+border-bottom: 3px solid #ecd68c;
+}
+.text p{
+  font-family: 'Alegreya', serif;
+  font-size: 1.5rem;
+  color:#3f3f3e;
+  letter-spacing: 5px;
+}
+.text span{
+  font-size:2rem;
+  color: red;
+}
+.image1{
+  grid-area: 1/1/3/2;
+}
+.image2{
+  grid-area: 1/2/2/4;
+}
+.image3{
+  grid-area: 1/5/4/6;
+}
+.image4{
+  grid-area: 3/1/6/2;
+}
+.image5{
+  grid-area: 5/3/6/5;
+}
+.image6{
+  grid-area: 4/5/6/6;
+}
+
+@media screen and (min-width: 700px){
+.gallary{
+max-width: 1000px;
+display: grid;
+grid-template-columns: 1fr 0.1fr 0.8fr 0.1fr 1fr;
+grid-template-rows: 24vh 10vh 15vh 10vh 24vh;
+grid-gap: 1rem;
+}
+
+}
+
+@media screen and (max-width: 701px){
+.image{
+margin-bottom: 1rem;
+}
+}
+
+/* club css */

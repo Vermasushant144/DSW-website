@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -288,6 +288,76 @@
 	<script src="/static/js/api/register.js"></script>
 
 
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</body> -->
+<!-- This templates was made by Colorlib (https://colorlib.com) -->
 
+<!-- </html> -->
+
+<!-- New one -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://colorlib.com/etc/regform/colorlib-regform-7/fonts/material-icon/css/material-design-iconic-font.min.css">
+	<link rel="stylesheet" href="/static/style/auth.css">
+	<title>NIET | Register</title>
+</head>
+<body>
+	<section class="signup">
+        <div class="container">
+            <div class="signup-content">
+                <div class="signup-form">
+                    <h2 class="form-title">Sign up</h2>
+                    <form id="registerform" method="POST" class="register-form" action="/auth/register" enctype="multipart/form-data" >
+                        <div class="form-group">
+                            <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                            <input type="text" name="name" id="name" placeholder="Your Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email"><i class="zmdi zmdi-email"></i></label>
+                            <input type="text" name="ERP_ID" id="ERP_ID" placeholder="Your ERP ID">
+                        </div>
+                        <div class="form-group">
+                            <label for="ContactNo"><i class="zmdi zmdi-phone"></i></label>
+                            <input type="text" name="contactNo" id="contactNo" placeholder="Your Whatsapp No.">
+                        </div>
+                        <div class="form-group">
+                            <label for="Branch"><i class="zmdi zmdi-view-stream"></i></label>
+                            <input type="text" name="branch" id="branch" placeholder="Your Branch">
+                        </div>
+                        <div class="form-group">
+                            <label for="linkedin"><i class="zmdi zmdi-linkedin"></i></label>
+                            <input type="link" name="linkedin" id="linkedin" placeholder="Your Linkedin profile">
+                        </div>
+                        <div class="form-group">
+                            <label for="password"><i class="zmdi zmdi-lock"></i></label>
+                            <input type="password" name="password" id="password" placeholder="Password">
+                        </div>
+                        <div class="form-group">
+                            <label for="conformpassword"><i class="zmdi zmdi-lock-outline"></i></label>
+                            <input type="password" name="conformpassword" id="conformpassword" placeholder="Repeat your password">
+                        </div>
+                        <div class="form-group form-button">
+                            <button type="submit" name="signup" id="signup" class="form-submit">Register</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="signup-image">
+                    <figure><img src="/static/images/6203326-removebg.png" alt="sing up image"></figure>
+                    <a href="/auth/login" class="signup-image-link">I am already member</a>
+                </div>
+            </div>
+        </div>
+    </section>
+	<section class="popup" id="loading">
+		<div class="lds-facebook">
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</section>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="/static/js/api/register.js"></script>
 </html>

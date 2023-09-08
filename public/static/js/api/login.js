@@ -17,15 +17,13 @@ const onLoad = async()=>{
         }
     }
 }
-var switchForm = ()=>{
-    if($("#switchBtn").text()=="Forget password"){
-        $("#loginform").css("display","none");
-        $("#forgetform").css("display","block");
-        $("#switchBtn").text("Back to Login");
+var switchForm = (value)=>{
+    if(value=='forget'){
+        document.getElementById("login-section").style.display = 'none';
+        document.getElementById("forget-section").style.display = 'block';
     }else{
-        $("#loginform").css("display", "block");
-        $("#forgetform").css("display", "none");
-        $("#switchBtn").text("Forget password");
+        document.getElementById("forget-section").style.display = 'none';
+        document.getElementById("login-section").style.display = 'block';
     }
 }
 var loginform = document.getElementById("loginform");
