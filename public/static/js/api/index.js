@@ -38,6 +38,7 @@ const onLoad = async () => {
                 <a href="../auth/register">SignUp</a>
             `);
     }
+    document.getElementById("loading").style.display = "none";
 }
 
 const clubList = async()=>{

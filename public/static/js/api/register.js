@@ -4,10 +4,16 @@ registerForm.addEventListener("submit", async function (e) {
     document.getElementById("loading").style.display = "flex";
 
     var formData = new FormData(registerForm);
-
+    var jsonData = {};
+    for (var [key, value] of formData.entries()) {
+        jsonData[key] = value;
+    }
     var response = await fetch(registerForm.action, {
         method: registerForm.method,
-        body: formData
+        headers:{
+            "Content-type":"application/json",
+        },
+        body: JSON.stringify(jsonData),
     });
     response = await response.json();
 
