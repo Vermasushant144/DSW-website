@@ -27,7 +27,7 @@ route.get("/ticket",async(req,res)=>{
 route.get("/:club",async(req,res)=>{
     let club = await clubModel.findOne({name:req.params.club}).select(["-_id"]);
     let events = [];
-    if(club.events.length>0){
+    if(club.events){
         for(let i=0;i<club.events.length;i++){
             let event = await eventModel.findOne({_id:club.events[i]});
             if(event){
