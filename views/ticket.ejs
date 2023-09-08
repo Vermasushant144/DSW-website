@@ -1,152 +1,118 @@
-<!doctype html>
-<html lang="en">
-
+<!DOCTYPE html>
+<html>
 <head>
-	<title>Contact Form</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
-
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-	<link rel="stylesheet" href="/static/style/ticket/style.css">
-
+    <title>TICKET</title>
+    <!-- Include the QRCode.js library -->
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f3f3f3;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-bottom: 6px;
+            color: #555;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #qrcode {
+            margin-top: 20px;
+        }
+    </style>
 </head>
-
 <body>
-	<section class="ftco-section">
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-md-6 text-center mb-5">
-					<h2 class="heading-section">TICKET</h2>
-				</div>
-			</div>
-			<div class="row justify-content-center">
-				<div class="col-md-12">
-					<div class="wrapper">
-
-						<div class="row">
-							<div class="col-md-3">
-								<div id="qrcode" class="mt-5 text-center">
-
-								</div>
-							</div>
-							<div class="col-md-9">
-								<div class="row no-gutters">
-									<div class="col-lg-12 col-md-12 order-md-last d-flex align-items-stretch">
-										<div class="contact-wrap w-100 p-md-5 p-4">
-											<h3 class="mb-4">Enter your details</h3>
-											<div id="form-message-warning" class="mb-4"></div>
-											<div id="form-message-success" class="mb-4">
-												Your message was sent, thank you!
-											</div>
-											<form method="POST" id="contactForm" name="contactForm" class="contactForm">
-												<div class="row">
-													<div class="col-md-6">
-														<div class="form-group">
-															<label class="label" for="name">FULL NAME</label>
-															<input type="text" class="form-control" name="name"
-																id="name" placeholder="Name">
-														</div>
-													</div>
-													<div class="col-md-6">
-														<div class="form-group">
-															<label class="label" for="email">ERP ID</label>
-															<input type="massage" class="form-control" name="erpid" value=""
-																id="email" placeholder="Enter ERP ID">
-														</div>
-													</div>
-													<div class="col-md-6">
-														<div class="form-group">
-															<label class="label" for="branch">BRANCH</label>
-															<input type="message"  class="form-control" name="branch"
-																id="branch" placeholder="Enter Branch">
-														</div>
-													</div>
-													<div class="col-md-6">
-														<div class="form-group">
-															<label class="label" for="photo">PHOTO</label>
-															<input type="file"  class="form-control" name="photo"
-																id="photo" placeholder="Upload Photo">
-														</div>
-													</div>
-													
-													<div class="col-md-12">
-														<div class="form-group">
-															
-															<label class="label" for="year">YEAR</label>
-															<input type="number" min="1" max="5" class="form-control" name="year"
-																id="year" placeholder="Enter Year">
-														</div>
-													</div>
-													<div class="col-md-12">
-														<div class="form-group">
-															<label class="label" for="club">CLUB</label>
-															<input type="message" class="form-control" name="club"
-																id="club" placeholder="Club Name">
-														</div>
-													</div>
-													<div class="col-md-12">
-														<div class="form-group">
-															<input type="reset" value="SUBMIT"
-																class="btn btn-primary" onclick="generateqr()">
-															<div class="submitting"></div>
-														</div>
-													</div>
-												</div>
-											</form>
-										</div>
-									</div>
-								</div>
-								<div class="text pl-3">
-									
-									
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-
-		</div>
-
-		</div>
-		</div>
-		</div>
-	</section>
-
-
-	<script src="/static/js/ticket/jquery.min.js"></script>
-	<script src="/static/js/ticket/popper.js"></script>
-	<script src="/static/js/ticket/bootstrap.min.js"></script>
-	<script src="/static/js/ticket/jquery.validate.min.js"></script>
-	<script src="/static/js/ticket/main.js"></script>
-
-	<script>
-
-		function generateqr() {
-			var name = document.getElementById('name').value;
-			var email = document.getElementById('email').value;
-			var branch = document.getElementById('branch').value;
-			var year = document.getElementById('year').value;
-			var club = document.getElementById('club').value;
-			var photo = document.getElementById('photo').value;
-
-			console.log('Name: ' + name + " " + email + " " + branch + " " + year + " " + club + " " + photo);
-
-			var url = "https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=Name: " +
-			name + "    Email: " + email + "    Branch: " + branch + "    Year: " + year + "    Club: " + club  + "  Photo: " + photo;
-
-			var ifr = `<iframe src="${url}" height="200" width="200"></iframe>`;
-
-			document.getElementById('qrcode').innerHTML = ifr;
-		}
-
-	</script>
-
+    <div class="container">
+        <h1>Enter your details</h1>
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" placeholder="Enter your name" required>
+            
+            <label for="erp">ERP ID:</label>
+            <input type="text" id="erp" placeholder="Enter your ERP ID" required>
+            
+            <label for="branch">Branch:</label>
+            <input type="text" id="branch" placeholder="Enter your branch" required>
+            
+            <label for="year">Year:</label>
+            <input type="text" id="year" placeholder="Enter your year" required>
+            
+            <label for="club">Club:</label>
+            <input type="text" id="club" placeholder="Enter your club" required>
+            
+            <button type="reset" class="button" onclick="generateQRCode()">SUBMIT</button>
+        </form>
+        
+        <div id="qrcode"></div>
+        
+        <a id="downloadLink" style="display: none;">
+            <button onclick="downloadQRCode()">Download QR</button>
+        </a>
+    </div>
+    
+    <script>
+        function generateQRCode() {
+            const name = document.getElementById("name").value;
+            const erp = document.getElementById("erp").value;
+            const branch = document.getElementById("branch").value;
+            const year = document.getElementById("year").value;
+            const club = document.getElementById("club").value;
+            const data = `Name: ${name}\nERP ID: ${erp}\nBranch: ${branch}\nYear: ${year}\nClub: ${club}`;
+            
+            if (data) {
+                // Generate QR code
+                const qrcodeElement = document.getElementById("qrcode");
+                qrcodeElement.innerHTML = ""; // Clear previous QR code
+                const qrcode = new QRCode(qrcodeElement, {
+                    text: data,
+                    width: 200,
+                    height: 200
+                });
+                
+                // Show download button
+                const downloadLink = document.getElementById("downloadLink");
+                downloadLink.style.display = "block";
+            }
+        }
+        
+        function downloadQRCode() {
+            const qrcodeCanvas = document.querySelector("#qrcode canvas");
+            const downloadLink = document.getElementById("downloadLink");
+            
+            // Convert canvas to image and trigger download
+            const imageURL = qrcodeCanvas.toDataURL("image/jpg");
+            downloadLink.href = imageURL;
+            downloadLink.download = "qrcode.jpg";
+        }
+    </script>
 </body>
-
 </html>
