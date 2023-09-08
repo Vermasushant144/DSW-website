@@ -8,8 +8,12 @@ const clubModel = require("../db/clubs");
 const eventModel = require("../db/events");
 
 route.get("/searchClubs",async(req,res)=>{
-    let clubs = await clubModel.find({name:{'$regex':new RegExp(req.query.clubName,'i')}}).limit(3);
-    res.send({clubs:clubs})
+    try{
+        let clubs = await clubModel.find({name:{'$regex':new RegExp(req.query.clubName,'i')}});
+        res.send({clubs:clubs});
+    }catch(e){
+        res.send({club:[]});
+    }
 });
 
 route.get("/booking",async(req,res)=>{

@@ -40,10 +40,15 @@ const onLoad = async () => {
     }
 }
 
+const clubList = async()=>{
+    
+}
+
 const searchClubs = async(value)=>{
     let response = await fetch(`/club/searchClubs?clubName=${value}`)
     response = await response.json();
     let container = $("#suggestionClubs").html("");
+    $("#suggestionClubs").css("height","300px");
     for(let i=0;i<response.clubs.length;i++){
         container.html(
             container.html()+`<a href="/club/${response.clubs[i].name}" style="display: flex;">
@@ -174,6 +179,7 @@ $("#nav1-links").hover(()=>{},()=>{
     if($("#search").css("width")!=0){
         $("#suggestionClubs").html("");
         $("#search").css("width","0px");
+        $("#suggestionClubs").css("height","0px");
         $("#search-input").css("padding","0px");
     }
 })

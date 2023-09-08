@@ -1,19 +1,19 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 
 <head>
   <meta charset="utf-8">
   <title>Form-v6 by Colorlib</title>
-  <!-- Mobile Specific Metas -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <!-- Font-->
-  <link rel="stylesheet" type="text/css" href="css/nunito-font.css">
-  <!-- Main Style Css -->
-  <link rel="stylesheet" href="css/style.css" />
-  <!-- jquery Link -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-</head>
-<style>
+  Mobile Specific Metas -->
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> -->
+<!-- Font-->
+<!-- <link rel="stylesheet" type="text/css" href="css/nunito-font.css"> -->
+<!-- Main Style Css -->
+<!-- <link rel="stylesheet" href="css/style.css" /> -->
+<!-- jquery Link -->
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script> -->
+<!-- </head> -->
+<!-- <style>
   .page-content {
     width: 100%;
     margin: 0 auto;
@@ -217,7 +217,8 @@
     max-width: 100%;
   }
 </style>
-
+-->
+<!--
 <body class="form-v6" onload="onLoad()">
   <div class="page-content">
     <div class="form-v6-content">
@@ -258,8 +259,80 @@
       </div>
     </div>
   </div>
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+  <script src="/static/js/api/login.js"></script>
+</body> -->
+<!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+<!-- </html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet"
+    href="https://colorlib.com/etc/regform/colorlib-regform-7/fonts/material-icon/css/material-design-iconic-font.min.css">
+  <link rel="stylesheet" href="/static/style/auth.css">
+  <title>NIET | Login</title>
+</head>
+
+<body>
+  <section class="sign-in">
+    <div class="container">
+      <div class="signin-content">
+        <div class="signin-image">
+          <figure><img src="/static/images/6203326-removebg.png" alt="sing up image"></figure>
+          <a href="/auth/register" class="signup-image-link">Create an account</a>
+        </div>
+        <div class="signin-form" id="login-section">
+          <div id="loginResponse" class="response"></div>
+          <h2 class="form-title">Sign up</h2>
+          <form method="POST" action="/auth/login" class="login-form" id="loginform">
+            <div class="form-group">
+              <label for="ERP_ID"><i class="zmdi zmdi-account material-icons-name"></i></label>
+              <input type="text" name="ERP_ID" id="ERP_ID" placeholder="Your ERP">
+            </div>
+            <div class="form-group">
+              <label for="password"><i class="zmdi zmdi-lock"></i></label>
+              <input type="password" name="password" id="password" placeholder="Password">
+            </div>
+            <div class="form-group form-button">
+              <input type="submit" name="signin" id="signin" class="form-submit" value="Log in">
+            </div>
+          </form>
+          <div class="login-to-forget">
+            <br>
+            <br>
+            <button onclick="switchForm('forget')">Forget Password?</button>
+          </div>
+        </div>
+        <div class="signin-form" id="forget-section">
+          <div id="forgetResponse" class="response"></div>
+          <h2 class="form-title">Forget Password</h2>
+          <form method="POST" id="forgetform" action="/auth/forgetpassword" class="login-form">
+            <div class="form-group">
+              <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+              <input type="text" name="name" id="name" placeholder="Your Name">
+            </div>
+            <div class="form-group">
+              <label for="ERP_ID"><i class="zmdi zmdi-email material-icons-name"></i></label>
+              <input type="text" name="ERP_ID" id="ERP_ID" placeholder="Your ERP">
+            </div>
+            <div class="form-group form-button">
+              <input type="submit" name="signin" id="signin" class="form-submit" value="Reset password">
+            </div>
+          </form>
+          <div class="forget-to-login">
+            <br>
+            <br>
+            <button onclick="switchForm('login')">Back to Login</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script src="/static/js/api/login.js"></script>
-
 </html>
-

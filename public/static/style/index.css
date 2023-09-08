@@ -94,10 +94,10 @@ body{
 }
 #suggestionClubs {
   background-color: rgb(254, 253, 228);
-  width: 400px;
+  width: 400px; 
   position:absolute;
   z-index: 1;
-  overflow: visible;
+  overflow-y: scroll;
   top:43px;
 }
 #suggestionClubs h3{
