@@ -45,18 +45,45 @@ const clubList = async()=>{
     
 }
 
-const searchClubs = async(value)=>{
+const searchClubs = async(value,container)=>{
     let response = await fetch(`/club/searchClubs?clubName=${value}`)
     response = await response.json();
-    let container = $("#suggestionClubs").html("");
-    $("#suggestionClubs").css("height","300px");
-    for(let i=0;i<response.clubs.length;i++){
-        container.html(
-            container.html()+`<a href="/club/${response.clubs[i].name}" style="display: flex;">
-                <img src="${response.clubs[i].icon}" width="50px" height="50px" alt="clubIcon">
-                <h3>${response.clubs[i].name}</h3>
-            </a>`
-        );
+    
+    if(container=='navBar'){
+        let bucket = $("#suggestionClubs").html("");
+        $("#suggestionClubs").css("height","300px");
+        for(let i=0;i<response.clubs.length;i++){
+            bucket.html(
+                bucket.html()+`<a href="/club/${response.clubs[i].name}" style="display: flex;">
+                    <img src="${response.clubs[i].icon}" width="50px" height="50px" alt="clubIcon">
+                    <h3>${response.clubs[i].name}</h3>
+                </a>`
+            );
+        }
+    }else if(container=='list'){
+        let bucket = $("#club-list").html("");
+        for(let i=0;i<response.clubs.length;i++){
+            bucket.html(
+                // <div class="pseudo-item">
+                //     <a href="/club/<%=clubs[i].name%>">
+                //         <div class="child">
+                //             <img src="<%=clubs[i].icon%>">
+                //             <h2><%=clubs[i].name%></h2>
+                //         </div>
+                //     </a>
+                // </div>
+                bucket.html()+`
+                <div class="pseudo-item">
+                    <a href="/club/${response.clubs[i].name}">
+                       <div class="child">
+                           <img src="${response.clubs[i].icon}">
+                           <h2>${response.clubs[i].name}</h2>
+                       </div>
+                    </a>
+                </div>
+                `
+            );
+        }   
     }
 }
 $("#search-input").on("blur",()=>{

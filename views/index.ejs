@@ -41,7 +41,7 @@
         </div>
         <div id="nav1-links">
             <div id="search">
-                <input id="search-input" type="search" name="clubName" onkeyup="searchClubs(this.value)"
+                <input id="search-input" type="search" name="clubName" onkeyup="searchClubs(this.value,'navBar')"
                     autocomplete="off">
                 <div id="suggestionClubs"></div>
             </div>
@@ -136,10 +136,9 @@
         <hr>
         <div class="search_system">
             <div class="search-container">
-                <input type="text" class="search-input" placeholder="Search...">
-                <button class="search-button" onclick="searchClick()">Search</button>
+                <input type="text" class="search-input" placeholder="Search..." onkeyup="searchClubs(this.value,'list')">
             </div>
-            <div class="dropdown">
+            <!-- <div class="dropdown">
                 <button onclick="myFunction()" class="dropbtn">Categories</button>
                 <div id="myDropdown" class="dropdown-content">
                     <a>Art</a>
@@ -148,12 +147,12 @@
                     <a>Technical</a>
                     <a></a>
                 </div>
-            </div>
+            </div> -->
 
         </div>
-        <div class="outer-wrapper" id="club-list">
+        <div class="outer-wrapper">
 
-            <div class="inner-wrapper">
+            <div class="inner-wrapper" id="club-list">
             <%for(let i=0;i<clubs.length;i++){%>
             
                 <div class="pseudo-item">
