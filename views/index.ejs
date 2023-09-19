@@ -71,7 +71,7 @@
         <h1 id="head-live-events-container"><i class="fa fa-calendar"></i>Upcoming Events:</h1>
         <div id="events-list">
             <%for(let i=0;i<events.length;i++){%>
-                <%let dateString=events[i].Date.split("-");%>
+                <%let dateString=events[i].eventDate.split("-");%>
                     <button class="live-event" onclick="eventpop(<%=JSON.stringify(events[i])%>)">
                         <img src="<%=events[i].icon%>" alt="clubIcon">
                         <h4 class="event-description">
@@ -91,7 +91,8 @@
         <div id="event-popup-container2">
             <h1 id="event-popup-name"></h1>
             <h2>Organized By: <span id="event-popup-clubName"></span></h2>
-            <h2>Event Date: <span id="event-popup-date"></span></h2>
+            <h2>Event Date: <span id="event-popup-regdate"></span></h2>
+            <h2>Last Registration Date: <span id="event-popup-date"></span></h2>
             <p id="event-popup-detail"></p>
             <a href="/club/ticket" target="_blank" id="event-btn">Get Ticket</a>
         </div>
@@ -138,17 +139,6 @@
             <div class="search-container">
                 <input type="text" class="search-input" placeholder="Search..." onkeyup="searchClubs(this.value,'list')">
             </div>
-            <!-- <div class="dropdown">
-                <button onclick="myFunction()" class="dropbtn">Categories</button>
-                <div id="myDropdown" class="dropdown-content">
-                    <a>Art</a>
-                    <a>Dancing</a>
-                    <a>Music</a>
-                    <a>Technical</a>
-                    <a></a>
-                </div>
-            </div> -->
-
         </div>
         <div class="outer-wrapper">
 
@@ -189,26 +179,26 @@
         </div>
         <div class="image image1">
             <img id="IMG"
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/1135px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg ">
+                src="<%=lastEvent.eventPhotos[0]%>">
         </div>
         <div class=" image image2">
-            <img id="IMG" src="https://upload.wikimedia.org/wikipedia/commons/d/d1/Bank_of_the_Oise_at_Auvers.jpg">
+            <img id="IMG" src="<%=lastEvent.eventPhotos[1]%>">
         </div>
         <div class="image image3">
             <img id="IMG"
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Vincent_van_Gogh_-_Self-portrait_with_grey_felt_hat_-_Google_Art_Project.jpg/741px-Vincent_van_Gogh_-_Self-portrait_with_grey_felt_hat_-_Google_Art_Project.jpg">
+                src="<%=lastEvent.eventPhotos[2]%>">
         </div>
         <div class="image image4">
             <img id="IMG"
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Vincent_van_Gogh_-_Wheatfield_with_crows_-_Google_Art_Project.jpg/1200px-Vincent_van_Gogh_-_Wheatfield_with_crows_-_Google_Art_Project.jpg">
+                src="<%=lastEvent.eventPhotos[3]%>">
         </div>
         <div class="image image5">
             <img id="IMG"
-                src="https://static01.nyt.com/images/2019/03/24/arts/24vangogh-item/merlin_152482185_d1d1b829-bdcd-403a-8fc0-81e08b496542-articleLarge.jpg?quality=75&auto=webp&disable=upscale">
+                src="<%=lastEvent.eventPhotos[4]%>">
         </div>
         <div class="image image6">
             <img id="IMG"
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Vincent_van_Gogh_-_Sunflowers_-_VGM_F458.jpg/686px-Vincent_van_Gogh_-_Sunflowers_-_VGM_F458.jpg">
+                src="<%=lastEvent.eventPhotos[5]%>">
         </div>
     </div>
 

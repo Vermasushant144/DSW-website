@@ -62,38 +62,53 @@ app.get("/", async (req, res) => {
   let currentDate = new Date();
   let clubs = await clubModel.find({}, { _id: 0 });
   let liveEvents = [];
+  let lastEvent;
+  for (let i = 0; i < events.length; i++) {
+    let regDate = new Date(events[i].regDate);
+    if (currentDate <= regDate) {
+      liveEvents.push(events[i]);
+    }
+    let eventDate = new Date(events[i].eventDate);
+    if(eventDate<currentDate ){
+      if(lastEvent ){
+        if(eventDate>new Date(lastEvent)){
+          lastEvent = events[i];
+        }
+      }else{
+        lastEvent = events[i];
+      }
+    }
+  }
+  console.log(lastEvent)
   if (!main) {
     res.render("index.ejs", {
       main: {},
-      SERVER_DIR: process.env.SERVER_DIR,
       events: [],
       coty: {},
       clubs:clubs,
+      events:liveEvents,
+      lastEvent:lastEvent,
     });
     return;
   }
   if (!coty) {
     res.render("index.ejs", {
       main: main,
-      SERVER_DIR: process.env.SERVER_DIR,
       events: [],
       coty: {},
-      clubs:clubs
+      clubs:clubs,
+      events:liveEvents,
+      lastEvent:lastEvent,
     });
     return;
   }
-  for (let i = 0; i < events.length; i++) {
-    let eventDate = new Date(events[i].Date);
-    if (currentDate <= eventDate) {
-      liveEvents.push(events[i]);
-    }
-  }
+  
   res.render("index.ejs", {
     main: main,
     events: liveEvents,
-    lastEvent: events[events.length - 1],
     clubs: clubs,
     coty: coty,
+    lastEvent:lastEvent,
   });
 });
 
@@ -180,6 +195,7 @@ module.exports = { public, verifyToken, unlinkFileStream };
 app.use('/auth', require("./routes/auth.js"))
 app.use('/club', require("./routes/club.js"))
 app.use('/profile', require("./routes/profile.js"))
+app.use('/events', require("./routes/event.js"))
 // app.use("/notification",require("./routes/notifiction.js"))
 
 app.listen(process.env.PORT || 3000, () => {

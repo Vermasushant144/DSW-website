@@ -96,8 +96,10 @@ const eventpop = (event)=>{
     $("#event-popup-img").attr("src",event.icon);
     $("#event-popup-name").text(event.Name);
     $("#event-popup-clubName").text(event.clubName);
-    let dateString = event.Date.split("-");
-    $("#event-popup-date").text(dateString[2]+"-"+dateString[1]+"-"+dateString[0]);
+    let eventDateString = event.eventDate.split("-");
+    $("#event-popup-date").text(eventDateString[2]+"-"+eventDateString[1]+"-"+eventDateString[0]);
+    let regDateString = event.eventDate.split("-");
+    $("#event-popup-regdate").text(regDateString[2]+"-"+regDateString[1]+"-"+regDateString[0]);
     $("#event-popup-detail").text(event.Desc)
     $("#popup-screen").css("display","block");
     if($(window).width()>420){

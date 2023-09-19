@@ -887,11 +887,14 @@ width:100%;
                                 <%=events[i].Name%>
                             </h3>
                             <p7>
-                                Event Date:<%=events[i].Date%>
+                                Event Date:<%=events[i].eventDate%>
                             </p7>
                             <h2>
                                 <%=club.name%>
                             </h2>
+                            <a href="/events/<%=events[i].Name%>" target="_blank">
+                                <button>View Detail</button>
+                              </a>
                         </div>
                     </div>
                     <%}}%>
