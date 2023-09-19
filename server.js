@@ -79,7 +79,6 @@ app.get("/", async (req, res) => {
       }
     }
   }
-  console.log(lastEvent)
   if (!main) {
     res.render("index.ejs", {
       main: {},
