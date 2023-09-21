@@ -16,7 +16,7 @@ const onLoad = async () => {
                             <button onclick=showMessages()><i class='fa fa-bell'></i></button>
                             <div></div>
                         </div>
-                        <a id="profile" href='/profile/${response.ERP_ID}'>${response.Name}</a>`
+                        <a id="profile" href='/profile/${response.ERP_ID}'><img src='/static/images/profile-icon.png' alt='profile-icon'></a>`
                 )
                 let isUnread = await fetch("/unread-notification",{
                     headers:{
@@ -52,6 +52,8 @@ const searchClubs = async(value,container)=>{
     if(container=='navBar'){
         let bucket = $("#suggestionClubs").html("");
         $("#suggestionClubs").css("height","300px");
+        $("#suggestionClubs").css("display","block");
+        $("#inner-popup").css("display","block");
         for(let i=0;i<response.clubs.length;i++){
             bucket.html(
                 bucket.html()+`<a href="/club/${response.clubs[i].name}" style="display: flex;">
@@ -89,6 +91,7 @@ const searchClubs = async(value,container)=>{
 $("#search-input").on("blur",()=>{
     if(!$("#suggestionClubs").is(":hover")){
         $("#suggestionClubs").html("");
+        $("#inner-popup").css("display","block");
     }
 });
 
@@ -198,18 +201,25 @@ $("#search-btn-icon").hover(
             $("#search").css("width","400px");
             $("#search-input").css("padding","5px");
             $("#search").focus();
+            $("#inner-popup").css("display","block");
         }else{
             $("#search").css("width","100%");
             $("#search-input").css("padding","10px");
+            $("#inner-popup").css("display","block");
             $("#search").focus();
         }
     }
 )
+document.getElementById("inner-popup").addEventListener("click",()=>{
+    $("#inner-popup").css("display","none");
+})
 $("#nav1-links").hover(()=>{},()=>{
     if($("#search").css("width")!=0){
         $("#suggestionClubs").html("");
         $("#search").css("width","0px");
+        $("#inner-popup").css("display","none");
         $("#suggestionClubs").css("height","0px");
+        $("#suggestionClubs").css("display","none");
         $("#search-input").css("padding","0px");
     }
 })

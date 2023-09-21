@@ -1591,7 +1591,7 @@ input:-moz-placeholder { /* Firefox 18- */
 
 section {
   width: 100%;
-  padding: 20px;
+  padding-block: 20px;
 }
 
 h1 .typewrite {
@@ -1789,7 +1789,7 @@ h1 .typewrite {
 /* Apply styles to the team section */
 .team {
   text-align: center;
-  margin: 20px;
+  margin-block: 20px;
   color: rebeccapurple;
 }
 
