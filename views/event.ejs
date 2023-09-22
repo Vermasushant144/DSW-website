@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/style/event.css" />
+    <title>Event</title>
+  </head>
+  <body>
+    <div class="head">
+        
+        <div class="event-icon">
+            <img src="<%=event.icon%>" alt="<%=event.Name%>" />
+        </div>
+        <div class="event-detail">
+            <div>
+              <h1><%=event.Name%></h1>
+              <h2>Organized By: <%=event.clubName%></h2>
+              <h2>Last Registration Date:<%=event.regDate%></h2>
+              <h2>Event Date: <%=event.eventDate%></h2>
+              <%if(new Date(event.eventDate)<new Date()){%>
+              <a href="<%=event.report%>" target="_blank">
+                <button>View Report</button>
+              </a>
+              <%}else{%>
+                <h3>Currently Live!!</h3>
+                <%}%>
+            </div>
+        </div>
+    </div>
+    <div><%=event.Desc%></div>
+    <div class="sec-2">
+        <%for(let i=0;i<event.eventPhotos.length;i++){%>
+            <img src="<%=event.eventPhotos[i]%>" alt="">
+        <%}%>
+    </div>
+  </body>
+</html>

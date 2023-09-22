@@ -14,506 +14,7 @@
     <script src="/static/js/api/club.js"></script>
 
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-width:100%;
-        }
-
-
-        .dsw-photo {
-            position: relative;
-            text-align: center;
-            color: rgb(245, 245, 245);
-
-
-        }
-
-        .photo img {
-            width: 100%;
-            height: 500px;
-
-        }
-
-        .center {
-            position: absolute;
-            top: 30%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 13.9px;
-
-
-
-        }
-
-        @keyframes slide-left {
-            0% {
-                transform: translate(100px);
-                opacity: 0;
-            }
-
-            100% {
-                transform: translate(0px);
-                opacity: 1;
-            }
-        }
-
-        p1 {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 106px;
-            font-weight: 100;
-            /* animation: slide-left 0.4s linear forwards; */
-
-        }
-
-        p2 {
-            position: absolute;
-            top: 66%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 42px;
-        }
-
-
-        .box p3 {
-            position: absolute;
-            /* top: 80%; */
-            /* left: 50%; */
-            margin-top: 17%;
-            right: 40%;
-            transform: translate(-50%, -50%);
-            font-size: 15px;
-            background-color: rgb(37, 219, 20);
-            font-weight: bold;
-            width: 95px;
-            height: 13px;
-            color: rgb(255, 254, 254);
-            padding: 10px 10px 10px 10px;
-            cursor: pointer;
-        }
-
-        .box :hover {
-            color: black;
-        }
-
-        .what {
-            background-color: #f7f7eb;
-
-            width: auto;
-            /* justify-content: space-between; */
-
-
-        }
-
-        .less-main {
-            position: absolute;
-            margin-top: 16%;
-            bottom: -20%;
-            right: 100px;
-            font-size: 14px;
-            margin-right: 40px;
-            max-width: 50%;
-
-
-        }
-
-        .box p3 {
-            right: 25%;
-        }
-            
         
-
-        .five {
-            font-size: 50px;
-
-            /* bottom: 8px; */
-            left: 16px;
-
-            margin-left: 40px;
-            position: absolute;
-
-        }
-
-        .team {
-            background: #f7f7eb;
-
-
-        }
-
-        .parent {
-            display: grid;
-            grid-template-columns: repeat(4, 0.5fr);
-            gap: 10px;
-            padding: 10px;
-
-        }
-
-        .child {
-            display: grid;
-            place-items: center;
-            padding: 40px;
-
-        }
-
-        .child img {
-            width: 180px;
-            height: 180px;
-            object-fit: fill;
-        }
-
-        @media(max-width:700px) {
-            .parent {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media(max-width:480px) {
-            .parent {
-                grid-template-columns: repeat(1, 1fr);
-
-            }
-
-            .child {
-                width: 50%;
-                height: 40%;
-                align-items: center;
-            }
-        }
-
-        h1 {
-            font-size: 17px;
-            align-items: center;
-            justify-content: center;
-
-        }
-
-        .inn {
-            font-size: 14px;
-            align-items: center;
-            justify-content: center;
-
-        }
-
-        .club,
-        p {
-            font-size: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .bo {
-            border: 4px solid black;
-            /* margin: 10px; */
-            width: auto;
-            height: auto;
-            padding: 9px;
-
-        }
-
-        .b {
-
-            border: 2px solid black;
-            margin: 10px;
-            width: 100%;
-            height: auto;
-            padding: 9px;
-        }
-
-        p9 {
-            font-size: 12px;
-            font-weight: 300;
-        }
-
-        h2 {
-            font-size: 20px;
-            padding-top: 8px;
-        }
-
-        .container {
-            display: flex;
-            gap: 24px;
-            flex-direction: row;
-            overflow-x: scroll;
-            scroll-snap-type: x mandatory;
-            scroll-behavior: smooth;
-            scroll-snap-type: hidden;
-            padding: 16px;
-            scrollbar-3dlight-color: #3ecd5e;
-            max-width: 100%;
-            margin-left: 10px;
-
-        }
-
-        .card img {
-            width: 280px;
-            height: 290px;
-            color: white;
-
-
-        }
-
-        .tea {
-            background: chocolate;
-            width: auto;
-            height: 600px;
-        }
-
-        .ph {
-            display: flex;
-            margin-top: 7%;
-
-            left: 16px;
-            margin-left: 50px;
-
-            position: absolute;
-        }
-
-        .mai {
-            position: fixed;
-            right: 16px;
-            font-size: 17px;
-            color: white;
-            font-weight: 700;
-            margin-right: 20%;
-            margin-top: 10%;
-            position: absolute;
-            text-align: right;
-
-        }
-
-        .ma {
-            position: fixed;
-            right: 16px;
-            font-size: 10px;
-            margin-right: 13.4%;
-            margin-top: 13%;
-            position: absolute;
-            text-align: right;
-
-        }
-
-        hr {
-            width: 91%;
-            justify-content: center
-        }
-
-        .ag-format-container {
-            width: 1142px;
-            margin: 0 auto;
-        }
-
-
-        body {
-            background-color: #000;
-        }
-
-        .ag-courses_box {
-            display: -webkit-box;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-box-align: start;
-            -ms-flex-align: start;
-            align-items: flex-start;
-            -ms-flex-wrap: wrap;
-            flex-wrap: wrap;
-            text-decoration: none;
-            padding: 50px 0;
-
-
-        }
-
-        .ag-courses_item {
-            -ms-flex-preferred-size: calc(33.33333% - 30px);
-            flex-basis: calc(33.33333% - 30px);
-            text-decoration: none;
-
-            margin: 0 15px 30px;
-
-            overflow: hidden;
-            text-decoration: none;
-            border-radius: 28px;
-        }
-
-        .ag-courses-item_link {
-            display: block;
-            padding: 30px 20px;
-            background-color: #fafafa;
-            text-decoration: none;
-            overflow: hidden;
-            border: 2px solid black;
-            position: relative;
-        }
-
-        .ag-courses-item_link:hover,
-        .ag-courses-item_link:hover .ag-courses-item_date {
-            text-decoration: none;
-            color: #000000;
-        }
-
-        .ag-courses-item_link:hover .ag-courses-item_bg {
-            -webkit-transform: scale(10);
-            -ms-transform: scale(10);
-            transform: scale(10);
-        }
-
-        .ag-courses-item_title {
-            min-height: 87px;
-            margin: 0 0 25px;
-
-            overflow: hidden;
-
-            font-weight: bold;
-            font-size: 30px;
-            color: #000000;
-            outline: none;
-            text-decoration: none;
-
-            z-index: 2;
-            position: relative;
-        }
-
-        .ag-courses-item_date-box {
-            font-size: 18px;
-            color: #FFF;
-            text-decoration: none;
-            outline: none;
-
-            z-index: 2;
-            position: relative;
-        }
-
-        .ag-courses-item_date {
-            font-weight: bold;
-            color: #f9b234;
-
-            -webkit-transition: color .5s ease;
-            -o-transition: color .5s ease;
-            transition: color .5s ease
-        }
-
-        .ag-courses-item_bg {
-            height: 128px;
-            width: 128px;
-            background-color: #f9b234;
-            text-decoration: none;
-            z-index: 1;
-            position: absolute;
-            top: -75px;
-            right: -75px;
-
-            border-radius: 50%;
-
-            -webkit-transition: all .5s ease;
-            -o-transition: all .5s ease;
-            transition: all .5s ease;
-        }
-
-        .ag-courses_item:nth-child(2n) .ag-courses-item_bg {
-            background-color: #3ecd5e;
-        }
-
-        .ag-courses_item:nth-child(3n) .ag-courses-item_bg {
-            background-color: #e44002;
-        }
-
-        .ag-courses_item:nth-child(4n) .ag-courses-item_bg {
-            background-color: #952aff;
-        }
-
-        .ag-courses_item:nth-child(5n) .ag-courses-item_bg {
-            background-color: #cd3e94;
-        }
-
-        .ag-courses_item:nth-child(6n) .ag-courses-item_bg {
-            background-color: #4c49ea;
-        }
-
-
-
-        @media only screen and (max-width: 979px) {
-            .ag-courses_item {
-                -ms-flex-preferred-size: calc(50% - 30px);
-                flex-basis: calc(50% - 30px);
-            }
-
-            .ag-courses-item_title {
-                font-size: 24px;
-            }
-        }
-
-        @media only screen and (max-width: 767px) {
-            .ag-format-container {
-                width: 96%;
-            }
-
-        }
-
-        @media only screen and (max-width: 639px) {
-            .ag-courses_item {
-                -ms-flex-preferred-size: 100%;
-                flex-basis: 100%;
-            }
-
-            .ag-courses-item_title {
-                min-height: 72px;
-
-
-                font-size: 24px;
-            }
-
-            .ag-courses-item_link {
-                padding: 22px 40px;
-            }
-
-            .ag-courses-item_date-box {
-                font-size: 16px;
-            }
-        }
-
-        @media(max-width:376px) {
-            .five {
-
-                font-size: 35px;
-
-                left: -16px;
-            }
-
-          
-
-
-            .parent {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .child img {
-                width: 191%;
-                height: 190px;
-                border-radius: 0% 0% 60% 70%;
-            }
-
-            .card img {
-                width: 223px;
-                height: 212px;
-                color: white;
-            }
-
-            p9 {
-                font-size: 16px;
-                font-weight: 600;
-            }
-
-            h2 {
-                font-size: 19px;
-                padding-top: 8px;
-                max-width: 100%;
-            }
-        }
-
 
         .new_footer_area {
             background: #fbfbfd;
@@ -750,66 +251,505 @@ width:100%;
                 left: 100%;
             }
         }
-        .five{
-            max-width: 100%;
-            max-height: fit-content;
-           
+       
+	#IMG{
+		width: 100%;
+		height: 100%;
+		vertical-align: middle;
+    object-fit: cover;
+    object-position: center;
+    border: 4px solid #665e57;
+    padding: 0.5rem;
+    box-shadow: 0px 4px 8px #9193a4;
+	}
+	
+    .outer-wrapper {
+        max-width: 100vw;
+        overflow-x: scroll;
+        position: relative;
+        scrollbar-color: #d5ac68 #f1db9d;
+        scrollbar-width: thin;
+        -ms-overflow-style: none;
+      }
+      
+      .pseduo-track {
+        background-color: #f1db9d;
+        height: 2px;
+        width: 100%;
+        position: relative;
+        top: -3px;
+        z-index: -10;
+      }
+      
+      @media (any-hover: none) {
+        .pseduo-track {
+            display: none;
         }
-        .main{
-            display: flex;
-            margin: auto;
-            align-items: center;
-            justify-content: center;
-            font-size: large;
-            font-weight: bold;
-        }
-        .total{
-            display: flex;
-            margin: auto;
-            align-items: center;
-            justify-content: center;
-            padding: auto;
-            max-width: 100%;
-            max-height: fit-content;
-            font-size: 20px;
-        }
-        .total h1{
-            max-height: max-content;
-            background-position: center;
-            -webkit-background-clip: text;
-            background-clip: text;
-        
+      }
+      
+      .outer-wrapper::-webkit-scrollbar {
+        height: 5px;
+      }
+      
+      .outer-wrapper::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 0px rgba(0, 0, 0, 0);
+      }
+      
+      .outer-wrapper::-webkit-scrollbar-thumb {
+        height: 5px;
+        background-color: #d5ac68;
+      }
+      
+      .outer-wrapper::-webkit-scrollbar-thumb:hover {
+        background-color: #f1db9d;
+      }
+      
+      .outer-wrapper::-webkit-scrollbar:vertical {
+        display: none;
+      }
+      
+      .inner-wrapper {
+        display: flex;
+        padding-bottom: 10px;
+      }
+      
+      .pseudo-item {
+       
+        margin-right: 59px;
+        flex-shrink: 0;
+      
+      }
+      
+      .pseudo-item img {
+        width: 210px;
+        height: 210px;
+      }
+      
+      
+      
 
-        }
+	.gallary{
+		margin: auto;
+    max-width: 1000px;
+		padding:1rem;
+	}
 
-        .pho{
-            display: flex;
-            margin: auto;
-            align-items: center;
-            justify-content: center;
-        
-        }
-        .pho img{
-            max-width: 50%;
-            background-color: transparent;
-            mix-blend-mode:multiply;
-        }
-        .di{
-            background-color: #d6cece;
-            padding: 10px;
-            margin: auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 30px;
-            color: black;
-            
-           
-        }
-        span a{
-            text-decoration: none;
-            gap: 20px;
-        }
+	.text{
+		grid-area: 2/2/5/5;
+		align-self: center;
+    	justify-self: center;
+    	
+	}
+h3{
+    font-family: 'Cinzel', serif;
+    font-size: 2.2rem;
+    margin: 0.2rem 0;
+    border-top: 2px solid #776b5e;
+    border-bottom: 3px solid #ecd68c;
+	}
+	.text p{
+		font-family: 'Alegreya', serif;
+		font-size: 1.5rem;
+		color:#3f3f3e;
+		letter-spacing: 5px;
+	}
+	.text span{
+		font-size:2rem;
+		color: red;
+	}
+	.image1{
+		grid-area: 1/1/3/2;
+	}
+	.image2{
+		grid-area: 1/2/2/4;
+	}
+	.image3{
+		grid-area: 1/5/4/6;
+	}
+	.image4{
+		grid-area: 3/1/6/2;
+	}
+	.image5{
+		grid-area: 5/3/6/5;
+	}
+	.image6{
+		grid-area: 4/5/6/6;
+	}
+
+@media screen and (min-width: 700px){
+  	.gallary{
+      max-width: 1000px;
+      display: grid;
+      grid-template-columns: 1fr 0.1fr 0.8fr 0.1fr 1fr;
+      grid-template-rows: 24vh 10vh 15vh 10vh 24vh;
+      grid-gap: 1rem;
+	}
+
+}
+
+@media screen and (max-width: 701px){
+  .image{
+    margin-bottom: 1rem;
+  }
+}
+
+/* Style for the button */
+button {
+    background-color: #007bff; /* Button background color */
+    color: #fff; /* Button text color */
+    padding: 10px 20px; /* Padding around the button text */
+    border: none; /* Remove button border */
+    cursor: pointer; /* Change cursor to a pointer on hover */
+    }
+    
+    /* Style the button on hover */
+    button:hover {
+    background-color: #0056b3; /* Change background color on hover */
+    }
+
+
+    /* index.ejs css */
+
+
+section {
+    width: 100%;
+    padding: 20px;
+  }
+  
+  h1 .typewrite {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    font-size: 34px;
+  }
+  
+  .outer-wrapper {
+    max-width: 100vw;
+    overflow-x: scroll;
+    position: relative;
+    scrollbar-color: #d5ac68 #f1db9d;
+    scrollbar-width: thin;
+    -ms-overflow-style: none;
+  }
+  
+  .pseduo-track {
+    background-color: #f1db9d;
+    height: 2px;
+    width: 100%;
+    position: relative;
+    top: -3px;
+    z-index: -10;
+  }
+  
+  @media (any-hover: none) {
+    .pseduo-track {
+        display: none;
+    }
+  }
+  
+  .outer-wrapper::-webkit-scrollbar {
+    height: 5px;
+  }
+  
+  .outer-wrapper::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 0px rgba(0, 0, 0, 0);
+  }
+  
+  .outer-wrapper::-webkit-scrollbar-thumb {
+    height: 5px;
+    background-color: #d5ac68;
+  }
+  
+  .outer-wrapper::-webkit-scrollbar-thumb:hover {
+    background-color: #f1db9d;
+  }
+  
+  .outer-wrapper::-webkit-scrollbar:vertical {
+    display: none;
+  }
+  
+  .inner-wrapper {
+    display: flex;
+    padding-bottom: 10px;
+  }
+  
+  .pseudo-item {
+   
+    margin-right: 59px;
+    flex-shrink: 0;
+  
+  }
+  
+  .pseudo-item img {
+    width: 210px;
+    height: 210px;
+  }
+  
+  
+  
+  /* Dropdown button */
+  .dropbtn {
+    background-color: #3498DB;
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  /* Dropdown button on hover & focus */
+  .dropbtn:hover,
+  .dropbtn:focus {
+    background-color: #2980B9;
+  }
+  
+  /* Dropdown container */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Dropdown content (hidden by default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    max-height: 0;
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s;
+  }
+  
+  /* Change link color on hover */
+  .dropdown-content a:hover {
+    background-color: #ddd;
+  }
+  
+  /* Show the dropdown menu when the button is clicked */
+  .show {
+    display: block;
+    max-height: 200px;
+    /* Adjust this value to control the maximum height of the dropdown */
+    transition: max-height 0.3s ease-in;
+  }
+  
+  /* Cool animation for opening the dropdown */
+  .open-dropdown {
+    animation: slide-down 0.5s ease-out;
+  }
+  
+  @keyframes slide-down {
+    0% {
+        transform: translateY(-10px);
+        opacity: 0;
+    }
+  
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+  }
+  
+  /* Search bar container */
+  .search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  /* Search input */
+  .search-input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    font-size: 16px;
+  }
+  
+  /* Search button */
+  .search-button {
+    background-color: #3498DB;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+  
+  /* Search button on hover */
+  .search-button:hover {
+    background-color: #2980B9;
+  }
+  
+  .search_system {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: auto;
+    align-items: center;
+  }
+  
+  
+  /* Apply styles to the team section */
+  .team {
+    text-align: center;
+    margin: 20px;
+    color: rebeccapurple;
+  }
+  
+  /* Style the team heading */
+  .team_heading {
+    font-size: 24px;
+    font-weight: bold;
+    color: rebeccapurple;
+  }
+  
+  /* Style the horizontal line */
+  hr {
+    border: 1px solid #000;
+    margin: 20px auto;
+    width: 50%;
+  }
+  
+  /* Style the team members */
+  .parent {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .child {
+    text-align: center;
+    color: rebeccapurple;
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+  }
+  .child img{
+    width:210px;
+    height:210px;
+  }
+  
+  /* Add a hover effect for team members */
+  .child:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  }
+  .ourDevs_heading a,.team .team_heading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    font-size: 34px;
+  }
+  
+  #IMG{
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+  object-fit: cover;
+  object-position: center;
+  border: 4px solid #665e57;
+  padding: 0.5rem;
+  box-shadow: 0px 4px 8px #9193a4;
+  }
+  .gallary{
+    margin: auto;
+  max-width: 1000px;
+    padding:1rem;
+  }
+  
+  .text{
+    grid-area: 2/2/5/5;
+    align-self: center;
+    justify-self: center;
+    
+  }
+  h3{
+  font-family: 'Cinzel', serif;
+  font-size: 2.2rem;
+  margin: 0.2rem 0;
+  border-top: 2px solid #776b5e;
+  border-bottom: 3px solid #ecd68c;
+  }
+  .text p{
+    font-family: 'Alegreya', serif;
+    font-size: 1.5rem;
+    color:#3f3f3e;
+    letter-spacing: 5px;
+  }
+  .text span{
+    font-size:2rem;
+    color: red;
+  }
+  .image1{
+    grid-area: 1/1/3/2;
+  }
+  .image2{
+    grid-area: 1/2/2/4;
+  }
+  .image3{
+    grid-area: 1/5/4/6;
+  }
+  .image4{
+    grid-area: 3/1/6/2;
+  }
+  .image5{
+    grid-area: 5/3/6/5;
+  }
+  .image6{
+    grid-area: 4/5/6/6;
+  }
+  
+  @media screen and (min-width: 700px){
+  .gallary{
+  max-width: 1000px;
+  display: grid;
+  grid-template-columns: 1fr 0.1fr 0.8fr 0.1fr 1fr;
+  grid-template-rows: 24vh 10vh 15vh 10vh 24vh;
+  grid-gap: 1rem;
+  }
+  
+  }
+  
+  @media screen and (max-width: 701px){
+  .image{
+  margin-bottom: 1rem;
+  }
+  }
+  
+
+  h1 .typewrite {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    font-size: 34px;
+    color: rebeccapurple;
+    text-decoration: none;
+  }
+  /* club css */
+  
     </style>
 </head>
 
@@ -818,15 +758,13 @@ width:100%;
         <div class="both">
             <div class="club-description">
                 <h1>Welcome to the <%=club.name%></h1>
+                
                 <p><%=club.description%></p>
             </div>
             <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
+        
         .club-description {
-            max-width: 800px;
+            max-width: 70%;
             margin: 0 auto;
             padding: 20px;
             text-align: center;
@@ -835,7 +773,7 @@ width:100%;
         /* Style the heading */
         h1 {
             font-size: 36px;
-            color: rgb(226, 43, 43);
+            color: rebeccapurple;
             margin-bottom: 20px;
         }
         /* Style the paragraphs */
@@ -845,13 +783,15 @@ width:100%;
             margin-bottom: 10px;
             font-family: Trebuchet MS, sans-serif;
         }
+        .pho img{
+            max-width: 70%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: auto;
+        }
     </style>
-            <br>
-            <div class="total">
-                <h1> Total Number of members &nbsp;
-                    <p3 style="background-color: rgb(214, 77, 77); color: #000; padding: 6px;" id="totalMembers"> </p3>
-                </h1>
-            </div>
+    
         
             
             <div class="pho"> <img src="<%=club.icon%>">
@@ -859,7 +799,7 @@ width:100%;
             </div>
     
     </div>
-    
+<!--     
     <div class="team">
         <div class="member">
             <div class="five">
@@ -870,14 +810,46 @@ width:100%;
         <hr>
         <div class="parent" id="clubMemberList"></div>
     </div>
-    </div>
-    <div class="team">
+    </div> -->
+    <!-- <div class="team">
         <div class="five">
             Event's Our club Did!
         </div>
         <br><br><br>
-        <hr>
-        <div class="container">
+        <hr> -->
+        <div class="team">
+            <h1>
+                <a href="" class="typewrite" data-period="2000" data-type='[ "Get to Know Our Team" ]'>
+                    <span class="wrap"></span>
+                </a>
+            </h1>
+            <hr>
+            <div class="parent">
+                <div class="child">
+                    <img src="/static/images/mkk sir.jpg">
+                    <h2>Mr. Manish Kaushik</h2>
+                    <h5>Dean Students' Welfare</h5>
+                </div>
+                <div class="child">
+                    <img src="/static/images/kanika mam.jpg">
+                    <h2>Mrs. Kanika Jindal</h2>
+                    <h5>Associate Dean Students' Welfare</h5>
+                </div>
+            </div>
+        </div>
+    
+    
+
+        <section>
+
+            <h1 style="text-decoration: none;">
+                <a href="" class="typewrite" data-period="2000" data-type='[ "Event Did" ]'>
+                    <span class="wrap"></span>
+                </a>
+            </h1>
+            <hr>
+           
+        <!-- <div class="container">
 
             <%if(events.length>0){for(let i=0;i<events.length;i++){%>
                     <div class="card">
@@ -895,9 +867,30 @@ width:100%;
                         </div>
                     </div>
                     <%}}%>
-        </div>
+        </div> -->
+<!-- event did -->
+<div class="outer-wrapper">
 
-
+    <div class="inner-wrapper">
+        <%if(events.length>0){for(let i=0;i<events.length;i++){%>
+            <div class="pseudo-item"> 
+                <a href="/events/<%=events[i].Name%>" target="_blank">
+                    <div class="child">
+                        <img src='<%=events[i].icon%>'>
+                        <h2> <%=events[i].Name%> </h2> 
+                        <h5>Event Date:<%=events[i].eventDate%></h5>
+                        <%if(events[i].report){%>
+                            <a href="<%=events[i].report%>"><button>Report</button></a>
+                        <%}else{%>
+                            <h4>Currently Live!!</h4>
+                        <%}%>
+                    </div>
+                </a>
+            </div> 
+        <%}}%>
+        
+</section>
+        
         <!----------------   Footer    ---------------------------->
 
         <footer class="new_footer_area bg_color" id="contact">
@@ -905,35 +898,8 @@ width:100%;
                 <div class="container">
                     <div class="row">
     
-                        <div class="col-lg-3 col-md-6">
-                            <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.4s"
-                                style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInLeft;">
-                                <h3 class="f-title f_600 t_color f_size_18">Download</h3>
-                                <ul class="list-unstyled f_list">
-                                    <li><a href="#">Company</a></li>
-                                    <li><a href="#">Android App</a></li>
-                                    <li><a href="#">ios App</a></li>
-                                    <li><a href="#">Desktop</a></li>
-                                    <li><a href="#">Projects</a></li>
-                                    <li><a href="#">My tasks</a></li>
-                                </ul>
-                            </div>
-                        </div>
-    
-                        <div class="col-lg-3 col-md-6">
-                            <div class="f_widget social-widget pl_70 wow fadeInLeft" data-wow-delay="0.8s"
-                                style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInLeft;">
-                                <h3 class="f-title f_600 t_color f_size_18">Team Solutions</h3>
-                                <div class="f_social_icon">
-                                    <a href="#" class="fa fa-facebook"></a>
-                                    <a href="#" class="fa fa-twitter"></a>
-                                    <a href="#" class="fa fa-linkedin"></a>
-                                    <a href="#" class="fa fa-pinterest"></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                       
+                       
                 <div class="footer_bg">
                     <div class="footer_bg_one"></div>
                     <div class="footer_bg_two"></div>
@@ -943,10 +909,107 @@ width:100%;
         </footer>
         <div class="di">
             <span>@Developed By : <a href="linkedin.com/in/sushant-verma-b53171226">Sushant Verma</a>
-                ,<a href="#">Sumit patak</a>
-                ,<a href="#">Amaan Khan</a>
-                ,<a href="#">Yashi Gupta</a></span>
+                ,<a href="https://sumitpathak721.github.io/__sumitpathak__/">Sumit patak</a>
+                ,<a href="https://www.linkedin.com/in/amaan-khan-ak20121/">Amaan Khan</a>
+                ,<a href="https://www.linkedin.com/in/yashigupta406/">Yashi Gupta</a></span>
             </div>
+            <script>
+                var TxtType = function (el, toRotate, period) {
+                    this.toRotate = toRotate;
+                    this.el = el;
+                    this.loopNum = 0;
+                    this.period = parseInt(period, 10) || 2000;
+                    this.txt = '';
+                    this.tick();
+                    this.isDeleting = false;
+                };
+            
+                TxtType.prototype.tick = function () {
+                    var i = this.loopNum % this.toRotate.length;
+                    var fullTxt = this.toRotate[i];
+            
+                    if (this.isDeleting) {
+                        this.txt = fullTxt.substring(0, this.txt.length - 1);
+                    } else {
+                        this.txt = fullTxt.substring(0, this.txt.length + 1);
+                    }
+            
+                    this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
+            
+                    var that = this;
+                    var delta = 200 - Math.random() * 100;
+            
+                    if (this.isDeleting) { delta /= 2; }
+            
+                    if (!this.isDeleting && this.txt === fullTxt) {
+                        delta = this.period;
+                        this.isDeleting = true;
+                    } else if (this.isDeleting && this.txt === '') {
+                        this.isDeleting = false;
+                        this.loopNum++;
+                        delta = 500;
+                    }
+            
+                    setTimeout(function () {
+                        that.tick();
+                    }, delta);
+                };
+            
+                window.onload = function () {
+                    var elements = document.getElementsByClassName('typewrite');
+                    for (var i = 0; i < elements.length; i++) {
+                        var toRotate = elements[i].getAttribute('data-type');
+                        var period = elements[i].getAttribute('data-period');
+                        if (toRotate) {
+                            new TxtType(elements[i], JSON.parse(toRotate), period);
+                        }
+                    }
+                    // INJECT CSS
+                    var css = document.createElement("style");
+                    css.type = "text/css";
+                    css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
+                    document.body.appendChild(css);
+                };
+            </script>
+            <script>
+                /* When the user clicks on the button, 
+                toggle between hiding and showing the dropdown content */
+                function myFunction() {
+                    var dropdown = document.getElementById("myDropdown");
+                    dropdown.classList.toggle("show");
+                    if (dropdown.classList.contains("show")) {
+                        dropdown.classList.add("open-dropdown");
+                    } else {
+                        dropdown.classList.remove("open-dropdown");
+                    }
+                }
+            
+                // Close the dropdown if the user clicks outside of it
+                window.onclick = function (event) {
+                    if (!event.target.matches('.dropbtn')) {
+                        var dropdowns = document.getElementsByClassName("dropdown-content");
+                        for (var i = 0; i < dropdowns.length; i++) {
+                            var openDropdown = dropdowns[i];
+                            if (openDropdown.classList.contains('show')) {
+                                openDropdown.classList.remove('show');
+                                openDropdown.classList.remove('open-dropdown');
+                            }
+                        }
+                    }
+                }
+            </script>
+            <script>
+                // Function to handle the search button click
+                function searchClick() {
+                    // Get the search input value
+                    var searchInput = document.querySelector(".search-input").value;
+            
+                    // Perform your search or submit the search query
+                    // For this example, we'll just display an alert
+                    alert("You searched for: " + searchInput);
+                }
+            </script>
+            
 </body>
 
 </html>

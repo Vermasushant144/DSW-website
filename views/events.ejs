@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSW-Events</title>
+</head>
+<style>
+    .event{
+        display: inline-block;
+        width:300px;
+        height:300px;
+        box-shadow: 1px 1px 5px 2px rgb(157, 94, 187);
+        border-radius: 10px;
+        padding:5px;
+        margin:5px;
+    }
+    .event:hover{
+        box-shadow: 1px 1px 10px 2px rgb(157, 94, 187);
+    }
+    .event img{
+        width:100%;
+        height:60%;
+    }
+    .event-detail{
+        text-align: center;
+    }
+    .event-detail a{
+        border:0px;
+        background-color:rgb(150, 94, 202);
+        color:white;
+        padding:5px 10px;
+        border-radius: 5px;
+        box-shadow: 1px 1px 2px 2px rgb(150, 94, 202);
+        font-size: 20px;
+        text-decoration: none;
+    }
+    .event-detail a:hover{
+        background-color:rgb(131, 75, 184);
+    }
+</style>
+<body>
+    <h1>Organised Events</h1>
+    <div class="container">
+        
+        <%for(let i=0;i<events.length;i++){%>
+            <div class="event" id="<%=events[i].Name%>">
+                <img src="<%=events[i].icon%>" alt="<%=events[i].Name%>">
+                <div class="event-detail">
+                    <h3><%=events[i].Name%></h3>
+                    <a href="/events/<%=events[i].Name%>">View More</a>
+                </div>
+            </div>
+        <%}%>
+    </div>
+</body>
+</html>

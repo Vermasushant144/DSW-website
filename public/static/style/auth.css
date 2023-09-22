@@ -109,11 +109,10 @@ body{
     margin:0px;
     padding:0px;
     display:flex;
-    height:100vh;
+    height:100%;
     width:100vw;
     justify-content: center;
     align-items: center;
-    position:fixed;
 
 }
 

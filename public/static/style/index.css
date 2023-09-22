@@ -11,6 +11,9 @@ body{
   background-color: #202020;
   margin:0px;
   width: 100%;
+  position: fixed;
+  top: 0px;
+  z-index: 1;
 }
 #navbar1 img{
   margin-left:10px;
@@ -21,6 +24,22 @@ body{
   margin-left: auto;
   justify-content: center;
 
+}
+.navbar-link{
+  padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    border: 1px solid white;
+    margin: 10px;
+    border-radius: 4px
+}
+.navbar-link:hover{
+  transition-duration: 0.3s;
+  background-color: white;
+  color:black;
 }
 #search{
   margin-right:0px;
@@ -63,10 +82,15 @@ body{
   display:flex;
 }
 #pvtComponent1 a{
+  display: flex;
   text-decoration: none;
-  padding: auto 20px;
-  color: white;
+  align-items: center;
   margin:auto 10px;
+}
+#profile img{
+  height:30px;
+  margin:0px;
+  border-radius:100%;
 }
 #notification-btn{
   margin:auto 10px;
@@ -92,19 +116,35 @@ body{
 #notification-btn button:hover{
   color: rgb(213, 213, 0);
 }
-#suggestionClubs {
-  background-color: rgb(254, 253, 228);
-  width: 400px; 
-  position:absolute;
-  z-index: 1;
-  overflow-y: scroll;
-  top:43px;
-}
+
 #suggestionClubs h3{
   margin:auto;
   margin-left:0px;
   padding:15px;
 }
+
+
+/* main */
+#inner-popup{
+  z-index: 1;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 50px;
+  background-color: #161616d9;
+  display:none;
+}
+
+#suggestionClubs {
+  background-color: rgb(254, 253, 228);
+  width: 400px; 
+  position:absolute;
+  z-index: 2;
+  overflow-y: scroll;
+  top:43px;
+  display:none;
+}
+
 #main-video{
   display:flex;
   margin:20px auto;
@@ -131,10 +171,8 @@ body{
 #events-list{
   
   width:100%;
-  /* height:200px; */
-  height: 100px;
+  height: 250px;
   overflow-y: scroll;
-  /* background-color: #efefef; */
   color: transparent;
   border-radius: 5px;
     backdrop-filter: blur(14px);
@@ -147,6 +185,7 @@ body{
   margin-bottom: 2px;
   width: 100%;
   border: 0px;
+  border-bottom:1px solid #dddddd;
 }
 .live-event:hover{
   box-shadow: 0px 1px 20px #857676;
@@ -204,7 +243,7 @@ body{
   position: fixed;
   display:none;
   margin:auto;
-  top:15%;
+  top:5%;
   height: fit-content;
   left:10%;
   z-index: 2;
@@ -226,6 +265,11 @@ body{
   width:50%;
   display:flex;
   flex-direction: column;
+  overflow-y: scroll;
+  height:90vh;
+}
+#event-popup-container2::-webkit-scrollbar{
+  display: none;
 }
 
 #event-popup-container2 * {
@@ -670,4 +714,52 @@ body{
   position: relative;
   left: -13%;
 }
+}
+/* Loading animation */
+.popup{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0px;
+  display: flex;
+  z-index:5;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffffb6;
+}
+.lds-facebook {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-facebook div {
+  display: inline-block;
+  position: absolute;
+  left: 8px;
+  width: 16px;
+  background: #212121;
+  animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+.lds-facebook div:nth-child(1) {
+  left: 8px;
+  animation-delay: -0.24s;
+}
+.lds-facebook div:nth-child(2) {
+  left: 32px;
+  animation-delay: -0.12s;
+}
+.lds-facebook div:nth-child(3) {
+  left: 56px;
+  animation-delay: 0;
+}
+@keyframes lds-facebook {
+  0% {
+    top: 8px;
+    height: 64px;
+  }
+  50%, 100% {
+    top: 24px;
+    height: 32px;
+  }
 }

@@ -29,6 +29,7 @@ var switchForm = (value)=>{
 var loginform = document.getElementById("loginform");
 loginform.addEventListener("submit", async (e) => {
     e.preventDefault();
+    document.getElementById("loading").style.display = "flex";
     var formData = new FormData(loginform);
     //convert formData to json
     var jsonData = {};
@@ -43,7 +44,7 @@ loginform.addEventListener("submit", async (e) => {
         body: JSON.stringify(jsonData),
     });
     response = await response.json();
-    console.log(response.status);
+    document.getElementById("loading").style.display = "none";
     if (response.status == 200) {
         localStorage.setItem("token",response.token);
         window.location.href = "/";
