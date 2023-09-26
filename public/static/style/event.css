@@ -55,7 +55,26 @@ button:hover {
         overflow: hidden;
         transform: translateY(-50%);    
     }
-    
+.event-icon{
+    padding: 100px;
+    float: left;
+    width: 50%;
+}
+.event-detail{
+    padding: 100px;
+    float: left;
+    width: 50%;
+}
+@media screen and (max-width: 800px) {
+    .left, .main, .right {
+      width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
+    }
+  }
+.event-desc{
+    padding: 10px;
+    float: left;
+    width: 100%;
+}
     /* Animation */
     .anim-typewriter{
       animation: typewriter 4s steps(44) 1s 1 normal both,
