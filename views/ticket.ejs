@@ -66,8 +66,8 @@
             <label for="year">Year:</label>
             <input type="text" id="year" placeholder="Enter your year" required>
             
-            <label for="club">Club:</label>
-            <input type="text" id="club" placeholder="Enter your club" required>
+            <label for="gender">Gender:</label>
+            <input type="text" id="gender" placeholder="Enter your gender" required>
             
             <button type="reset" class="button" onclick="generateQRCode()">SUBMIT</button>
         </form>
@@ -85,8 +85,8 @@
             const erp = document.getElementById("erp").value;
             const branch = document.getElementById("branch").value;
             const year = document.getElementById("year").value;
-            const club = document.getElementById("club").value;
-            const data = `Name: ${name}\nERP ID: ${erp}\nBranch: ${branch}\nYear: ${year}\nClub: ${club}`;
+            const club = document.getElementById("gender").value;
+            const data = `Name: ${name}\nERP ID: ${erp}\nBranch: ${branch}\nYear: ${year}\nGender: ${club}`;
             
             if (data) {
                 // Generate QR code
