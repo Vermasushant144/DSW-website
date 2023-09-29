@@ -13,7 +13,7 @@
     flex:1;
 }
 .sec-2{
-    margin-inline: 4.5%;
+    margin-inline: auto;
 }
 .sec-2 img{
     width:300px;
@@ -77,6 +77,15 @@ button:hover {
     .event-icon, .event-detail, .event-desc {
       width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
     }
+  }
+  .head {
+    width: 100%;
+  }
+  .event-icon {
+    order: 2; /* Change the order of event icon and event detail on smaller screens */
+  }
+  .event-detail {
+    order: 1; /* Change the order of event icon and event detail on smaller screens */
   }
     /* Animation */
     .anim-typewriter{
