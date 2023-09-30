@@ -1,89 +1,123 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TICKET</title>
-    <!-- Include the QRCode.js library -->
+    <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f3f3f3;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #ffffff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            color: #333;
-        }
-        label {
-            display: block;
-            margin-bottom: 6px;
-            color: #555;
-        }
-        input[type="text"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        button {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-        #qrcode {
-            margin-top: 20px;
-        }
-    </style>
 </head>
 <body>
     <div class="container">
         <h1>Enter your details</h1>
-        <form>
+        <form id="inputForm">
             <label for="name">Name:</label>
             <input type="text" id="name" placeholder="Enter your name" required>
-            
+
             <label for="erp">ERP ID:</label>
             <input type="text" id="erp" placeholder="Enter your ERP ID" required>
-            
+
             <label for="branch">Branch:</label>
             <input type="text" id="branch" placeholder="Enter your branch" required>
-            
+
             <label for="year">Year:</label>
-            <input type="text" id="year" placeholder="Enter your year" required>
-            
+            <select id="year" required>
+                <option value="1st year">1st Year</option>
+                <option value="2nd year">2nd Year</option>
+                <option value="3rd year">3rd Year</option>
+                <option value="4th year">4th Year</option>
+                <option value="5th year">5th Year</option>
+            </select>
+
             <label for="gender">Gender:</label>
             <select id="gender" required>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
                 <option value="Other">Other</option>
             </select>
-            
-            
-            <button type="reset" class="button" onclick="generateQRCode()">SUBMIT</button>
+
+            <button type="button" id="submitButton" onclick="generateQRCode()">Generate QR</button>
         </form>
-        
+
         <div id="qrcode"></div>
-        
+
         <a id="downloadLink" style="display: none;">
             <button onclick="downloadQRCode()">Download QR</button>
         </a>
     </div>
-    
+
+    <style>
+        /* styles.css */
+
+/* Base styles for all screen sizes */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f3f3f3;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #333;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    color: #555;
+}
+
+input[type="text"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#qrcode {
+    margin-top: 20px;
+}
+
+/* Media queries for responsive design */
+@media screen and (max-width: 768px) {
+    .container {
+        max-width: 90%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    input[type="text"],
+    select {
+        font-size: 16px;
+    }
+}
+
+    </style>
+
     <script>
         function generateQRCode() {
             const name = document.getElementById("name").value;
@@ -92,7 +126,7 @@
             const year = document.getElementById("year").value;
             const gender = document.getElementById("gender").value;
             const data = `Name: ${name}\nERP ID: ${erp}\nBranch: ${branch}\nYear: ${year}\nGender: ${gender}`;
-            
+
             if (data) {
                 // Generate QR code
                 const qrcodeElement = document.getElementById("qrcode");
@@ -102,7 +136,7 @@
                     width: 200,
                     height: 200
                 });
-                
+
                 // Show download button
                 const downloadLink = document.getElementById("downloadLink");
                 downloadLink.style.display = "block";
@@ -111,15 +145,15 @@
                 alert("Form is submitted successfully!");
             }
         }
-        
+
         function downloadQRCode() {
             const qrcodeCanvas = document.querySelector("#qrcode canvas");
             const downloadLink = document.getElementById("downloadLink");
-            
+
             // Convert canvas to image and trigger download
-            const imageURL = qrcodeCanvas.toDataURL("image/jpg");
+            const imageURL = qrcodeCanvas.toDataURL("image/png");
             downloadLink.href = imageURL;
-            downloadLink.download = "qrcode.jpg";
+            downloadLink.download = "qrcode.png";
         }
     </script>
 </body>
