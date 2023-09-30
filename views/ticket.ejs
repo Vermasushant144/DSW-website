@@ -67,7 +67,12 @@
             <input type="text" id="year" placeholder="Enter your year" required>
             
             <label for="gender">Gender:</label>
-            <input type="text" id="gender" placeholder="Enter your gender" required>
+            <select id="gender" required>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+            
             
             <button type="reset" class="button" onclick="generateQRCode()">SUBMIT</button>
         </form>
@@ -101,6 +106,9 @@
                 // Show download button
                 const downloadLink = document.getElementById("downloadLink");
                 downloadLink.style.display = "block";
+
+                // Show success message
+                alert("Form is submitted successfully!");
             }
         }
         
