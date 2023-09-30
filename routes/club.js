@@ -27,21 +27,21 @@ route.get("/ticket",async(req,res)=>{
 route.get("/:club",async(req,res)=>{
     let club = await clubModel.findOne({name:req.params.club}).select(["-_id"]);
     let events = [];
-    if(club.events){
-        for(let i=0;i<club.events.length;i++){
-            let event = await eventModel.findOne({_id:club.events[i]});
-            if(event){
-                events.push(event);
-            }
-        }
-        events.sort((a, b) => {
-            // Assuming 'date' is the field containing the date in each notification object
-            const dateA = new Date(a.Date);
-            const dateB = new Date(b.Date);
-            return dateB - dateA; // Compare dateB with dateA for descending order
-        });
-    }
     if(club){
+        if(club.events){
+            for(let i=0;i<club.events.length;i++){
+                let event = await eventModel.findOne({_id:club.events[i]});
+                if(event){
+                    events.push(event);
+                }
+            }
+            events.sort((a, b) => {
+                // Assuming 'date' is the field containing the date in each notification object
+                const dateA = new Date(a.Date);
+                const dateB = new Date(b.Date);
+                return dateB - dateA; // Compare dateB with dateA for descending order
+            });
+        }
         res.render("club.ejs",{club:club,SERVER_DIR:process.env.SERVER_DIR,events:events})
     }else{
         res.send("Club not found!!")
