@@ -150,8 +150,26 @@ button:hover {
             const qrcodeCanvas = document.querySelector("#qrcode canvas");
             const downloadLink = document.getElementById("downloadLink");
 
-            // Convert canvas to image and trigger download
-            const imageURL = qrcodeCanvas.toDataURL("image/png");
+            // Create a padded image by drawing the QR code on a canvas with padding
+            const padding = 20; // Adjust padding as needed
+            const canvas = document.createElement("canvas");
+            const context = canvas.getContext("2d");
+            const qrWidth = qrcodeCanvas.width;
+            const qrHeight = qrcodeCanvas.height;
+            
+            // Set canvas size including padding
+            canvas.width = qrWidth + 2 * padding;
+            canvas.height = qrHeight + 2 * padding;
+            
+            // Fill the canvas with a background color (white)
+            context.fillStyle = "#fff";
+            context.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw the QR code onto the padded canvas
+            context.drawImage(qrcodeCanvas, padding, padding);
+
+            // Convert the padded canvas to image and trigger download
+            const imageURL = canvas.toDataURL("image/png");
             downloadLink.href = imageURL;
             downloadLink.download = "qrcode.png";
         }
