@@ -55,6 +55,21 @@ button:hover {
         overflow: hidden;
         transform: translateY(-50%);    
     }
+/* new footer */
+.amaan{
+  background: #111;
+  padding: 15px 23px;
+  color: #fff;
+  text-align: center;
+}
+.amaan span a{
+  color: white;
+  text-decoration: none;
+}
+.amaan span a:hover{
+  text-decoration: underline;
+}
+  
 
 /* event page responsive */
 .event-icon{
